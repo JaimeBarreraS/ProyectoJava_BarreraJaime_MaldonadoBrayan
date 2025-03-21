@@ -1,13 +1,11 @@
 package MVC.modelo;
 
-import java.sql.Time;
-import java.util.Date;
-
 public class People {
     private int id;
-    private Date date;
-    private Time time;
-    private String reason;
+    private String name;
+    private String identification;
+    private String phone;
+    private String email;
 
     public People() {}
 
