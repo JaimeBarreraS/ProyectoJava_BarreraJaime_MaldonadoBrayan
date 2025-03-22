@@ -1,4 +1,4 @@
-package MVC.modelo;
+package MVC.modelo.DAO;
 
 public class PeopleDAO {
 }

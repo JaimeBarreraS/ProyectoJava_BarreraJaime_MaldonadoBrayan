@@ -3,7 +3,7 @@ package MVC.modelo;
 import java.sql.Time;
 import java.util.Date;
 
-public class medicalConsult {
+public class MedicalConsult {
     private int id;
     private Date date;
     private Time time;
@@ -12,13 +12,13 @@ public class medicalConsult {
     private String recommendations;
     private String state;
 
-    public medicalConsult(){}
+    public MedicalConsult(){}
 
-    public medicalConsult(int id) {
+    public MedicalConsult(int id) {
         this.id = id;
     }
 
-    public medicalConsult(int id, Date date, Time time, String reason, String diagnostic, String recommendations, String state) {
+    public MedicalConsult(int id, Date date, Time time, String reason, String diagnostic, String recommendations, String state) {
         this.id = id;
         this.date = date;
         this.time = time;
