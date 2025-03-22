@@ -8,7 +8,7 @@ public class Inventory {
     private String type;
     private String manufacturer;
     private String stock;
-    private Date espirationDate;
+    private Date expirationDate;
 
     public Inventory() {}
 
@@ -16,13 +16,13 @@ public class Inventory {
         this.id = id;
     }
 
-    public Inventory(int id, String name, String type, String manufacturer, String stock, Date espirationDate) {
+    public Inventory(int id, String name, String type, String manufacturer, String stock, Date expirationDate) {
         this.id = id;
         this.name = name;
         this.type = type;
         this.manufacturer = manufacturer;
         this.stock = stock;
-        this.espirationDate = espirationDate;
+        this.expirationDate = expirationDate;
     }
 
     public int getId() {
@@ -61,11 +61,11 @@ public class Inventory {
         this.stock = stock;
     }
 
-    public Date getEspirationDate() {
-        return espirationDate;
+    public Date getExpirationDate() {
+        return expirationDate;
     }
 
-    public void setEspirationDate(Date espirationDate) {
-        this.espirationDate = espirationDate;
+    public void setExpirationDate(Date expirationDate) {
+        this.expirationDate = expirationDate;
     }
 }

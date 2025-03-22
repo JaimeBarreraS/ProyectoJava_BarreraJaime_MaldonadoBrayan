@@ -1,19 +1,19 @@
 package MVC.modelo;
 
-public class invoiceDetails {
+public class InvoiceDetails {
     private int id;
     private String description;
     private int quantity;
     private int unitValue;
     private int subtotal;
 
-    public invoiceDetails() {}
+    public InvoiceDetails() {}
 
-    public invoiceDetails(int id) {
+    public InvoiceDetails(int id) {
         this.id = id;
     }
 
-    public invoiceDetails(int id, String description, int quantity, int unitValue, int subtotal) {
+    public InvoiceDetails(int id, String description, int quantity, int unitValue, int subtotal) {
         this.id = id;
         this.description = description;
         this.quantity = quantity;
