@@ -37,10 +37,10 @@ public class vistaLogin extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         txtUserLogin = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        txtPassLogin = new javax.swing.JTextField();
         btnLogin = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         btnLoginSignUp = new javax.swing.JButton();
+        txtPassLogin = new javax.swing.JPasswordField();
 
         jLabel2.setText("jLabel2");
 
@@ -115,13 +115,15 @@ public class vistaLogin extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(2, 100, 100));
         jLabel9.setText("Password");
 
-        txtPassLogin.setBackground(new java.awt.Color(204, 204, 204));
-        txtPassLogin.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
         btnLogin.setBackground(new java.awt.Color(2, 100, 100));
         btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnLogin.setForeground(new java.awt.Color(255, 255, 255));
         btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(2, 100, 100));
@@ -137,14 +139,20 @@ public class vistaLogin extends javax.swing.JFrame {
             }
         });
 
+        txtPassLogin.setBackground(new java.awt.Color(204, 204, 204));
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addGap(128, 128, 128))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtUserLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtUserLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                     .addComponent(jLabel9)
                     .addComponent(btnLogin)
                     .addComponent(jLabel10)
@@ -152,12 +160,8 @@ public class vistaLogin extends javax.swing.JFrame {
                         .addComponent(jLabel8)
                         .addGap(38, 38, 38)
                         .addComponent(btnLoginSignUp))
-                    .addComponent(txtPassLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPassLogin))
                 .addContainerGap(26, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addGap(128, 128, 128))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,6 +215,11 @@ public class vistaLogin extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnLoginSignUpActionPerformed
 
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        MVC.util.CLogin verifLogin = new MVC.util.CLogin();
+        verifLogin.userValidate(txtUserLogin, txtPassLogin);
+    }//GEN-LAST:event_btnLoginActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -262,7 +271,7 @@ public class vistaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JTextField txtPassLogin;
+    private javax.swing.JPasswordField txtPassLogin;
     private javax.swing.JTextField txtUserLogin;
     // End of variables declaration//GEN-END:variables
 }
