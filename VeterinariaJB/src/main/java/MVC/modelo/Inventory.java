@@ -1,32 +1,32 @@
 package MVC.modelo;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Inventory {
     private int id;
     private String name;
     private String type;
     private String manufacturer;
-    private String stock;
+    private int stock;
     private Date expirationDate;
+    private Supplier supplier;
 
-    public Inventory() {}
-
-    public Inventory(int id) {
-        this.id = id;
-    }
-
-    public Inventory(int id, String name, String type, String manufacturer, String stock, Date expirationDate) {
+    public Inventory(int id, String name, String type, String manufacturer, int stock, Date expirationDate, Supplier supplier) {
         this.id = id;
         this.name = name;
         this.type = type;
         this.manufacturer = manufacturer;
         this.stock = stock;
         this.expirationDate = expirationDate;
+        this.supplier = supplier;
     }
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -53,11 +53,11 @@ public class Inventory {
         this.manufacturer = manufacturer;
     }
 
-    public String getStock() {
+    public int getStock() {
         return stock;
     }
 
-    public void setStock(String stock) {
+    public void setStock(int stock) {
         this.stock = stock;
     }
 
@@ -67,5 +67,13 @@ public class Inventory {
 
     public void setExpirationDate(Date expirationDate) {
         this.expirationDate = expirationDate;
+    }
+
+    public Supplier getSupplier() {
+        return supplier;
+    }
+
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
     }
 }

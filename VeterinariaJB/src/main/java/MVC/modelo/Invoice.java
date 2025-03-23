@@ -1,23 +1,19 @@
 package MVC.modelo;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Invoice {
     private int id;
+    private People costumer;
     private Date date;
-    private int total;
-    private int tax;
+    private double total;
+    private double tax;
     private String cufe;
     private String qr;
 
-    public Invoice() {}
-
-    public Invoice(int id) {
+    public Invoice(int id, People costumer, Date date, double total, double tax, String cufe, String qr) {
         this.id = id;
-    }
-
-    public Invoice(int id, Date date, int total, int tax, String cufe, String qr) {
-        this.id = id;
+        this.costumer = costumer;
         this.date = date;
         this.total = total;
         this.tax = tax;
@@ -29,6 +25,18 @@ public class Invoice {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public People getCostumer() {
+        return costumer;
+    }
+
+    public void setCostumer(People costumer) {
+        this.costumer = costumer;
+    }
+
     public Date getDate() {
         return date;
     }
@@ -37,19 +45,19 @@ public class Invoice {
         this.date = date;
     }
 
-    public int getTotal() {
+    public double getTotal() {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(double total) {
         this.total = total;
     }
 
-    public int getTax() {
+    public double getTax() {
         return tax;
     }
 
-    public void setTax(int tax) {
+    public void setTax(double tax) {
         this.tax = tax;
     }
 

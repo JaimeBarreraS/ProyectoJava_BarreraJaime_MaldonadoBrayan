@@ -1,36 +1,36 @@
 package MVC.modelo;
 
-import java.util.Date;
-
 public class Pet {
     private int id;
     private String name;
     private String specie;
     private String race;
     private int age;
-    private Date date_birth;
-    private String microchip_tatto;
+    private String dateBirth;
+    private String sex;
+    private String microchipTattoo;
     private String photo;
+    private People costumer;
 
-    public Pet() {}
-
-    public Pet(int id) {
-        this.id = id;
-    }
-
-    public Pet(int id, String name, String specie, String race, int age, Date date_birth, String microchip_tatto, String photo) {
+    public Pet(int id, String name, String specie, String race, int age, String dateBirth, String sex, String microchipTattoo, String photo, People costumer) {
         this.id = id;
         this.name = name;
         this.specie = specie;
         this.race = race;
         this.age = age;
-        this.date_birth = date_birth;
-        this.microchip_tatto = microchip_tatto;
+        this.dateBirth = dateBirth;
+        this.sex = sex;
+        this.microchipTattoo = microchipTattoo;
         this.photo = photo;
+        this.costumer = costumer;
     }
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -65,20 +65,28 @@ public class Pet {
         this.age = age;
     }
 
-    public Date getDate_birth() {
-        return date_birth;
+    public String getDateBirth() {
+        return dateBirth;
     }
 
-    public void setDate_birth(Date date_birth) {
-        this.date_birth = date_birth;
+    public void setDateBirth(String dateBirth) {
+        this.dateBirth = dateBirth;
     }
 
-    public String getMicrochip_tatto() {
-        return microchip_tatto;
+    public String getSex() {
+        return sex;
     }
 
-    public void setMicrochip_tatto(String microchip_tatto) {
-        this.microchip_tatto = microchip_tatto;
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getMicrochipTattoo() {
+        return microchipTattoo;
+    }
+
+    public void setMicrochipTattoo(String microchipTattoo) {
+        this.microchipTattoo = microchipTattoo;
     }
 
     public String getPhoto() {
@@ -87,5 +95,13 @@ public class Pet {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public People getCostumer() {
+        return costumer;
+    }
+
+    public void setCostumer(People costumer) {
+        this.costumer = costumer;
     }
 }

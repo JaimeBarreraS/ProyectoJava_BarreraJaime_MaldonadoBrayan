@@ -2,27 +2,37 @@ package MVC.modelo;
 
 public class InvoiceDetails {
     private int id;
+    private Invoice invoice;
     private String description;
     private int quantity;
-    private int unitValue;
-    private int subtotal;
+    private double unitValue;
+    private double subtotal;
+    private Inventory inventory;
 
-    public InvoiceDetails() {}
-
-    public InvoiceDetails(int id) {
+    public InvoiceDetails(int id, Invoice invoice, String description, int quantity, double unitValue, double subtotal, Inventory inventory) {
         this.id = id;
-    }
-
-    public InvoiceDetails(int id, String description, int quantity, int unitValue, int subtotal) {
-        this.id = id;
+        this.invoice = invoice;
         this.description = description;
         this.quantity = quantity;
         this.unitValue = unitValue;
         this.subtotal = subtotal;
+        this.inventory = inventory;
     }
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Invoice getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
     }
 
     public String getDescription() {
@@ -41,19 +51,27 @@ public class InvoiceDetails {
         this.quantity = quantity;
     }
 
-    public int getUnitValue() {
+    public double getUnitValue() {
         return unitValue;
     }
 
-    public void setUnitValue(int unitValue) {
+    public void setUnitValue(double unitValue) {
         this.unitValue = unitValue;
     }
 
-    public int getSubtotal() {
+    public double getSubtotal() {
         return subtotal;
     }
 
-    public void setSubtotal(int subtotal) {
+    public void setSubtotal(double subtotal) {
         this.subtotal = subtotal;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
     }
 }

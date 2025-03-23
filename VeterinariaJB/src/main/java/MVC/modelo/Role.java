@@ -1,14 +1,12 @@
 package MVC.modelo;
 
-public class TypeProcedures {
+public class Role {
     private int id;
     private String name;
-    private double price;
 
-    public TypeProcedures(int id, String name, double price) {
+    public Role(int id, String name) {
         this.id = id;
         this.name = name;
-        this.price = price;
     }
 
     public int getId() {
@@ -25,13 +23,5 @@ public class TypeProcedures {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
     }
 }

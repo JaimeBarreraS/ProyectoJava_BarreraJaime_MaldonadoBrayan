@@ -2,26 +2,33 @@ package MVC.modelo;
 
 public class MedicalHistory {
     private int id;
+    private Pet pet;
     private String allergies;
-    private String pre_conditions;
+    private String preConditions;
     private String weight;
 
-    public MedicalHistory() {
-    }
-
-    public MedicalHistory(int id) {
+    public MedicalHistory(int id, Pet pet, String allergies, String preConditions, String weight) {
         this.id = id;
-    }
-
-    public MedicalHistory(int id, String allergies, String pre_conditions, String weight) {
-        this.id = id;
+        this.pet = pet;
         this.allergies = allergies;
-        this.pre_conditions = pre_conditions;
+        this.preConditions = preConditions;
         this.weight = weight;
     }
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Pet getPet() {
+        return pet;
+    }
+
+    public void setPet(Pet pet) {
+        this.pet = pet;
     }
 
     public String getAllergies() {
@@ -32,12 +39,12 @@ public class MedicalHistory {
         this.allergies = allergies;
     }
 
-    public String getPre_conditions() {
-        return pre_conditions;
+    public String getPreConditions() {
+        return preConditions;
     }
 
-    public void setPre_conditions(String pre_conditions) {
-        this.pre_conditions = pre_conditions;
+    public void setPreConditions(String preConditions) {
+        this.preConditions = preConditions;
     }
 
     public String getWeight() {

@@ -6,23 +6,23 @@ public class Supplier {
     private String contact;
     private String phone;
     private String email;
+    private String address;
 
-    public Supplier() {}
-
-    public Supplier(int id) {
-        this.id = id;
-    }
-
-    public Supplier(int id, String name, String contact, String phone, String email) {
+    public Supplier(int id, String name, String contact, String phone, String email, String address) {
         this.id = id;
         this.name = name;
         this.contact = contact;
         this.phone = phone;
         this.email = email;
+        this.address = address;
     }
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -55,5 +55,13 @@ public class Supplier {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

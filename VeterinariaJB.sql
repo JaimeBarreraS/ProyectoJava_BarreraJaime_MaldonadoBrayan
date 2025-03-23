@@ -1,76 +1,64 @@
-create database VeterinariaJB;
-use VeterinariaJB;
+create database veterinariajb;
+use veterinariajb;
 
--- Login table
-create table Login (
+-- tabla de roles
+create table role (
     id int primary key auto_increment,
-    user varchar(45),
-    password varchar(45),
-    role varchar(45)
+    name varchar(50)
 );
 
--- People table
-create table People (
+-- insertar roles 
+insert into role (name) values ('admin'), ('receptionist'), ('veterinary'), ('costumer'); -- roles ya predeterminados
+
+-- tabla login
+create table login (
+    id int primary key auto_increment,
+    user varchar(45),
+    password varchar(255), 
+    role_id int,
+    foreign key (role_id) references role(id)
+);
+
+-- tabla people
+create table people (
     id int primary key auto_increment,
     name varchar(45),
     identification varchar(45),
     phone varchar(45),
     email varchar(45),
-    login_id int,
-    foreign key (login_id) references Login(id)
+    role_id int,
+    created_at timestamp default current_timestamp,                                 -- para ver cuando se creo o se modifico
+    updated_at timestamp default current_timestamp on update current_timestamp,		-- para ver cuando se creo o se modifico
+    foreign key (role_id) references role(id)
 );
 
--- tables roles
-create table Admin(
-    id int primary key auto_increment,
-    people_id int,
-    foreign key (people_id) references People(id)
-);
-
-create table Receptionist (
-    id int primary key auto_increment,
-    people_id int,
-    foreign key (people_id) references People(id)
-);
-
-create table Veterinary (
-    id int primary key auto_increment,
-    people_id int,
-    foreign key (people_id) references People(id)
-);
-
-create table Costumer (
-    id int primary key auto_increment,
-    people_id int,
-    foreign key (people_id) references People(id)
-);
-
--- Pet table
-create table Pet (
+-- tabla pet
+create table pet (
     id int primary key auto_increment,
     name varchar(100),
     specie varchar(50),
     race varchar(100),
     age int,
     date_birth date,
+    sex enum('macho', 'hembra'), -- nuevo campo
     microchip_tattoo varchar(45),
     photo text,
     costumer_id int,
-    foreign key (costumer_id) references Costumer(id)
+    foreign key (costumer_id) references people(id) 
 );
 
--- MedicalHistory table
-create table MedicalHistory (
+-- tabla medicalhistory
+create table medicalhistory (
     id int primary key auto_increment,
     pet_id int,
     allergies text,
     pre_conditions text,
     weight varchar(45),
-    foreign key (pet_id) references Pet(id)
+    foreign key (pet_id) references pet(id)
 );
 
--- MedicalConsult table
-create table MedicalConsult (
+-- tabla medicalconsult
+create table medicalconsult (
     id int primary key auto_increment,
     pet_id int,
     date date,
@@ -78,73 +66,75 @@ create table MedicalConsult (
     reason text,
     diagnostic text,
     recommendations text,
-    state varchar(45),
+    state enum('programada', 'en proceso', 'finalizada', 'cancelada'), 
     veterinary_id int,
-    foreign key (pet_id) references Pet(id),
-    foreign key (veterinary_id) references Veterinary(id)
+    foreign key (pet_id) references pet(id),
+    foreign key (veterinary_id) references people(id) 
 );
 
--- Vaccine table
-create table Vaccine (
+-- tabla vaccine
+create table vaccine (
     id int primary key auto_increment,
     pet_id int,
     name varchar(100),
     lot varchar(50),
+    manufacturer varchar(100), 
     date_application date,
     next_dose date,
-    foreign key (pet_id) references Pet(id)
+    foreign key (pet_id) references pet(id)
 );
 
--- Inventory table
-create table Inventory (
+-- tabla supplier
+create table supplier (
+    id int primary key auto_increment,
+    name varchar(45),
+    contact varchar(45),
+    phone varchar(45),
+    email varchar(45),
+    address varchar(255) 
+);
+
+-- tabla inventory
+create table inventory (
     id int primary key auto_increment,
     name varchar(100),
     type varchar(50),
     manufacturer varchar(100),
     stock int,
-    expirationDate date,
+    expirationdate date,
     supplier_id int,
-    foreign key (supplier_id) references Supplier(id)
+    foreign key (supplier_id) references supplier(id)
 );
 
--- supplier table
-create table Supplier (
+-- tabla inventoryconsult
+create table inventoryconsult (
     id int primary key auto_increment,
-    name varchar(45),
-    contact varchar(45),
-    phone varchar(45),
-    email varchar(45)
-);
-
--- InventoryConsult relationship
-create table InventoryConsult (
-    id int primary key auto_increment,
-    medicalConsult_id int,
+    medicalconsult_id int,
     inventory_id int,
     quantity int,
-    foreign key (medicalConsult_id) references MedicalConsult(id),
-    foreign key (inventory_id) references Inventory(id)
+    foreign key (medicalconsult_id) references medicalconsult(id),
+    foreign key (inventory_id) references inventory(id)
 );
 
--- Procedures table
-create table Procedures (
+-- tabla procedures
+create table procedures (
     id int primary key auto_increment,
-    medicalConsult_id int,
+    medicalconsult_id int,
     description text,
-    typeProcedures_id int,
-    foreign key (medicalConsult_id) references MedicalConsult(id),
-    foreign key (typeProcedures_id) references TypeProcedures(id)
+    typeprocedures_id int,
+    foreign key (medicalconsult_id) references medicalconsult(id),
+    foreign key (typeprocedures_id) references typeprocedures(id)
 );
 
--- TypeProcedures table
-create table TypeProcedures (
+-- tabla typeprocedures
+create table typeprocedures (
     id int primary key auto_increment,
     name varchar(100),
     price decimal(10,2)
 );
 
--- Invoice table
-create table Invoice (
+-- tabla invoice
+create table invoice (
     id int primary key auto_increment,
     costumer_id int,
     date date,
@@ -152,18 +142,19 @@ create table Invoice (
     tax decimal(10,2),
     cufe varchar(100),
     qr text,
-    foreign key (costumer_id) references Costumer(id)
+    foreign key (costumer_id) references people(id) 
 );
 
--- InvoiceDetails table
-create table InvoiceDetails (
+-- tabla invoicedetails
+create table invoicedetails (
     id int primary key auto_increment,
     invoice_id int,
     description text,
     quantity int,
-    unitValue decimal(10,2),
+    unitvalue decimal(10,2),
     subtotal decimal(10,2),
     inventory_id int,
-    foreign key (invoice_id) references Invoice(id),
-    foreign key (inventory_id) references Inventory(id)
+    foreign key (invoice_id) references invoice(id),
+    foreign key (inventory_id) references inventory(id)
 );
+

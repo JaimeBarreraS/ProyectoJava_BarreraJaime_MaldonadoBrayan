@@ -1,35 +1,45 @@
 package MVC.modelo;
 
+import java.sql.Date;
 import java.sql.Time;
-import java.util.Date;
 
 public class MedicalConsult {
     private int id;
+    private Pet pet;
     private Date date;
     private Time time;
     private String reason;
     private String diagnostic;
     private String recommendations;
     private String state;
+    private People veterinary;
 
-    public MedicalConsult(){}
-
-    public MedicalConsult(int id) {
+    public MedicalConsult(int id, Pet pet, Date date, Time time, String reason, String diagnostic, String recommendations, String state, People veterinary) {
         this.id = id;
-    }
-
-    public MedicalConsult(int id, Date date, Time time, String reason, String diagnostic, String recommendations, String state) {
-        this.id = id;
+        this.pet = pet;
         this.date = date;
         this.time = time;
         this.reason = reason;
         this.diagnostic = diagnostic;
         this.recommendations = recommendations;
         this.state = state;
+        this.veterinary = veterinary;
     }
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Pet getPet() {
+        return pet;
+    }
+
+    public void setPet(Pet pet) {
+        this.pet = pet;
     }
 
     public Date getDate() {
@@ -79,6 +89,12 @@ public class MedicalConsult {
     public void setState(String state) {
         this.state = state;
     }
+
+    public People getVeterinary() {
+        return veterinary;
+    }
+
+    public void setVeterinary(People veterinary) {
+        this.veterinary = veterinary;
+    }
 }
-
-
