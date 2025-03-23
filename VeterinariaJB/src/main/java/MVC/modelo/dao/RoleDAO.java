@@ -1,4 +1,4 @@
-package MVC.dao;
+package MVC.modelo.dao;
 
 import MVC.modelo.Role;
 import MVC.util.DatabaseConnection;
