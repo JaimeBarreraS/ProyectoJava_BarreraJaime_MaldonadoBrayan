@@ -316,6 +316,11 @@ public class vistaGestionMascotas extends javax.swing.JFrame {
         btnVolver.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnVolver.setText("Volver");
         btnVolver.setBorderPainted(false);
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -492,13 +497,14 @@ public class vistaGestionMascotas extends javax.swing.JFrame {
     private void btnGetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGetActionPerformed
-    
-    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         vistaAdmin vli = new vistaAdmin();
         vli.setVisible(true);
         this.setVisible(false);
         this.dispose();
-    }
+    }//GEN-LAST:event_btnVolverActionPerformed
+    
     /**
      * @param args the command line arguments
      */

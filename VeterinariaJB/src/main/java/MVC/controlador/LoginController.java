@@ -1,15 +1,14 @@
-package MVC.util;
+package MVC.controlador;
 
 import MVC.vista.vistaAdmin;
 import MVC.vista.vistaOwner;
-import MVC.vista.vistaRecepcionist;
 import MVC.vista.vistaVeterinary;
 
 import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class CLogin {
+public class LoginController {
 
     public void userValidate(JTextField user, JPasswordField pass) {
         try{
@@ -33,16 +32,15 @@ public class CLogin {
             
             if (rs.next()) {
                 JOptionPane.showMessageDialog(null,"The user is valid");
+                vistaAdmin vA = new vistaAdmin();
                 int rol = rs.getInt("role_id");
                 switch(rol){
                     case 1:
-                        vistaAdmin vA = new vistaAdmin();
                         vA.setVisible(true);;
                         break;
                         
                     case 2: 
-                        vistaRecepcionist vR = new vistaRecepcionist();
-                        vR.setVisible(true);;
+                        vA.setVisible(true);;
                         break;
                     
                     case 3: 
