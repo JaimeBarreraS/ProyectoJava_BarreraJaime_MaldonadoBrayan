@@ -11,11 +11,12 @@ import java.util.List;
 public class PetDAO {
     private Connection connection;
 
+    // Constructor
     public PetDAO() {
         connection = DatabaseConnection.getConnection();
     }
 
-    // Metodo para agregar
+    // Método para agregar una mascota
     public void addPet(Pet pet) {
         String sql = "INSERT INTO pet (name, specie, race, age, date_birth, sex, microchip_tattoo, photo, costumer_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -34,7 +35,7 @@ public class PetDAO {
         }
     }
 
-    // Metodo para obtener
+    // Método para obtener todas las mascotas
     public List<Pet> getAllPets() {
         List<Pet> pets = new ArrayList<>();
         String sql = "SELECT p.*, pe.name AS owner_name FROM pet p JOIN people pe ON p.costumer_id = pe.id";
@@ -66,7 +67,7 @@ public class PetDAO {
         return pets;
     }
 
-    // Metodo para buscar una mascota por ID
+    // Método para buscar una mascota por ID
     public Pet getPetById(int id) {
         String sql = "SELECT p.*, pe.name AS owner_name FROM pet p JOIN people pe ON p.costumer_id = pe.id WHERE p.id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -97,7 +98,7 @@ public class PetDAO {
         return null;
     }
 
-    // Metodo para actualizar una mascota
+    // Método para actualizar una mascota
     public void updatePet(Pet pet) {
         String sql = "UPDATE pet SET name = ?, specie = ?, race = ?, age = ?, date_birth = ?, sex = ?, microchip_tattoo = ?, photo = ?, costumer_id = ? WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -117,7 +118,7 @@ public class PetDAO {
         }
     }
 
-    // Metodo para eliminar
+    // Método para eliminar una mascota
     public void deletePet(int id) {
         String sql = "DELETE FROM pet WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -126,5 +127,36 @@ public class PetDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    // Método para obtener todos los dueños
+    public List<String> getAllOwners() {
+        List<String> owners = new ArrayList<>();
+        String sql = "SELECT name FROM people";
+        try (PreparedStatement ps = connection.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                owners.add(rs.getString("name"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return owners;
+    }
+
+    // Método para obtener el ID de un dueño por su nombre
+    public int getOwnerIdByName(String name) {
+        String sql = "SELECT id FROM people WHERE name = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, name);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt("id");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
     }
 }

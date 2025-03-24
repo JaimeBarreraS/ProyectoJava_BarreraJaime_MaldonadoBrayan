@@ -15,6 +15,7 @@ public class vistaLogin extends javax.swing.JFrame {
      */
     public vistaLogin() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -213,6 +214,7 @@ public class vistaLogin extends javax.swing.JFrame {
         vistaSignUp vsu = new vistaSignUp();
         vsu.setVisible(true);
         this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_btnLoginSignUpActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed

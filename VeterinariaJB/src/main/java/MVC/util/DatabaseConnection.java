@@ -13,7 +13,7 @@ public class DatabaseConnection {
             try {
                 String url = "jdbc:mysql://localhost:3306/veterinariajb";
                 String user = "root";
-                String password = "Brayansamuel12";
+                String password = "campus2023";
                 connection = DriverManager.getConnection(url, user, password);
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null,"No se pudo conectar a la base de datos" + e.toString());

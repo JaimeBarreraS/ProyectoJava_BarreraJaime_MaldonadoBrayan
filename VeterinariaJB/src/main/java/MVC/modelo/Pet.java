@@ -10,7 +10,7 @@ public class Pet {
     private String sex;
     private String microchipTattoo;
     private String photo;
-    private People costumer;
+    private People costumer_id;
 
     public Pet(int id, String name, String specie, String race, int age, String dateBirth, String sex, String microchipTattoo, String photo, People costumer) {
         this.id = id;
@@ -22,7 +22,7 @@ public class Pet {
         this.sex = sex;
         this.microchipTattoo = microchipTattoo;
         this.photo = photo;
-        this.costumer = costumer;
+        this.costumer_id = costumer;
     }
 
     public int getId() {
@@ -98,10 +98,10 @@ public class Pet {
     }
 
     public People getCostumer() {
-        return costumer;
+        return costumer_id;
     }
 
     public void setCostumer(People costumer) {
-        this.costumer = costumer;
+        this.costumer_id = costumer;
     }
 }

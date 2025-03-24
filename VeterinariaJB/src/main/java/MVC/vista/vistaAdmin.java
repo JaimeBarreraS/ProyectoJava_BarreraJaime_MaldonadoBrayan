@@ -4,6 +4,8 @@
  */
 package MVC.vista;
 
+import MVC.controlador.PetController;
+
 /**
  *
  * @author braya
@@ -15,6 +17,7 @@ public class vistaAdmin extends javax.swing.JFrame {
      */
     public vistaAdmin() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -28,41 +31,194 @@ public class vistaAdmin extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        btnOwner = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        btnConsultMedical = new javax.swing.JButton();
+        btnPet = new javax.swing.JButton();
+        btnHistoryMedical = new javax.swing.JButton();
+        btnVaccine = new javax.swing.JButton();
+        btnInventory = new javax.swing.JButton();
+        btnInvoice = new javax.swing.JButton();
+        btnPeople = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("vista administrador");
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(2, 100, 100));
+        jLabel1.setText("ADMINISTRADOR");
+
+        btnOwner.setBackground(new java.awt.Color(2, 100, 100));
+        btnOwner.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnOwner.setForeground(new java.awt.Color(255, 255, 255));
+        btnOwner.setText("Gestion Dueños");
+        btnOwner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOwnerActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/logo.png"))); // NOI18N
+
+        btnConsultMedical.setBackground(new java.awt.Color(2, 100, 100));
+        btnConsultMedical.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnConsultMedical.setForeground(new java.awt.Color(255, 255, 255));
+        btnConsultMedical.setText("Gestion Consulta Medica");
+
+        btnPet.setBackground(new java.awt.Color(2, 100, 100));
+        btnPet.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnPet.setForeground(new java.awt.Color(255, 255, 255));
+        btnPet.setText("Gestion Mascotas");
+        btnPet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPetActionPerformed(evt);
+            }
+        });
+
+        btnHistoryMedical.setBackground(new java.awt.Color(2, 100, 100));
+        btnHistoryMedical.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnHistoryMedical.setForeground(new java.awt.Color(255, 255, 255));
+        btnHistoryMedical.setText("Gestion Historia Medica");
+
+        btnVaccine.setBackground(new java.awt.Color(2, 100, 100));
+        btnVaccine.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnVaccine.setForeground(new java.awt.Color(255, 255, 255));
+        btnVaccine.setText("Gestion Vacunas");
+        btnVaccine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVaccineActionPerformed(evt);
+            }
+        });
+
+        btnInventory.setBackground(new java.awt.Color(2, 100, 100));
+        btnInventory.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnInventory.setForeground(new java.awt.Color(255, 255, 255));
+        btnInventory.setText("Gestion Inventario");
+        btnInventory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInventoryActionPerformed(evt);
+            }
+        });
+
+        btnInvoice.setBackground(new java.awt.Color(2, 100, 100));
+        btnInvoice.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnInvoice.setForeground(new java.awt.Color(255, 255, 255));
+        btnInvoice.setText("Gestion Facturas");
+        btnInvoice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInvoiceActionPerformed(evt);
+            }
+        });
+
+        btnPeople.setBackground(new java.awt.Color(2, 100, 100));
+        btnPeople.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnPeople.setForeground(new java.awt.Color(255, 255, 255));
+        btnPeople.setText("Gestion Personas");
+        btnPeople.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPeopleActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(160, 160, 160)
-                .addComponent(jLabel1)
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnVaccine, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnHistoryMedical, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnConsultMedical, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnOwner, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnPet, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(btnInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnInvoice, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnPeople, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(129, 129, 129))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(157, 157, 157))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(75, 75, 75)
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addContainerGap(209, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnPet, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnOwner, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnConsultMedical, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnHistoryMedical, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnVaccine, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnInvoice, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPeople, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetActionPerformed
+        vistaGestionMascotas vgm = new vistaGestionMascotas();
+        PetController controller = new PetController(vgm);
+        vgm.setController(controller);
+        vgm.setVisible(true);
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_btnPetActionPerformed
+
+    private void btnOwnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOwnerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnOwnerActionPerformed
+
+    private void btnVaccineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVaccineActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVaccineActionPerformed
+
+    private void btnInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventoryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInventoryActionPerformed
+
+    private void btnInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvoiceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInvoiceActionPerformed
+
+    private void btnPeopleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPeopleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPeopleActionPerformed
 
     /**
      * @param args the command line arguments
@@ -100,7 +256,16 @@ public class vistaAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConsultMedical;
+    private javax.swing.JButton btnHistoryMedical;
+    private javax.swing.JButton btnInventory;
+    private javax.swing.JButton btnInvoice;
+    private javax.swing.JButton btnOwner;
+    private javax.swing.JButton btnPeople;
+    private javax.swing.JButton btnPet;
+    private javax.swing.JButton btnVaccine;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

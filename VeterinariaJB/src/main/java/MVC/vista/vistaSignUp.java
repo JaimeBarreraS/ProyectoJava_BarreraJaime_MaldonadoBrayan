@@ -15,6 +15,7 @@ public class vistaSignUp extends javax.swing.JFrame {
      */
     public vistaSignUp() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -85,6 +86,11 @@ public class vistaSignUp extends javax.swing.JFrame {
 
         txtSignName.setBackground(new java.awt.Color(204, 204, 204));
         txtSignName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtSignName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSignNameActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -155,7 +161,12 @@ public class vistaSignUp extends javax.swing.JFrame {
         vistaLogin vli = new vistaLogin();
         vli.setVisible(true);
         this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_btnSignUpLoginActionPerformed
+
+    private void txtSignNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSignNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSignNameActionPerformed
 
     /**
      * @param args the command line arguments
