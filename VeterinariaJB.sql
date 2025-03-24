@@ -45,7 +45,7 @@ INSERT INTO login (user, password, role_id) VALUES ('Jaime', '123456', 1);
 INSERT INTO login (user, password, role_id) VALUES ('Brayan', '123456', 1);
 INSERT INTO login (user, password, role_id) VALUES ('Freiler', '123456', 2);
 
-select * from login;
+select * from people;
 -- tabla people
 create table people (
     id int primary key auto_increment,
