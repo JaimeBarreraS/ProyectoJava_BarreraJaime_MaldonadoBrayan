@@ -8,7 +8,10 @@ create table role (
     id int primary key auto_increment,
     name varchar(50)
 );
+
+update role set name = 'admin' where id = 1;
 select * from role;
+
 create table people (
     id int primary key auto_increment,
     name varchar(45),
@@ -59,7 +62,7 @@ INSERT INTO login (user, password, role_id) VALUES ('Jaime', '123456', 1);
 INSERT INTO login (user, password, role_id) VALUES ('Brayan', '123456', 1);
 INSERT INTO login (user, password, role_id) VALUES ('Freiler', '123456', 2);
 
-select * from people;
+select * from login;
 SELECT name FROM people WHERE role_id = 3;
 -- tabla people
 
