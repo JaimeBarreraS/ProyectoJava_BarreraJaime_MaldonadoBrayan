@@ -132,7 +132,7 @@ public class PetDAO {
     // Metodo para obtener todos los dueños
     public List<String> getAllOwners() {
         List<String> owners = new ArrayList<>();
-        String sql = "SELECT name FROM people";
+        String sql = "SELECT name FROM people WHERE role_id = 4";
         try (PreparedStatement ps = connection.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
@@ -146,7 +146,7 @@ public class PetDAO {
 
     // Metodo para obtener el ID de un dueño por su nombre
     public int getOwnerIdByName(String name) {
-        String sql = "SELECT id FROM people WHERE name = ?";
+        String sql = "SELECT id FROM people WHERE name = ? AND role_id = 4";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, name);
             try (ResultSet rs = ps.executeQuery()) {

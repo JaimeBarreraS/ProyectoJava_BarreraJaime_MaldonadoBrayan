@@ -4,6 +4,7 @@
  */
 package MVC.vista;
 
+import MVC.controlador.SignUpController;
 /**
  *
  * @author braya
@@ -212,6 +213,8 @@ public class vistaLogin extends javax.swing.JFrame {
 
     private void btnLoginSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginSignUpActionPerformed
         vistaSignUp vsu = new vistaSignUp();
+        SignUpController controller = new SignUpController(vsu);
+        vsu.setController(controller);
         vsu.setVisible(true);
         this.setVisible(false);
         this.dispose();

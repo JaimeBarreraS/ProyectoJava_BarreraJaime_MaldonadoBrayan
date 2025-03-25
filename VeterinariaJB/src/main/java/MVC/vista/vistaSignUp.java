@@ -174,7 +174,6 @@ public class vistaSignUp extends javax.swing.JFrame {
                         .addComponent(jLabel10)
                         .addComponent(btnSignUp)
                         .addComponent(jLabel11)
-                        .addComponent(jLabel8)
                         .addComponent(txtSignPass, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                         .addComponent(txtSignUser, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                         .addComponent(jLabel9)
@@ -189,6 +188,8 @@ public class vistaSignUp extends javax.swing.JFrame {
                 .addContainerGap(38, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSignUpLogin)
                 .addGap(148, 148, 148))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -231,10 +232,10 @@ public class vistaSignUp extends javax.swing.JFrame {
                 .addComponent(txtSignPass, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(btnSignUp)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel8)
-                .addGap(10, 10, 10)
-                .addComponent(btnSignUpLogin)
+                .addGap(42, 42, 42)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSignUpLogin)
+                    .addComponent(jLabel8))
                 .addGap(30, 30, 30))
         );
 
@@ -258,7 +259,9 @@ public class vistaSignUp extends javax.swing.JFrame {
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_btnSignUpLoginActionPerformed
-
+    public void setController(SignUpController controller) {
+    
+    }
     /**
      * @param args the command line arguments
      */
@@ -317,4 +320,5 @@ public class vistaSignUp extends javax.swing.JFrame {
     public javax.swing.JTextField txtSignUser;
     public javax.swing.JTextField txtphone;
     // End of variables declaration//GEN-END:variables
+
 }

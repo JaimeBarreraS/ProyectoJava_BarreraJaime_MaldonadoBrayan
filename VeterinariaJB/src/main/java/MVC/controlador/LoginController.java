@@ -2,7 +2,7 @@ package MVC.controlador;
 
 import MVC.vista.vistaAdmin;
 import MVC.vista.vistaOwner;
-import MVC.vista.vistaVeterinary;
+import MVC.vista.vistaVeterinaryMascotas;
 
 import javax.swing.*;
 import java.sql.PreparedStatement;
@@ -44,7 +44,7 @@ public class LoginController {
                         break;
                     
                     case 3: 
-                        vistaVeterinary vV = new vistaVeterinary();
+                        vistaVeterinaryMascotas vV = new vistaVeterinaryMascotas();
                         vV.setVisible(true);
                         break;
                         

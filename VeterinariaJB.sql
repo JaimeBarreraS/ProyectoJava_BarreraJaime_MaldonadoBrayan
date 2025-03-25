@@ -8,7 +8,7 @@ create table role (
     id int primary key auto_increment,
     name varchar(50)
 );
-
+select * from role;
 create table people (
     id int primary key auto_increment,
     name varchar(45),
@@ -60,6 +60,7 @@ INSERT INTO login (user, password, role_id) VALUES ('Brayan', '123456', 1);
 INSERT INTO login (user, password, role_id) VALUES ('Freiler', '123456', 2);
 
 select * from people;
+SELECT name FROM people WHERE role_id = 3;
 -- tabla people
 
 INSERT INTO people (name, identification, phone, email, role_id) 
@@ -114,6 +115,19 @@ create table medicalconsult (
     foreign key (pet_id) references pet(id),
     foreign key (veterinary_id) references people(id) 
 );
+
+INSERT INTO medicalconsult (pet_id, date, time, reason, diagnostic, recommendations, state, veterinary_id)
+VALUES 
+(9, '2025-03-25', '10:30:00', 'Vacunación anual', 'N/A', 'Aplicar vacuna antirrábica', 'finalizada', 2),
+(10, '2025-03-26', '15:00:00', 'Revisión de cojera', 'Esguince leve en pata trasera', 'Reposo y antiinflamatorio', 'finalizada', 1),
+(12, '2025-03-27', '09:00:00', 'Pérdida de apetito', 'Gastroenteritis', 'Dieta blanda y seguimiento en 48 horas', 'en proceso', 1),
+(9, '2025-03-25', '10:30:00', 'Vacunación anual', 'N/A', 'Aplicar vacuna antirrábica', 'finalizada', 3),
+(10, '2025-03-26', '15:00:00', 'Revisión de cojera', 'Esguince leve en pata trasera', 'Reposo y antiinflamatorio', 'finalizada', 4),
+(12, '2025-03-27', '09:00:00', 'Pérdida de apetito', 'Gastroenteritis', 'Dieta blanda y seguimiento en 48 horas', 'en proceso', 2);
+INSERT INTO medicalconsult (pet_id, date, time, reason, diagnostic, recommendations, state, veterinary_id)
+VALUES 
+(9, '2025-03-25', '10:30:00', 'Vacunación anual', 'N/A', 'Aplicar vacuna antirrábica', 'finalizada', 8);
+select * from people;
 
 -- tabla vaccine
 create table vaccine (
