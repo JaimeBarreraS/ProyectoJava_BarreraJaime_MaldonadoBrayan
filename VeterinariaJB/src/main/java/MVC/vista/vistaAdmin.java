@@ -41,7 +41,6 @@ public class vistaAdmin extends javax.swing.JFrame {
         btnVaccine = new javax.swing.JButton();
         btnInventory = new javax.swing.JButton();
         btnInvoice = new javax.swing.JButton();
-        btnPeople = new javax.swing.JButton();
         Volver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -56,7 +55,7 @@ public class vistaAdmin extends javax.swing.JFrame {
         btnOwner.setBackground(new java.awt.Color(2, 100, 100));
         btnOwner.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnOwner.setForeground(new java.awt.Color(255, 255, 255));
-        btnOwner.setText("Gestion Dueños");
+        btnOwner.setText("Gestion Personas");
         btnOwner.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOwnerActionPerformed(evt);
@@ -115,16 +114,6 @@ public class vistaAdmin extends javax.swing.JFrame {
             }
         });
 
-        btnPeople.setBackground(new java.awt.Color(2, 100, 100));
-        btnPeople.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnPeople.setForeground(new java.awt.Color(255, 255, 255));
-        btnPeople.setText("Gestion Personas");
-        btnPeople.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPeopleActionPerformed(evt);
-            }
-        });
-
         Volver.setBackground(new java.awt.Color(255, 153, 102));
         Volver.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Volver.setForeground(new java.awt.Color(255, 255, 255));
@@ -150,8 +139,7 @@ public class vistaAdmin extends javax.swing.JFrame {
                     .addComponent(btnPet, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(btnInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnInvoice, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPeople, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnInvoice, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(129, 129, 129))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
@@ -186,9 +174,7 @@ public class vistaAdmin extends javax.swing.JFrame {
                 .addComponent(btnInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnInvoice, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPeople, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -241,10 +227,6 @@ public class vistaAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnInvoiceActionPerformed
 
-    private void btnPeopleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPeopleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPeopleActionPerformed
-
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
         vistaLogin vl = new vistaLogin ();
         vl.setVisible(true);
@@ -296,7 +278,6 @@ public class vistaAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnInventory;
     private javax.swing.JButton btnInvoice;
     private javax.swing.JButton btnOwner;
-    private javax.swing.JButton btnPeople;
     private javax.swing.JButton btnPet;
     private javax.swing.JButton btnVaccine;
     private javax.swing.JLabel jLabel1;

@@ -270,7 +270,7 @@ public class vistaGestionOwners extends javax.swing.JFrame {
 
         jComboBox1.setBackground(new java.awt.Color(204, 204, 204));
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "------", "admin", "receptionist", "veterinary", "costumer" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "------", "administrador", "recepcionista", "veterinario", "cliente" }));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(2, 100, 100));
