@@ -23,6 +23,16 @@ public class People {
         this.updatedAt = updatedAt;
     }
 
+    public People(int id, String name, String identification, String phone, String email) {
+        this.id = id;
+        this.name = name;
+        this.identification = identification;
+        this.phone = phone;
+        this.email = email;
+    }
+
+    
+
     public int getId() {
         return id;
     }

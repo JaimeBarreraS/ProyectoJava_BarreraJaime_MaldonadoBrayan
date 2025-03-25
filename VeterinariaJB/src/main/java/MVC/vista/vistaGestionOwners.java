@@ -5,6 +5,12 @@
 
 package MVC.vista;
 
+import MVC.controlador.CustomerController;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author braya
@@ -14,7 +20,50 @@ public class vistaGestionOwners extends javax.swing.JFrame {
     /** Creates new form VistaGestionOwners */
     public vistaGestionOwners() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
+
+    public JTextField getTxtIdentification() {
+        return txtIdentification;
+    }
+
+    public JTextField getTxtEmail() {
+        return txtEmail;
+    }
+
+    public JTextField getTxtID() {
+        return txtID;
+    }
+
+    public JTextField getTxtName() {
+        return txtName;
+    }
+
+    public JTextField getTxtPhone() {
+        return txtPhone;
+    }
+
+    public JTable getTableCustomer() {
+        return TableCustomer;
+    }
+    
+    
+    
+    
+
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(this, message);
+    }
+    
+    public void limpiarCampos(){
+        txtID.setText("");
+        txtName.setText("");
+        txtIdentification.setText("");
+        txtPhone.setText("");
+        txtEmail.setText("");
+    }
+    
+    
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -27,8 +76,8 @@ public class vistaGestionOwners extends javax.swing.JFrame {
 
         btnVolver = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        txtRace = new javax.swing.JTextField();
-        txtAge = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        txtPhone = new javax.swing.JTextField();
         btnAdd = new javax.swing.JButton();
         btnGet = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
@@ -41,7 +90,7 @@ public class vistaGestionOwners extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
-        TxtSpecie = new javax.swing.JTextField();
+        txtIdentification = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableCustomer = new javax.swing.JTable();
 
@@ -49,7 +98,7 @@ public class vistaGestionOwners extends javax.swing.JFrame {
 
         btnVolver.setBackground(new java.awt.Color(255, 153, 102));
         btnVolver.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnVolver.setText("Go Back");
+        btnVolver.setText("Volver");
         btnVolver.setBorderPainted(false);
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,30 +108,30 @@ public class vistaGestionOwners extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(2, 100, 100));
-        jLabel1.setText("Customer management");
+        jLabel1.setText("Gestion Clientes");
 
-        txtRace.setEditable(true);
-        txtRace.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtRace.setForeground(new java.awt.Color(2, 100, 100));
-        txtRace.addActionListener(new java.awt.event.ActionListener() {
+        txtEmail.setEditable(true);
+        txtEmail.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtEmail.setForeground(new java.awt.Color(2, 100, 100));
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRaceActionPerformed(evt);
+                txtEmailActionPerformed(evt);
             }
         });
 
-        txtAge.setEditable(true);
-        txtAge.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtAge.setForeground(new java.awt.Color(2, 100, 100));
-        txtAge.addActionListener(new java.awt.event.ActionListener() {
+        txtPhone.setEditable(true);
+        txtPhone.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtPhone.setForeground(new java.awt.Color(2, 100, 100));
+        txtPhone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAgeActionPerformed(evt);
+                txtPhoneActionPerformed(evt);
             }
         });
 
         btnAdd.setBackground(new java.awt.Color(2, 100, 100));
         btnAdd.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnAdd.setForeground(new java.awt.Color(255, 255, 255));
-        btnAdd.setText("Create");
+        btnAdd.setText("Limpiar");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
@@ -92,7 +141,7 @@ public class vistaGestionOwners extends javax.swing.JFrame {
         btnGet.setBackground(new java.awt.Color(2, 100, 100));
         btnGet.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnGet.setForeground(new java.awt.Color(255, 255, 255));
-        btnGet.setText("List");
+        btnGet.setText("Listar");
         btnGet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGetActionPerformed(evt);
@@ -102,12 +151,17 @@ public class vistaGestionOwners extends javax.swing.JFrame {
         btnUpdate.setBackground(new java.awt.Color(2, 100, 100));
         btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
-        btnUpdate.setText("Update");
+        btnUpdate.setText("Modificar");
 
         btnDelete.setBackground(new java.awt.Color(2, 100, 100));
         btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnDelete.setForeground(new java.awt.Color(255, 255, 255));
-        btnDelete.setText("Delete");
+        btnDelete.setText("Eliminar");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         txtID.setEditable(true);
         txtID.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -120,16 +174,16 @@ public class vistaGestionOwners extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(2, 100, 100));
-        jLabel2.setText("Phone:");
+        jLabel2.setText("Teléfono:");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(2, 100, 100));
-        jLabel3.setText("Name");
+        jLabel3.setText("Nombre");
 
         btnSearch.setBackground(new java.awt.Color(2, 100, 100));
         btnSearch.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnSearch.setForeground(new java.awt.Color(255, 255, 255));
-        btnSearch.setText("Search");
+        btnSearch.setText("Buscar");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(2, 100, 100));
@@ -137,11 +191,11 @@ public class vistaGestionOwners extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(2, 100, 100));
-        jLabel5.setText("Identification:");
+        jLabel5.setText("Identificación:");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(2, 100, 100));
-        jLabel9.setText("Email:");
+        jLabel9.setText("Email");
 
         txtName.setEditable(true);
         txtName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -152,12 +206,12 @@ public class vistaGestionOwners extends javax.swing.JFrame {
             }
         });
 
-        TxtSpecie.setEditable(true);
-        TxtSpecie.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        TxtSpecie.setForeground(new java.awt.Color(2, 100, 100));
-        TxtSpecie.addActionListener(new java.awt.event.ActionListener() {
+        txtIdentification.setEditable(true);
+        txtIdentification.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtIdentification.setForeground(new java.awt.Color(2, 100, 100));
+        txtIdentification.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtSpecieActionPerformed(evt);
+                txtIdentificationActionPerformed(evt);
             }
         });
 
@@ -176,41 +230,37 @@ public class vistaGestionOwners extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(btnVolver)
+                .addGap(73, 73, 73)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnVolver)
-                        .addGap(45, 45, 45)
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel5))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtRace, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TxtSpecie, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(61, 61, 61)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnGet)
-                                    .addComponent(btnAdd)
-                                    .addComponent(btnUpdate)
-                                    .addComponent(btnDelete)
-                                    .addComponent(btnSearch)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(5, 5, 5)))
-                        .addGap(64, 64, 64))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIdentification, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(61, 61, 61)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnGet)
+                            .addComponent(btnAdd)
+                            .addComponent(btnUpdate)
+                            .addComponent(btnDelete)
+                            .addComponent(btnSearch))))
+                .addGap(64, 64, 64))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,24 +291,32 @@ public class vistaGestionOwners extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(TxtSpecie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIdentification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtRace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
+                .addGap(52, 52, 52))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setController(CustomerController controller) {
+        btnAdd.addActionListener(e -> controller.addCustomer());
+        btnGet.addActionListener(e -> controller.listCustomer());
+        btnUpdate.addActionListener(e -> controller.updateCustomer());
+        btnDelete.addActionListener(e -> controller.deleteCustomer());
+        btnSearch.addActionListener(e -> controller.searchCustomer());
+    }
+    
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         vistaAdmin vli = new vistaAdmin();
         vli.setVisible(true);
@@ -266,13 +324,13 @@ public class vistaGestionOwners extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
-    private void txtRaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRaceActionPerformed
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtRaceActionPerformed
+    }//GEN-LAST:event_txtEmailActionPerformed
 
-    private void txtAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAgeActionPerformed
+    private void txtPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtAgeActionPerformed
+    }//GEN-LAST:event_txtPhoneActionPerformed
 
     private void btnGetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetActionPerformed
         // TODO add your handling code here:
@@ -286,13 +344,17 @@ public class vistaGestionOwners extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
 
-    private void TxtSpecieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtSpecieActionPerformed
+    private void txtIdentificationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdentificationActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TxtSpecieActionPerformed
+    }//GEN-LAST:event_txtIdentificationActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -331,8 +393,7 @@ public class vistaGestionOwners extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable TableCustomer;
-    public javax.swing.JTextField TxtSpecie;
+    public javax.swing.JTable TableCustomer;
     public javax.swing.JButton btnAdd;
     public javax.swing.JButton btnDelete;
     public javax.swing.JButton btnGet;
@@ -346,10 +407,11 @@ public class vistaGestionOwners extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel5;
     public javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTextField txtAge;
+    public javax.swing.JTextField txtEmail;
     public javax.swing.JTextField txtID;
+    public javax.swing.JTextField txtIdentification;
     public javax.swing.JTextField txtName;
-    public javax.swing.JTextField txtRace;
+    public javax.swing.JTextField txtPhone;
     // End of variables declaration//GEN-END:variables
 
 }

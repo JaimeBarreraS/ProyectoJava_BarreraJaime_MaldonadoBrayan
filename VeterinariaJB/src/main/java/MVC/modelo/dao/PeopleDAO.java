@@ -59,6 +59,35 @@ public class PeopleDAO {
         }
         return peopleList;
     }
+    
+    //Metodo para obtener a todos los clientes
+    public List<People> getAllOwners(){
+        List<People> ownerList = new ArrayList<>();
+        String sql = "SELECT p.*, r.name AS role_name FROM people p JOIN role r ON p.role_id = r.id  where r.id = 4";
+        try (Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(sql)) {
+            while (resultSet.next()) {
+                Role role = new Role(
+                        resultSet.getInt("role_id"),
+                        resultSet.getString("role_name")
+                );
+                People people = new People(
+                        resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("identification"),
+                        resultSet.getString("phone"),
+                        resultSet.getString("email"),
+                        role,
+                        resultSet.getTimestamp("created_at"),
+                        resultSet.getTimestamp("updated_at")
+                );
+                ownerList.add(people);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ownerList;
+    }
 
     // Metodo para buscar una persona por ID
     public People getPeopleById(int id) {
@@ -90,14 +119,13 @@ public class PeopleDAO {
 
     // Metodo para actualizar una persona
     public void updatePeople(People people) {
-        String sql = "UPDATE people SET name = ?, identification = ?, phone = ?, email = ?, role_id = ? WHERE id = ?";
+        String sql = "UPDATE people SET name = ?, identification = ?, phone = ?, email = ? WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, people.getName());
             statement.setString(2, people.getIdentification());
             statement.setString(3, people.getPhone());
             statement.setString(4, people.getEmail());
-            statement.setInt(5, people.getRole().getId());
-            statement.setInt(6, people.getId());
+            statement.setInt(5, people.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

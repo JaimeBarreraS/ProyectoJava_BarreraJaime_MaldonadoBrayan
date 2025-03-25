@@ -4,6 +4,7 @@
  */
 package MVC.vista;
 
+import MVC.controlador.CustomerController;
 import MVC.controlador.PetController;
 
 /**
@@ -201,7 +202,12 @@ public class vistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPetActionPerformed
 
     private void btnOwnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOwnerActionPerformed
-        // TODO add your handling code here:
+        vistaGestionOwners vgo = new vistaGestionOwners();
+        CustomerController  Ccontroller = new CustomerController(vgo);
+        vgo.setController(Ccontroller);
+        vgo.setVisible(true);
+        this.setVisible(false);
+        this.dispose();  
     }//GEN-LAST:event_btnOwnerActionPerformed
 
     private void btnVaccineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVaccineActionPerformed
