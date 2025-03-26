@@ -63,7 +63,7 @@ public class PeopleDAO {
     //Metodo para obtener a todos los clientes
     public List<People> getAllOwners(){
         List<People> ownerList = new ArrayList<>();
-        String sql = "SELECT p.*, r.name AS role_name FROM people p JOIN role r ON p.role_id = r.id  where r.id = 4";
+        String sql = "SELECT p.*, r.name AS role_name FROM people p JOIN role r ON p.role_id = r.id";
         try (Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(sql)) {
             while (resultSet.next()) {
