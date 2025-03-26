@@ -138,12 +138,12 @@ public class vistaOwner extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTypeActionPerformed
 
     private void btnFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturaActionPerformed
-        vistaVeterinaryConsult vvc = new vistaVeterinaryConsult();
+        //vistaVeterinaryConsult vvc = new vistaVeterinaryConsult();
         //VeterinaryConsultController controller = new VeterinaryConsultController(vvc );
         //vvc .setController(controller);
-        vvc .setVisible(true);
-        this.setVisible(false);
-        this.dispose();
+        //vvc .setVisible(true);
+        //this.setVisible(false);
+        //this.dispose();
     }//GEN-LAST:event_btnFacturaActionPerformed
 
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
