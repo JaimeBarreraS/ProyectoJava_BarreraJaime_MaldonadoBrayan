@@ -21,6 +21,11 @@ public class Inventory {
         this.supplier = supplier;
     }
 
+    public Inventory(int id, int stock) {
+        this.id = id;
+        this.stock = stock;
+    }
+
     public int getId() {
         return id;
     }

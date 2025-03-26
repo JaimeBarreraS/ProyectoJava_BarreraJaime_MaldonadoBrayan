@@ -100,4 +100,34 @@ public class SupplierDAO {
             e.printStackTrace();
         }
     }
+
+    //Metodo para obtener los nombres de los proveedores
+    public List<String> getAllSupplierss() {
+        List<String> suppliers = new ArrayList<>();
+        String sql = "SELECT name FROM supplier";
+        try (PreparedStatement ps = connection.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                suppliers.add(rs.getString("name"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return suppliers;
+    }
+    
+        public int getSupplierIdByName(String name) {
+        String sql = "SELECT id FROM supplier WHERE name = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, name);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt("id");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
 }

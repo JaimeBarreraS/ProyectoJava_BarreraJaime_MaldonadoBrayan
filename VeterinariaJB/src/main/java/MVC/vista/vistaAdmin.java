@@ -5,6 +5,7 @@
 package MVC.vista;
 
 import MVC.controlador.CustomerController;
+import MVC.controlador.InventoryController;
 import MVC.controlador.LoginController;
 import MVC.controlador.PetController;
 
@@ -220,7 +221,12 @@ public class vistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVaccineActionPerformed
 
     private void btnInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventoryActionPerformed
-        // TODO add your handling code here:
+        vistaGestionInventory vgi = new vistaGestionInventory();
+        InventoryController Icontroller = new InventoryController(vgi);
+        vgi.setController(Icontroller);
+        vgi.setVisible(true);
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_btnInventoryActionPerformed
 
     private void btnInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvoiceActionPerformed

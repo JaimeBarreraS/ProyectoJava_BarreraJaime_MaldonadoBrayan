@@ -49,7 +49,7 @@ public class InventoryDAO {
                         resultSet.getString("type"),
                         resultSet.getString("manufacturer"),
                         resultSet.getInt("stock"),
-                        resultSet.getDate("expirationDate"),
+                        resultSet.getDate("expirationdate"),
                         supplier
                 );
                 inventories.add(inventory);
@@ -114,5 +114,48 @@ public class InventoryDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void updateProduct(int stock ,int id) {
+        String sql = "UPDATE inventory SET stock = ? WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, stock);
+            statement.setInt(2, id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int getCantProduct(String productName) {
+        String sql = "Select stock from inventory where name = ?";
+        int stock = 0;
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, productName);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    stock = rs.getInt("stock");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return stock;
+    }
+
+    public int getIdProduct(String ProductName) {
+        String sql = "Select id from inventory where name = ?";
+        int id = 0;
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, ProductName);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    id = rs.getInt("id");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return id;
     }
 }

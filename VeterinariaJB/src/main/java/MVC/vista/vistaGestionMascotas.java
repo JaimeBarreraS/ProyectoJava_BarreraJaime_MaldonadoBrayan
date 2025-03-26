@@ -202,7 +202,7 @@ public class vistaGestionMascotas extends javax.swing.JFrame {
 
         btnOwner.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnOwner.setForeground(new java.awt.Color(2, 100, 100));
-        btnOwner.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", " " }));
+        btnOwner.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "" }));
         btnOwner.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOwnerActionPerformed(evt);
