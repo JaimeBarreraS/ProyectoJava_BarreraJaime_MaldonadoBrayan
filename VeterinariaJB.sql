@@ -62,6 +62,8 @@ create table login (
 INSERT INTO login (user, password, role_id) VALUES ('Jaime', '123456', 1);
 INSERT INTO login (user, password, role_id) VALUES ('Brayan', '123456', 1);
 INSERT INTO login (user, password, role_id) VALUES ('Freiler', '123456', 2);
+INSERT INTO login (user, password, role_id) VALUES ('Camilo', '123456', 3);
+INSERT INTO login (user, password, role_id) VALUES ('Camilo', '123456', 3);
 
 select * from login;
 SELECT name FROM people WHERE role_id = 3;
@@ -208,6 +210,8 @@ INSERT INTO inventory (name, type, manufacturer, stock, expirationdate, supplier
 ('Collar Antipulgas', 'Accesorio', 'SafePet', 40, NULL, 3),
 ('Alimento para Gatos 5kg', 'Alimento', 'CatFood Inc.', 35, '2025-10-15', 1),
 ('Shampoo para Perros', 'Higiene', 'CleanPets', 18, '2026-02-05', 2);
+
+select * from inventory;
 
 -- tabla inventoryconsult
 create table inventoryconsult (
