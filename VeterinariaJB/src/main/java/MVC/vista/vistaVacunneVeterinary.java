@@ -5,6 +5,9 @@
 
 package MVC.vista;
 
+import MVC.controlador.VacunneVeterinaryController;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Jaime Barrera
@@ -14,8 +17,25 @@ public class vistaVacunneVeterinary extends javax.swing.JFrame {
     /** Creates new form vistaVacunneVeterinary */
     public vistaVacunneVeterinary() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
+    
+    public javax.swing.JComboBox<String> jComboBox1() {
+        return jComboBox1;
+    }
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(this, message);
+    }
+    
 
+    public void clearFields() {
+        txtID.setText("");
+        txtNombreVacuna.setText("");
+        txtILote.setText("");
+        txtFabricante.setText("");
+        txtFechaAplicacion.setText("");
+        txtIProximaDosis.setText("");
+    }
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -27,12 +47,12 @@ public class vistaVacunneVeterinary extends javax.swing.JFrame {
 
         btnVolver = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        txtID1 = new javax.swing.JTextField();
-        txtEmail = new javax.swing.JTextField();
+        txtIProximaDosis = new javax.swing.JTextField();
+        txtFechaAplicacion = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtPhone = new javax.swing.JTextField();
+        txtFabricante = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
-        btnAdd = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         btnGet = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
@@ -44,11 +64,11 @@ public class vistaVacunneVeterinary extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
-        txtIdentification = new javax.swing.JTextField();
+        txtNombreVacuna = new javax.swing.JTextField();
+        txtILote = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TableCustomer = new javax.swing.JTable();
-        btnSearch1 = new javax.swing.JButton();
+        TableVacunner = new javax.swing.JTable();
+        btnAgregar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,21 +86,21 @@ public class vistaVacunneVeterinary extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(2, 100, 100));
         jLabel1.setText("Vacunas");
 
-        txtID1.setEditable(true);
-        txtID1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtID1.setForeground(new java.awt.Color(2, 100, 100));
-        txtID1.addActionListener(new java.awt.event.ActionListener() {
+        txtIProximaDosis.setEditable(true);
+        txtIProximaDosis.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtIProximaDosis.setForeground(new java.awt.Color(2, 100, 100));
+        txtIProximaDosis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtID1ActionPerformed(evt);
+                txtIProximaDosisActionPerformed(evt);
             }
         });
 
-        txtEmail.setEditable(true);
-        txtEmail.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtEmail.setForeground(new java.awt.Color(2, 100, 100));
-        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+        txtFechaAplicacion.setEditable(true);
+        txtFechaAplicacion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtFechaAplicacion.setForeground(new java.awt.Color(2, 100, 100));
+        txtFechaAplicacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailActionPerformed(evt);
+                txtFechaAplicacionActionPerformed(evt);
             }
         });
 
@@ -88,12 +108,12 @@ public class vistaVacunneVeterinary extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(2, 100, 100));
         jLabel7.setText("Proxima Dosis :");
 
-        txtPhone.setEditable(true);
-        txtPhone.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtPhone.setForeground(new java.awt.Color(2, 100, 100));
-        txtPhone.addActionListener(new java.awt.event.ActionListener() {
+        txtFabricante.setEditable(true);
+        txtFabricante.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtFabricante.setForeground(new java.awt.Color(2, 100, 100));
+        txtFabricante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPhoneActionPerformed(evt);
+                txtFabricanteActionPerformed(evt);
             }
         });
 
@@ -101,13 +121,13 @@ public class vistaVacunneVeterinary extends javax.swing.JFrame {
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "------", " " }));
 
-        btnAdd.setBackground(new java.awt.Color(2, 100, 100));
-        btnAdd.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnAdd.setForeground(new java.awt.Color(255, 255, 255));
-        btnAdd.setText("Limpiar");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+        btnLimpiar.setBackground(new java.awt.Color(2, 100, 100));
+        btnLimpiar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnLimpiar.setForeground(new java.awt.Color(255, 255, 255));
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
+                btnLimpiarActionPerformed(evt);
             }
         });
 
@@ -174,25 +194,25 @@ public class vistaVacunneVeterinary extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(2, 100, 100));
         jLabel9.setText("Fecha Aplicacion : ");
 
-        txtName.setEditable(true);
-        txtName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtName.setForeground(new java.awt.Color(2, 100, 100));
-        txtName.addActionListener(new java.awt.event.ActionListener() {
+        txtNombreVacuna.setEditable(true);
+        txtNombreVacuna.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtNombreVacuna.setForeground(new java.awt.Color(2, 100, 100));
+        txtNombreVacuna.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNameActionPerformed(evt);
+                txtNombreVacunaActionPerformed(evt);
             }
         });
 
-        txtIdentification.setEditable(true);
-        txtIdentification.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtIdentification.setForeground(new java.awt.Color(2, 100, 100));
-        txtIdentification.addActionListener(new java.awt.event.ActionListener() {
+        txtILote.setEditable(true);
+        txtILote.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtILote.setForeground(new java.awt.Color(2, 100, 100));
+        txtILote.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdentificationActionPerformed(evt);
+                txtILoteActionPerformed(evt);
             }
         });
 
-        TableCustomer.setModel(new javax.swing.table.DefaultTableModel(
+        TableVacunner.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -200,15 +220,15 @@ public class vistaVacunneVeterinary extends javax.swing.JFrame {
                 "ID", "Mascota", "Vacuna", "Lote", "Fabricante", "F/Aplicación", "Proxima Dosis"
             }
         ));
-        jScrollPane1.setViewportView(TableCustomer);
+        jScrollPane1.setViewportView(TableVacunner);
 
-        btnSearch1.setBackground(new java.awt.Color(2, 100, 100));
-        btnSearch1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnSearch1.setForeground(new java.awt.Color(255, 255, 255));
-        btnSearch1.setText("Agregar");
-        btnSearch1.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregar.setBackground(new java.awt.Color(2, 100, 100));
+        btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearch1ActionPerformed(evt);
+                btnAgregarActionPerformed(evt);
             }
         });
 
@@ -236,9 +256,9 @@ public class vistaVacunneVeterinary extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtIdentification, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtILote, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNombreVacuna, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(78, 78, 78)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,8 +267,8 @@ public class vistaVacunneVeterinary extends javax.swing.JFrame {
                                         .addComponent(jLabel9)
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtID1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addComponent(txtIProximaDosis, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtFechaAplicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnGet, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(27, 27, 27)
@@ -265,9 +285,9 @@ public class vistaVacunneVeterinary extends javax.swing.JFrame {
                         .addComponent(jScrollPane1)
                         .addGap(54, 54, 54))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
-                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -282,34 +302,34 @@ public class vistaVacunneVeterinary extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFechaAplicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8)
                             .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(txtID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIProximaDosis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombreVacuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtIdentification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtILote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdate)
                     .addComponent(btnDelete)
                     .addComponent(btnSearch)
-                    .addComponent(btnSearch1)
-                    .addComponent(btnAdd)
+                    .addComponent(btnAgregar)
+                    .addComponent(btnLimpiar)
                     .addComponent(btnGet))
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -318,29 +338,38 @@ public class vistaVacunneVeterinary extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    public void setController(VacunneVeterinaryController controller) {
+    btnAgregar.addActionListener(e -> controller.addVaccine());
+    btnGet.addActionListener(e -> controller.listVaccines());
+    btnUpdate.addActionListener(e -> controller.updateVaccine());
+    btnDelete.addActionListener(e -> controller.deleteVaccine());
+    btnSearch.addActionListener(e -> controller.searchVaccine());
+    btnLimpiar.addActionListener(e -> clearFields());
+    }
+    
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        vistaAdmin vli = new vistaAdmin();
+        vistaVeterinaryMascotas vli = new vistaVeterinaryMascotas ();
         vli.setVisible(true);
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
-    private void txtID1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtID1ActionPerformed
+    private void txtIProximaDosisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIProximaDosisActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtID1ActionPerformed
+    }//GEN-LAST:event_txtIProximaDosisActionPerformed
 
-    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+    private void txtFechaAplicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaAplicacionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailActionPerformed
+    }//GEN-LAST:event_txtFechaAplicacionActionPerformed
 
-    private void txtPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneActionPerformed
+    private void txtFabricanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFabricanteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPhoneActionPerformed
+    }//GEN-LAST:event_txtFabricanteActionPerformed
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAddActionPerformed
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnGetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetActionPerformed
         // TODO add your handling code here:
@@ -354,17 +383,17 @@ public class vistaVacunneVeterinary extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDActionPerformed
 
-    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+    private void txtNombreVacunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreVacunaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameActionPerformed
+    }//GEN-LAST:event_txtNombreVacunaActionPerformed
 
-    private void txtIdentificationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdentificationActionPerformed
+    private void txtILoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtILoteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdentificationActionPerformed
+    }//GEN-LAST:event_txtILoteActionPerformed
 
-    private void btnSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearch1ActionPerformed
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSearch1ActionPerformed
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -396,18 +425,20 @@ public class vistaVacunneVeterinary extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new vistaVacunneVeterinary().setVisible(true);
+                vistaVacunneVeterinary view = new vistaVacunneVeterinary();
+                VacunneVeterinaryController controller = new VacunneVeterinaryController(view);
+                view.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JTable TableCustomer;
-    public javax.swing.JButton btnAdd;
+    public javax.swing.JTable TableVacunner;
+    public javax.swing.JButton btnAgregar;
     public javax.swing.JButton btnDelete;
     public javax.swing.JButton btnGet;
+    public javax.swing.JButton btnLimpiar;
     public javax.swing.JButton btnSearch;
-    public javax.swing.JButton btnSearch1;
     public javax.swing.JButton btnUpdate;
     public javax.swing.JButton btnVolver;
     public javax.swing.JComboBox<String> jComboBox1;
@@ -420,12 +451,12 @@ public class vistaVacunneVeterinary extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel8;
     public javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTextField txtEmail;
+    public javax.swing.JTextField txtFabricante;
+    public javax.swing.JTextField txtFechaAplicacion;
     public javax.swing.JTextField txtID;
-    public javax.swing.JTextField txtID1;
-    public javax.swing.JTextField txtIdentification;
-    public javax.swing.JTextField txtName;
-    public javax.swing.JTextField txtPhone;
+    public javax.swing.JTextField txtILote;
+    public javax.swing.JTextField txtIProximaDosis;
+    public javax.swing.JTextField txtNombreVacuna;
     // End of variables declaration//GEN-END:variables
 
 }

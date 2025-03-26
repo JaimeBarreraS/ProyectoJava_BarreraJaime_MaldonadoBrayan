@@ -223,6 +223,7 @@ public class vistaLogin extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         MVC.controlador.LoginController verifLogin = new MVC.controlador.LoginController();
         verifLogin.userValidate(txtUserLogin, txtPassLogin);
+        this.dispose();
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**

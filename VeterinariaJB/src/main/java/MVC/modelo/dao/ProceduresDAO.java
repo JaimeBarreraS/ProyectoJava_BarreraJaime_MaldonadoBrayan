@@ -116,4 +116,31 @@ public class ProceduresDAO {
             e.printStackTrace();
         }
     }
+
+    public List<Object[]> getProceduresForDisplay() {
+        List<Object[]> proceduresForDisplay = new ArrayList<>();
+        String sql = "SELECT p.id, p.description, " +
+                "tp.name AS procedure_type, " +
+                "pet.name AS pet_name " +
+                "FROM procedures p " +
+                "JOIN medicalconsult mc ON p.medicalConsult_id = mc.id " +
+                "JOIN typeprocedures tp ON p.typeProcedures_id = tp.id " +
+                "LEFT JOIN pet pet ON mc.pet_id = pet.id";
+
+        try (Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(sql)) {
+            while (resultSet.next()) {
+                Object[] procedureData = {
+                        resultSet.getInt("id"),
+                        resultSet.getString("pet_name"),
+                        resultSet.getString("description"),
+                        resultSet.getString("procedure_type")
+                };
+                proceduresForDisplay.add(procedureData);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return proceduresForDisplay;
+    }
 }

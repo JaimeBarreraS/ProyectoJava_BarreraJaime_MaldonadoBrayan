@@ -25,6 +25,10 @@ public class Pet {
         this.costumer_id = costumer;
     }
 
+    public Pet() {
+
+    }
+
     public int getId() {
         return id;
     }

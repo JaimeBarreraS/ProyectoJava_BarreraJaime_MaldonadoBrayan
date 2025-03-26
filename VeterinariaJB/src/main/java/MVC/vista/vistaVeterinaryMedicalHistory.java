@@ -5,6 +5,9 @@
 
 package MVC.vista;
 
+import MVC.controlador.VeterinaryMedicalHistoryController;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Jaime Barrera
@@ -14,6 +17,21 @@ public class vistaVeterinaryMedicalHistory extends javax.swing.JFrame {
     /** Creates new form vistaVeterinaryMedicalHistory */
     public vistaVeterinaryMedicalHistory() {
         initComponents();
+        this.setLocationRelativeTo(null);
+    }
+    
+    public javax.swing.JComboBox<String> jComboBox1() {
+        return jComboBox1;
+    }
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(this, message);
+    }
+    
+    public void clearFields() {
+        txtID.setText("");
+        txtAlergias.setText("");
+        txtPreCondiciones.setText("");
+        txtIPeso.setText("");
     }
 
     /** This method is called from within the constructor to
@@ -27,17 +45,17 @@ public class vistaVeterinaryMedicalHistory extends javax.swing.JFrame {
 
         jLabel4 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
+        txtAlergias = new javax.swing.JTextField();
         btnVolver = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableCustomer = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        btnSearch1 = new javax.swing.JButton();
-        txtID1 = new javax.swing.JTextField();
-        txtEmail = new javax.swing.JTextField();
+        btnAgregar = new javax.swing.JButton();
+        txtIPeso = new javax.swing.JTextField();
+        txtPreCondiciones = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        btnAdd = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         btnGet = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
@@ -56,12 +74,12 @@ public class vistaVeterinaryMedicalHistory extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(2, 100, 100));
         jLabel9.setText("Pre Condiciones");
 
-        txtName.setEditable(true);
-        txtName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtName.setForeground(new java.awt.Color(2, 100, 100));
-        txtName.addActionListener(new java.awt.event.ActionListener() {
+        txtAlergias.setEditable(true);
+        txtAlergias.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtAlergias.setForeground(new java.awt.Color(2, 100, 100));
+        txtAlergias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNameActionPerformed(evt);
+                txtAlergiasActionPerformed(evt);
             }
         });
 
@@ -80,7 +98,7 @@ public class vistaVeterinaryMedicalHistory extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Mascota", "Vacuna", "Lote", "Fabricante", "F/Aplicación", "Proxima Dosis"
+                "ID", "Mascota", "Alergias", "Pre-Condiciones", "Peso"
             }
         ));
         jScrollPane1.setViewportView(TableCustomer);
@@ -89,31 +107,31 @@ public class vistaVeterinaryMedicalHistory extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(2, 100, 100));
         jLabel1.setText("Historial Medico");
 
-        btnSearch1.setBackground(new java.awt.Color(2, 100, 100));
-        btnSearch1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnSearch1.setForeground(new java.awt.Color(255, 255, 255));
-        btnSearch1.setText("Agregar");
-        btnSearch1.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregar.setBackground(new java.awt.Color(2, 100, 100));
+        btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearch1ActionPerformed(evt);
+                btnAgregarActionPerformed(evt);
             }
         });
 
-        txtID1.setEditable(true);
-        txtID1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtID1.setForeground(new java.awt.Color(2, 100, 100));
-        txtID1.addActionListener(new java.awt.event.ActionListener() {
+        txtIPeso.setEditable(true);
+        txtIPeso.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtIPeso.setForeground(new java.awt.Color(2, 100, 100));
+        txtIPeso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtID1ActionPerformed(evt);
+                txtIPesoActionPerformed(evt);
             }
         });
 
-        txtEmail.setEditable(true);
-        txtEmail.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtEmail.setForeground(new java.awt.Color(2, 100, 100));
-        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+        txtPreCondiciones.setEditable(true);
+        txtPreCondiciones.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtPreCondiciones.setForeground(new java.awt.Color(2, 100, 100));
+        txtPreCondiciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailActionPerformed(evt);
+                txtPreCondicionesActionPerformed(evt);
             }
         });
 
@@ -125,13 +143,13 @@ public class vistaVeterinaryMedicalHistory extends javax.swing.JFrame {
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "------", " " }));
 
-        btnAdd.setBackground(new java.awt.Color(2, 100, 100));
-        btnAdd.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnAdd.setForeground(new java.awt.Color(255, 255, 255));
-        btnAdd.setText("Limpiar");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+        btnLimpiar.setBackground(new java.awt.Color(2, 100, 100));
+        btnLimpiar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnLimpiar.setForeground(new java.awt.Color(255, 255, 255));
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
+                btnLimpiarActionPerformed(evt);
             }
         });
 
@@ -202,7 +220,7 @@ public class vistaVeterinaryMedicalHistory extends javax.swing.JFrame {
                         .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAlergias, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(78, 78, 78)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,8 +231,8 @@ public class vistaVeterinaryMedicalHistory extends javax.swing.JFrame {
                                     .addComponent(jLabel9)
                                     .addGap(18, 18, 18)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtID1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(txtIPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtPreCondiciones, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addContainerGap(47, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(52, 52, 52)
@@ -223,9 +241,9 @@ public class vistaVeterinaryMedicalHistory extends javax.swing.JFrame {
                         .addComponent(jScrollPane1)
                         .addGap(47, 47, 47))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnGet, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -246,23 +264,23 @@ public class vistaVeterinaryMedicalHistory extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPreCondiciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8)
                             .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(txtID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAlergias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSearch1)
-                    .addComponent(btnAdd)
+                    .addComponent(btnAgregar)
+                    .addComponent(btnLimpiar)
                     .addComponent(btnGet)
                     .addComponent(btnUpdate)
                     .addComponent(btnDelete)
@@ -274,33 +292,42 @@ public class vistaVeterinaryMedicalHistory extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+    
+    public void setController(VeterinaryMedicalHistoryController controller) {
+    btnAgregar.addActionListener(e -> controller.addMedicalHistory());
+    btnGet.addActionListener(e -> controller.listMedicalHistory());
+    btnUpdate.addActionListener(e -> controller.updateMedicalHistory());
+    btnDelete.addActionListener(e -> controller.deleteMedicalHistory());
+    btnSearch.addActionListener(e -> controller.searchMedicalHistory());
+    btnLimpiar.addActionListener(e -> clearFields());
+    }
+    
+    private void txtAlergiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlergiasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameActionPerformed
+    }//GEN-LAST:event_txtAlergiasActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        vistaAdmin vli = new vistaAdmin();
+        vistaVeterinaryMascotas vli = new vistaVeterinaryMascotas ();
         vli.setVisible(true);
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
-    private void btnSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearch1ActionPerformed
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSearch1ActionPerformed
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
-    private void txtID1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtID1ActionPerformed
+    private void txtIPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIPesoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtID1ActionPerformed
+    }//GEN-LAST:event_txtIPesoActionPerformed
 
-    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+    private void txtPreCondicionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPreCondicionesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailActionPerformed
+    }//GEN-LAST:event_txtPreCondicionesActionPerformed
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAddActionPerformed
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnGetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetActionPerformed
         // TODO add your handling code here:
@@ -344,18 +371,20 @@ public class vistaVeterinaryMedicalHistory extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new vistaVeterinaryMedicalHistory().setVisible(true);
+                vistaVeterinaryMedicalHistory view = new vistaVeterinaryMedicalHistory();
+                VeterinaryMedicalHistoryController controller = new VeterinaryMedicalHistoryController(view);
+                view.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTable TableCustomer;
-    public javax.swing.JButton btnAdd;
+    public javax.swing.JButton btnAgregar;
     public javax.swing.JButton btnDelete;
     public javax.swing.JButton btnGet;
+    public javax.swing.JButton btnLimpiar;
     public javax.swing.JButton btnSearch;
-    public javax.swing.JButton btnSearch1;
     public javax.swing.JButton btnUpdate;
     public javax.swing.JButton btnVolver;
     public javax.swing.JComboBox<String> jComboBox1;
@@ -366,10 +395,10 @@ public class vistaVeterinaryMedicalHistory extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel8;
     public javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTextField txtEmail;
+    public javax.swing.JTextField txtAlergias;
     public javax.swing.JTextField txtID;
-    public javax.swing.JTextField txtID1;
-    public javax.swing.JTextField txtName;
+    public javax.swing.JTextField txtIPeso;
+    public javax.swing.JTextField txtPreCondiciones;
     // End of variables declaration//GEN-END:variables
 
 }

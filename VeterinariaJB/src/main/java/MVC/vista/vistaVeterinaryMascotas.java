@@ -5,8 +5,11 @@
 
 package MVC.vista;
 
+import MVC.controlador.VacunneVeterinaryController;
 import MVC.controlador.VeterinaryConsultController;
 import MVC.controlador.VeterinaryController;
+import MVC.controlador.VeterinaryMedicalHistoryController;
+import MVC.controlador.VeterinaryProceduresController;
 
 /**
  *
@@ -34,9 +37,9 @@ public class vistaVeterinaryMascotas extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnMascotas = new javax.swing.JButton();
         btnConsultMedical = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnVacunne = new javax.swing.JButton();
+        btnMedicalHistory = new javax.swing.JButton();
+        btnProcedures = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,33 +71,33 @@ public class vistaVeterinaryMascotas extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(2, 100, 100));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Vacunas");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnVacunne.setBackground(new java.awt.Color(2, 100, 100));
+        btnVacunne.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnVacunne.setForeground(new java.awt.Color(255, 255, 255));
+        btnVacunne.setText("Vacunas");
+        btnVacunne.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnVacunneActionPerformed(evt);
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(2, 100, 100));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Historial Medico");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnMedicalHistory.setBackground(new java.awt.Color(2, 100, 100));
+        btnMedicalHistory.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnMedicalHistory.setForeground(new java.awt.Color(255, 255, 255));
+        btnMedicalHistory.setText("Historial Medico");
+        btnMedicalHistory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnMedicalHistoryActionPerformed(evt);
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(2, 100, 100));
-        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Procedimientos");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnProcedures.setBackground(new java.awt.Color(2, 100, 100));
+        btnProcedures.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnProcedures.setForeground(new java.awt.Color(255, 255, 255));
+        btnProcedures.setText("Procedimientos");
+        btnProcedures.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnProceduresActionPerformed(evt);
             }
         });
 
@@ -113,9 +116,9 @@ public class vistaVeterinaryMascotas extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnConsultMedical, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnMascotas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnVacunne, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnMedicalHistory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnProcedures, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(143, 143, 143))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -130,11 +133,11 @@ public class vistaVeterinaryMascotas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnConsultMedical)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(btnVacunne)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
+                .addComponent(btnMedicalHistory)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5)
+                .addComponent(btnProcedures)
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -176,17 +179,32 @@ public class vistaVeterinaryMascotas extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnConsultMedicalActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btnVacunneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVacunneActionPerformed
+        vistaVacunneVeterinary vvv = new vistaVacunneVeterinary();
+        VacunneVeterinaryController controller = new VacunneVeterinaryController(vvv );
+        vvv .setController(controller);
+        vvv .setVisible(true);
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_btnVacunneActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void btnMedicalHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicalHistoryActionPerformed
+        vistaVeterinaryMedicalHistory vvhv = new vistaVeterinaryMedicalHistory ();
+        VeterinaryMedicalHistoryController controller = new VeterinaryMedicalHistoryController(vvhv );
+        vvhv .setController(controller);
+        vvhv .setVisible(true);
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_btnMedicalHistoryActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void btnProceduresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceduresActionPerformed
+        vistaVeterinaryPrecedimientos vvp = new vistaVeterinaryPrecedimientos ();
+        VeterinaryProceduresController controller = new VeterinaryProceduresController(vvp );
+        vvp .setController(controller);
+        vvp .setVisible(true);
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_btnProceduresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,9 +245,9 @@ public class vistaVeterinaryMascotas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultMedical;
     private javax.swing.JButton btnMascotas;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton btnMedicalHistory;
+    private javax.swing.JButton btnProcedures;
+    private javax.swing.JButton btnVacunne;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

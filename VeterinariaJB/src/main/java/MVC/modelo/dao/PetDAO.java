@@ -159,4 +159,20 @@ public class PetDAO {
         }
         return -1;
     }
+
+    public Pet getPetByName(String name) throws SQLException {
+        String sql = "SELECT id, name FROM pet WHERE name = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, name);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    Pet pet = new Pet();
+                    pet.setId(rs.getInt("id"));
+                    pet.setName(rs.getString("name"));
+                    return pet;
+                }
+            }
+        }
+        return null;
+    }
 }
