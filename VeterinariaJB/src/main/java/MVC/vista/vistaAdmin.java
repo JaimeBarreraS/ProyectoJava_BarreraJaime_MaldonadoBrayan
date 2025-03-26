@@ -230,7 +230,10 @@ public class vistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInventoryActionPerformed
 
     private void btnInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvoiceActionPerformed
-        // TODO add your handling code here:
+        vistaGestionFacturas vl = new vistaGestionFacturas();
+        vl.setVisible(true);
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_btnInvoiceActionPerformed
 
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
