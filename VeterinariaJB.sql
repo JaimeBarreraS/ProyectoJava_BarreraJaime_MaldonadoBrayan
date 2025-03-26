@@ -104,6 +104,15 @@ create table medicalhistory (
     foreign key (pet_id) references pet(id)
 );
 
+INSERT INTO medicalhistory (pet_id, allergies, pre_conditions, weight) VALUES
+(9, 'Ninguna', 'Sin condiciones preexistentes', '10.5 kg'),
+(12, 'Cacahuates', 'Soplo cardíaco', '7.2 kg'),
+(12, 'Hierba, Polvo', 'Artritis', '15.0 kg'),
+(9, 'Pollo', 'Diabetes', '8.8 kg'),
+(10, 'Ninguna', 'Fractura previa en la pierna', '12.3 kg');
+
+select * from medicalhistory;
+
 -- tabla medicalconsult
 create table medicalconsult (
     id int primary key auto_increment,
@@ -130,7 +139,7 @@ VALUES
 INSERT INTO medicalconsult (pet_id, date, time, reason, diagnostic, recommendations, state, veterinary_id)
 VALUES 
 (9, '2025-03-25', '10:30:00', 'Vacunación anual', 'N/A', 'Aplicar vacuna antirrábica', 'finalizada', 8);
-select * from people;
+select * from medicalconsult;
 
 -- tabla vaccine
 create table vaccine (
@@ -143,6 +152,14 @@ create table vaccine (
     next_dose date,
     foreign key (pet_id) references pet(id)
 );
+
+select * from login;
+INSERT INTO vaccine (pet_id, name, lot, manufacturer, date_application, next_dose) VALUES
+(9, 'Rabies', 'LOT12345', 'Pfizer', '2025-03-01', '2026-03-01'),
+(10, 'Distemper', 'LOT67890', 'Merck', '2025-02-15', '2025-08-15'),
+(9, 'Parvovirus', 'LOT54321', 'Zoetis', '2025-01-20', '2025-07-20'),
+(12, 'Leptospirosis', 'LOT98765', 'Boehringer Ingelheim', '2025-03-10', '2025-09-10'),
+(12, 'Hepatitis', 'LOT11223', 'Elanco', '2025-02-25', '2025-08-25');
 
 -- tabla supplier
 create table supplier (
@@ -192,6 +209,39 @@ create table procedures (
     foreign key (medicalconsult_id) references medicalconsult(id),
     foreign key (typeprocedures_id) references typeprocedures(id)
 );
+
+INSERT INTO typeprocedures (name, price) VALUES
+('Consulta general', 50000.00),
+('Vacunación', 40000.00),
+('Cirugía menor', 150000.00),
+('Desparasitación', 30000.00),
+('Limpieza dental', 70000.00);
+
+INSERT INTO typeprocedures (name, price) VALUES
+('Cirugía mayor', 300000.00),
+('Esterilización', 200000.00),
+('Radiografía', 120000.00),
+('Ecografía', 110000.00),
+('Análisis de sangre', 90000.00),
+('Hospitalización', 250000.00),
+('Tratamiento de heridas', 60000.00),
+('Consulta de especialidad', 80000.00),
+('Urgencias', 180000.00),
+('Terapia física', 75000.00),
+('Microchip e identificación', 50000.00),
+('Baño y peluquería', 45000.00),
+('Corte de uñas', 20000.00),
+('Limpieza de oídos', 25000.00);
+
+
+INSERT INTO procedures (medicalconsult_id, description, typeprocedures_id) VALUES
+(1, 'Consulta de rutina y chequeo general', 1),
+(2, 'Aplicación de vacuna antirrábica', 2),
+(3, 'Extracción de espina clavada en la pata', 3),
+(4, 'Administración de antiparasitarios orales', 4),
+(5, 'Limpieza profunda de sarro en dientes', 5);
+
+select * from procedures;
 
 -- tabla invoice
 create table invoice (
