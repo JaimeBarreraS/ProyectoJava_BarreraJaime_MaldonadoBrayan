@@ -4,16 +4,16 @@ import MVC.modelo.MedicalHistory;
 import MVC.modelo.Pet;
 import MVC.modelo.dao.MedicalHistoryDAO;
 import MVC.modelo.dao.PetDAO;
-import MVC.vista.vistaVeterinaryMedicalHistory;
+import MVC.vista.vistaAdminMedicalHistory;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
-public class VeterinaryMedicalHistoryController {
-    private vistaVeterinaryMedicalHistory view;
+public class MedicalHistoryAdminController {
+    private vistaAdminMedicalHistory view;
     private MedicalHistoryDAO medicalhistoryDAO;
     private PetDAO petDAO;
 
-    public VeterinaryMedicalHistoryController(vistaVeterinaryMedicalHistory view) {
+    public MedicalHistoryAdminController(vistaAdminMedicalHistory view) {
         this.view = view;
         this.medicalhistoryDAO = new MedicalHistoryDAO();
         this.petDAO = new PetDAO();
@@ -122,5 +122,6 @@ public class VeterinaryMedicalHistoryController {
         } catch (Exception e) {
             view.showMessage("Error al buscar Historia Medica: " + e.getMessage());
         }
-    } 
+    }
+    
 }

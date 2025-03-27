@@ -4,10 +4,7 @@
  */
 package MVC.vista;
 
-import MVC.controlador.CustomerController;
-import MVC.controlador.InventoryController;
-import MVC.controlador.LoginController;
-import MVC.controlador.PetController;
+import MVC.controlador.*;
 
 /**
  *
@@ -83,7 +80,12 @@ public class vistaAdmin extends javax.swing.JFrame {
         btnHistoryMedical.setBackground(new java.awt.Color(2, 100, 100));
         btnHistoryMedical.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnHistoryMedical.setForeground(new java.awt.Color(255, 255, 255));
-        btnHistoryMedical.setText("Gestion Historia Medica");
+        btnHistoryMedical.setText("Gestion Historial Medico");
+        btnHistoryMedical.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHistoryMedicalActionPerformed(evt);
+            }
+        });
 
         btnVaccine.setBackground(new java.awt.Color(2, 100, 100));
         btnVaccine.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -217,7 +219,12 @@ public class vistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOwnerActionPerformed
 
     private void btnVaccineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVaccineActionPerformed
-        // TODO add your handling code here:
+        vistaVacunneAdmin vva = new vistaVacunneAdmin ();
+        VacunneAdminController pcontroller = new VacunneAdminController(vva);
+        vva.setController(pcontroller);
+        vva.setVisible(true);
+        this.setVisible(false);
+        this.dispose(); 
     }//GEN-LAST:event_btnVaccineActionPerformed
 
     private void btnInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventoryActionPerformed
@@ -242,6 +249,15 @@ public class vistaAdmin extends javax.swing.JFrame {
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_VolverActionPerformed
+
+    private void btnHistoryMedicalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryMedicalActionPerformed
+        vistaAdminMedicalHistory vgm = new vistaAdminMedicalHistory();
+        MedicalHistoryAdminController mcontroller = new MedicalHistoryAdminController(vgm);
+        vgm.setController(mcontroller);
+        vgm.setVisible(true);
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_btnHistoryMedicalActionPerformed
     
     public void setController(LoginController controller) {
     }
