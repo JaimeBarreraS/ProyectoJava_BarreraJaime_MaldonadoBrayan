@@ -201,15 +201,15 @@ create table inventory (
     foreign key (supplier_id) references supplier(id)
 );
 
-INSERT INTO inventory (name, type, manufacturer, stock, expirationdate, supplier_id) VALUES
-('Vacuna Antirrábica', 'Medicamento', 'LabVet', 50, '2026-08-15', 1),
-('Desparasitante Canino', 'Medicamento', 'VetPharma', 30, '2025-12-10', 2),
-('Alimento para Perros 10kg', 'Alimento', 'PetFood Co.', 20, '2025-11-30', 3),
-('Antibiótico Felino', 'Medicamento', 'BioVet', 25, '2025-07-20', 1),
-('Juguete para Gatos', 'Accesorio', 'HappyPets', 15, NULL, 2),
-('Collar Antipulgas', 'Accesorio', 'SafePet', 40, NULL, 3),
-('Alimento para Gatos 5kg', 'Alimento', 'CatFood Inc.', 35, '2025-10-15', 1),
-('Shampoo para Perros', 'Higiene', 'CleanPets', 18, '2026-02-05', 2);
+INSERT INTO inventory (name, type, manufacturer, stock, price, expirationdate, supplier_id) VALUES
+('Vacuna Antirrábica', 'Medicamento', 'LabVet', 50, 120000, '2026-08-15', 1),
+('Desparasitante Canino', 'Medicamento', 'VetPharma', 30, 20000 ,'2025-12-10', 2),
+('Alimento para Perros 10kg', 'Alimento', 'PetFood Co.', 8000 ,'2025-11-30', 3),
+('Antibiótico Felino', 'Medicamento', 'BioVet', 25, 40000,'2025-07-20', 1),
+('Juguete para Gatos', 'Accesorio', 'HappyPets', 15, 4000 , NULL, 2),
+('Collar Antipulgas', 'Accesorio', 'SafePet', 40, 10000, NULL, 3),
+('Alimento para Gatos 5kg', 'Alimento', 'CatFood Inc.', 35, 9000, '2025-10-15', 1),
+('Shampoo para Perros', 'Higiene', 'CleanPets', 18, 22000,'2026-02-05', 2);
 
 select * from inventory;
 

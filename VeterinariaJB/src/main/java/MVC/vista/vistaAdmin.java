@@ -242,8 +242,9 @@ public class vistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInventoryActionPerformed
 
     private void btnInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvoiceActionPerformed
-        vistaGestionFacturas vl = new vistaGestionFacturas();
-        vl.setVisible(true);
+        vistaGestionFacturas vgf = new vistaGestionFacturas();
+        InvoicesController controller = new InvoicesController(vgf);
+        vgf.setVisible(true);
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_btnInvoiceActionPerformed
