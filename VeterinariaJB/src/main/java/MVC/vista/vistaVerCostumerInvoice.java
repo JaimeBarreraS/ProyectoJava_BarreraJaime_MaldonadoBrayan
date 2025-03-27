@@ -53,6 +53,7 @@ public class vistaVerCostumerInvoice extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         btnVolver = new javax.swing.JButton();
+        btnImprimir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -135,6 +136,16 @@ public class vistaVerCostumerInvoice extends javax.swing.JFrame {
             }
         });
 
+        btnImprimir.setBackground(new java.awt.Color(255, 153, 102));
+        btnImprimir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnImprimir.setText("Imprimir");
+        btnImprimir.setBorderPainted(false);
+        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImprimirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -181,7 +192,10 @@ public class vistaVerCostumerInvoice extends javax.swing.JFrame {
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel20))
-                            .addComponent(btnVolver))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnVolver)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnImprimir)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addGap(22, 22, 22))))
@@ -241,7 +255,9 @@ public class vistaVerCostumerInvoice extends javax.swing.JFrame {
                             .addComponent(jLabel13)
                             .addComponent(jLabel20))
                         .addGap(18, 18, 18)
-                        .addComponent(btnVolver))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnVolver)
+                            .addComponent(btnImprimir)))
                     .addComponent(jLabel1))
                 .addGap(33, 33, 33))
         );
@@ -255,6 +271,10 @@ public class vistaVerCostumerInvoice extends javax.swing.JFrame {
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnImprimirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -293,6 +313,7 @@ public class vistaVerCostumerInvoice extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LogoIcono;
+    public javax.swing.JButton btnImprimir;
     public javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

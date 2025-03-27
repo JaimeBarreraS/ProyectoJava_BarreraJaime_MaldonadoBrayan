@@ -66,6 +66,11 @@ public class vistaAdmin extends javax.swing.JFrame {
         btnConsultMedical.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnConsultMedical.setForeground(new java.awt.Color(255, 255, 255));
         btnConsultMedical.setText("Gestion Consulta Medica");
+        btnConsultMedical.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultMedicalActionPerformed(evt);
+            }
+        });
 
         btnPet.setBackground(new java.awt.Color(2, 100, 100));
         btnPet.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -258,6 +263,15 @@ public class vistaAdmin extends javax.swing.JFrame {
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_btnHistoryMedicalActionPerformed
+
+    private void btnConsultMedicalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultMedicalActionPerformed
+        vistaGestionConsultaMedica vgm = new vistaGestionConsultaMedica ();
+        AdminConsultaMedicaController mcontroller = new AdminConsultaMedicaController(vgm);
+        vgm.setController(mcontroller);
+        vgm.setVisible(true);
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_btnConsultMedicalActionPerformed
     
     public void setController(LoginController controller) {
     }
