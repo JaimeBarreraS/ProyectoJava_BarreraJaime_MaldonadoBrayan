@@ -142,4 +142,19 @@ public class PeopleDAO {
             e.printStackTrace();
         }
     }
+    
+    //Metodo para obtener los nombres de los clientes
+    public List<String> getAllClientNames() {
+        List<String> clients = new ArrayList<>();
+        String sql = "SELECT name FROM people";
+        try (PreparedStatement ps = connection.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                clients.add(rs.getString("name"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return clients;
+    }
 }
