@@ -38,13 +38,28 @@ public class vistaGestionFacturas extends javax.swing.JFrame {
         return txtID;
     }
 
+    public JTextField getTxtCantidad() {
+        return txtCantidad;
+    }
+
+    public JTable getTablePurchase() {
+        return TablePurchase;
+    }
+
     public void setController(InvoicesController controller){
         btnAdd.addActionListener(e -> controller.addProduct());
+        btnCreate.addActionListener(e -> controller.crearFactura());
     }
 
     public void showMessage(String message) {
         JOptionPane.showMessageDialog(this, message);
     }
+
+    public void limpiarCampos() {
+        txtCantidad.setText("");
+        txtID.setText("");
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -64,6 +79,8 @@ public class vistaGestionFacturas extends javax.swing.JFrame {
         TablePurchase = new javax.swing.JTable();
         btnCreate = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtCantidad = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,7 +106,7 @@ public class vistaGestionFacturas extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nombre", "Tipo", "Fabricante", "Proveedor", "Cantidad", "Fecha Vencimiento"
+                "ID", "Nombre", "Tipo", "Fabricante", "Proveedor", "Cantidad", "Precio", "Fecha Vencimiento"
             }
         ));
         jScrollPane1.setViewportView(TableInventary);
@@ -139,7 +156,7 @@ public class vistaGestionFacturas extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Producto", "Cantidad", "Precio"
+                "ID", "Producto", "Cantidad", "Precio Unidad", "Precio Total"
             }
         ));
         jScrollPane2.setViewportView(TablePurchase);
@@ -158,20 +175,38 @@ public class vistaGestionFacturas extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(2, 100, 100));
         jLabel7.setText("Carrito");
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(2, 100, 100));
+        jLabel5.setText("Cantidad :");
+
+        txtCantidad.setEditable(true);
+        txtCantidad.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtCantidad.setForeground(new java.awt.Color(2, 100, 100));
+        txtCantidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCantidadActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnVolver)
                         .addGap(189, 189, 189)
                         .addComponent(jLabel1))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 839, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(281, 281, 281)
+                        .addComponent(jLabel9))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -180,15 +215,14 @@ public class vistaGestionFacturas extends javax.swing.JFrame {
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(281, 281, 281)
-                        .addComponent(jLabel9)))
-                .addContainerGap(49, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,6 +247,8 @@ public class vistaGestionFacturas extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
                             .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
+                            .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnAdd))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                         .addComponent(jLabel7)
@@ -248,6 +284,10 @@ public class vistaGestionFacturas extends javax.swing.JFrame {
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCreateActionPerformed
+
+    private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCantidadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -294,11 +334,13 @@ public class vistaGestionFacturas extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel3;
     public javax.swing.JLabel jLabel4;
+    public javax.swing.JLabel jLabel5;
     public javax.swing.JLabel jLabel6;
     public javax.swing.JLabel jLabel7;
     public javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    public javax.swing.JTextField txtCantidad;
     public javax.swing.JTextField txtID;
     // End of variables declaration//GEN-END:variables
 }

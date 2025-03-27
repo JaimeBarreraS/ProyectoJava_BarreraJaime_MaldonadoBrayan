@@ -17,14 +17,15 @@ public class InventoryDAO {
 
     // Metodo para agregar
     public void addInventory(Inventory inventory) {
-        String sql = "INSERT INTO inventory (name, type, manufacturer, stock, expirationDate, supplier_id) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO inventory (name, type, manufacturer, stock, price, expirationDate, supplier_id) VALUES (?, ?, ?, ?, ?, ?,?)";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, inventory.getName());
             statement.setString(2, inventory.getType());
             statement.setString(3, inventory.getManufacturer());
             statement.setInt(4, inventory.getStock());
-            statement.setDate(5, new java.sql.Date(inventory.getExpirationDate().getTime()));
-            statement.setInt(6, inventory.getSupplier().getId());
+            statement.setInt(5,inventory.getPrice());
+            statement.setDate(6, new java.sql.Date(inventory.getExpirationDate().getTime()));
+            statement.setInt(7, inventory.getSupplier().getId());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -48,6 +49,7 @@ public class InventoryDAO {
                         resultSet.getString("name"),
                         resultSet.getString("type"),
                         resultSet.getString("manufacturer"),
+                        resultSet.getInt("price"),
                         resultSet.getInt("stock"),
                         resultSet.getDate("expirationdate"),
                         supplier
@@ -78,6 +80,7 @@ public class InventoryDAO {
                         resultSet.getString("type"),
                         resultSet.getString("manufacturer"),
                         resultSet.getInt("stock"),
+                        resultSet.getInt("price"),
                         resultSet.getDate("expirationDate"),
                         supplier
                 );
@@ -157,5 +160,65 @@ public class InventoryDAO {
             e.printStackTrace();
         }
         return id;
+    }
+    
+    public int getPriceProduct(int ProductID) {
+        String sql = "Select price from inventory where id = ?";
+        int price = 0;
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setInt(1, ProductID);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    price = rs.getInt("price");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return price;
+    }
+    
+    
+    public String getNameProduct(int ProductID) {
+        String sql = "Select name from inventory where id = ?";
+        String name = "";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setInt(1, ProductID);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    name = rs.getString("name");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return name;
+    }
+    
+    public void updateQuantity(int quantity, int id) {
+        String sql = "UPDATE inventory SET stock = ? WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, quantity);
+            statement.setInt(2, id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public int getStockProduct(int ProductID) {
+        String sql = "Select stock from inventory where id = ?";
+        int stock = 0;
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setInt(1, ProductID);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    stock = rs.getInt("stock");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return stock;
     }
 }

@@ -196,6 +196,7 @@ create table inventory (
     type varchar(50),
     manufacturer varchar(100),
     stock int,
+    price int,
     expirationdate date,
     supplier_id int,
     foreign key (supplier_id) references supplier(id)
@@ -204,7 +205,7 @@ create table inventory (
 INSERT INTO inventory (name, type, manufacturer, stock, price, expirationdate, supplier_id) VALUES
 ('Vacuna Antirrábica', 'Medicamento', 'LabVet', 50, 120000, '2026-08-15', 1),
 ('Desparasitante Canino', 'Medicamento', 'VetPharma', 30, 20000 ,'2025-12-10', 2),
-('Alimento para Perros 10kg', 'Alimento', 'PetFood Co.', 8000 ,'2025-11-30', 3),
+('Alimento para Perros 10kg', 'Alimento', 'PetFood Co.', 20, 8000,'2025-11-30', 3),
 ('Antibiótico Felino', 'Medicamento', 'BioVet', 25, 40000,'2025-07-20', 1),
 ('Juguete para Gatos', 'Accesorio', 'HappyPets', 15, 4000 , NULL, 2),
 ('Collar Antipulgas', 'Accesorio', 'SafePet', 40, 10000, NULL, 3),

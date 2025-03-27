@@ -45,6 +45,7 @@ public class InventoryController {
                         inventories.getType(),
                         inventories.getManufacturer(),
                         inventories.getSupplier().getName(),
+                        inventories.getPrice(),
                         inventories.getStock(),
                         inventories.getExpirationDate()!= null ? inventories.getExpirationDate() : "N/A",
 
@@ -73,7 +74,7 @@ public class InventoryController {
                 int totalStock = actualStock + newStock;
                 inventoryDAO.updateProduct(totalStock,idSupplier);
                 view.showMessage("El producto ya existe en el sistema, se ha actualizado su cantidad");
-                view.limparCampos();
+                view.limpiarCampos();
                 listInventory();
             }
             else{
@@ -90,13 +91,14 @@ public class InventoryController {
                         view.getTxtType().getText(),
                         view.getTxtManufacturer().getText(),
                         Integer.parseInt(view.getTxtStock().getText()),
+                        Integer.parseInt(view.getTxtPrice().getText()),
                         sqlDate,
                         new Supplier(supplierID, supplierName, null, null, null, null)
                 );
                 inventoryDAO.addInventory(inventory);
                 view.showMessage("agregado exitosamente");
                 listInventory();
-                view.limparCampos();
+                view.limpiarCampos();
             }
 
         }
@@ -119,16 +121,16 @@ public class InventoryController {
             }
             else {
                 view.showMessage("No se encontro el producto dentro del inventario");
-                view.limparCampos();
+                view.limpiarCampos();
             }
         }
         catch (Exception e){
             view.showMessage("Error al buscar en inventario: " + e.getMessage());
-            view.limparCampos();
+            view.limpiarCampos();
         }
     }
 
     public void limpiarCampos(){
-        view.limparCampos();
+        view.limpiarCampos();
     }
 }

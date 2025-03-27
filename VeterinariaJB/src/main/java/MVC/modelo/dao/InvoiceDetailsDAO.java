@@ -48,7 +48,7 @@ public class InvoiceDetailsDAO {
                 Inventory inventory = new Inventory(
                         resultSet.getInt("inventory_id"),
                         resultSet.getString("inventory_name"),
-                        null, null, 0, null, null
+                        null, null, 0, 0, null, null
                 );
                 InvoiceDetails invoiceDetail = new InvoiceDetails(
                         resultSet.getInt("id"),
@@ -83,7 +83,7 @@ public class InvoiceDetailsDAO {
                 Inventory inventory = new Inventory(
                         resultSet.getInt("inventory_id"),
                         resultSet.getString("inventory_name"),
-                        null, null, 0, null, null
+                        null, null, 0, 0, null, null
                 );
                 return new InvoiceDetails(
                         resultSet.getInt("id"),

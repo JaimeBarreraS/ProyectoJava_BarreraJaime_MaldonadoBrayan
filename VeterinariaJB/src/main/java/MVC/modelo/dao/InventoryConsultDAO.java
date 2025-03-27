@@ -45,7 +45,7 @@ public class InventoryConsultDAO {
                 Inventory inventory = new Inventory(
                         resultSet.getInt("inventory_id"),
                         resultSet.getString("inventory_name"),
-                        null, null, 0, null, null
+                        null, null, 0, 0, null, null
                 );
                 InventoryConsult inventoryConsult = new InventoryConsult(
                         resultSet.getInt("id"),
@@ -77,7 +77,7 @@ public class InventoryConsultDAO {
                 Inventory inventory = new Inventory(
                         resultSet.getInt("inventory_id"),
                         resultSet.getString("inventory_name"),
-                        null, null, 0, null, null
+                        null, null, 0, 0,null, null
                 );
                 return new InventoryConsult(
                         resultSet.getInt("id"),
