@@ -1,28 +1,46 @@
 # VETERINARIA JB
-## Descripción del proyecto
-Este proyecto tiene como objetivo desarrollar un sistema que permita gestionar eficientemente las operaciones de una clínica veterinaria.
 
-## Funcionamiento del sistema
-El sistema está diseñado para manejar la información de las mascotas, sus dueños, historial de salud, inventario de medicamentos y vacunas, agenda de consultas y procedimientos médicos, así como la facturación y servicios adicionales.
+## Descripción del Proyecto
+Este proyecto tiene como objetivo desarrollar un sistema eficiente para la gestión de una clínica veterinaria, permitiendo optimizar el manejo de información y la administración de sus operaciones.
 
-### Modulo Login
-En este modulo se tiene la vista y lógica para el acceso a la plataforma, si el usuario no está registrado en el sistema, deberá registrarse.
+## Funcionamiento del Sistema
+El sistema está diseñado para gestionar la información de las mascotas, sus dueños, historial de salud, inventario de medicamentos y vacunas, agenda de consultas y procedimientos médicos, así como la facturación y servicios adicionales.
 
-### Modulo SignUp
-El usuario ingresa la información necesaria para entrar al sistema y se guardan sus datos en la base de datos para que pueda ingresar a la plataforma.
+### Módulo de Login
+En este módulo se encuentra la vista y la lógica para el acceso a la plataforma. Si el usuario no está registrado en el sistema, deberá completar el proceso de registro.
 
-### Modulo Administrador
-En esta interfaz se tienen las diferentes opciones que a las que un Administrador tiene acceso, las cuales son:
-1. Gestión Mascostas
-2. Gestión Personas
-3. 
+### Módulo de Registro (SignUp)
+El usuario ingresa la información requerida para crear una cuenta en el sistema. Sus datos serán almacenados en la base de datos para permitir su acceso a la plataforma.
 
-## Tecnologías utilizadas
-![alt text](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=fff&style=for-the-badge) ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+### Módulo de Administrador
+En esta interfaz, el Administrador tiene acceso a diversas opciones de gestión:
+1. Gestión de Mascotas
+2. Gestión de Personas
+3. Gestión de Consultas Médicas
+4. Gestión de Historial Médico
+5. Gestión de Vacunas
+6. Gestión de Inventario
+7. Gestión de Facturación
 
-## Estructura de archivos
+### Módulo de Veterinario
+En esta interfaz, el Veterinario tiene acceso a las siguientes funcionalidades:
+1. Revisión de Mascotas
+2. Gestión de Consultas Médicas
+3. Aplicación y registro de Vacunas
+4. Revisión del Historial Médico
+5. Revisión de Procedimientos Médicos
 
+### Módulo de Clientes
+En esta interfaz, los clientes tienen acceso a:
+1. Consulta de Tipos de Procedimientos
+2. Visualización y descarga de Facturas en formato PDF
 
+## Tecnologías Utilizadas
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=fff&style=for-the-badge) ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+
+## Estructura de Archivos
+![alt text](Estructura.png)
 
 ## Desarrolladores
-Este proyecto ha sido desarrollado por Brayan Maldonado Y Jaime Barrera como parte del filtro de Java para *Campuslands*.
+Este proyecto ha sido desarrollado por **Brayan Maldonado** y **Jaime Barrera** como parte del filtro de Java para *Campuslands*.
+
