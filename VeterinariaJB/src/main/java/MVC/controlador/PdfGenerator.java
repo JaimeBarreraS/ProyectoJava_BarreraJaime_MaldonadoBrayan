@@ -30,7 +30,7 @@ public class PdfGenerator {
             // Asegura que el archivo termine en ".pdf" para evitar inconvenientes
             String filePath = fileToSave.getAbsolutePath();
             if (!filePath.toLowerCase().endsWith(".pdf")) {
-                filePath += ".pdf"; // Y si no termina en ".pdf" se lo agrega
+                filePath += ".pdf"; // Y si no tiene la terminación ".pdf" se la agrega
             }
 
             //Finalmente crea el archivo PDF
