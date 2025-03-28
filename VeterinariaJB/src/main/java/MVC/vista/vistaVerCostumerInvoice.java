@@ -4,6 +4,20 @@
  */
 package MVC.vista;
 
+import com.itextpdf.text.*;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import javax.swing.*;
+import java.awt.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author Jaime Barrera
@@ -272,9 +286,213 @@ public class vistaVerCostumerInvoice extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
-    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnImprimirActionPerformed
+    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {
+        try {
+            // 1. Configuración de rutas
+            String pdfSavePath = buildPdfSavePath();
+            ensureDirectoryExists(pdfSavePath);
+
+            // 2. Generar nombre de archivo único
+            String filePath = generateUniqueFilePath(pdfSavePath);
+
+            // 3. Generar documento PDF
+            generatePdfDocument(filePath);
+
+            // 4. Mostrar confirmación y abrir PDF
+            showSuccessAndOpenPdf(filePath);
+
+        } catch (Exception ex) {
+            handleError("Error al generar factura", ex);
+        }
+    }
+
+// Métodos auxiliares mejorados
+
+    private String buildPdfSavePath() {
+        return System.getProperty("user.dir") + File.separator + "ProyectoJava_BarreraJaime_MaldonadoBrayan" + File.separator + "VeterinariaJB" + File.separator +
+                "src" + File.separator + "main" + File.separator + "java" + File.separator +
+                "MVC" + File.separator + "util" +  File.separator  + "facturasGeneradas" +  File.separator;
+    }
+
+    private void ensureDirectoryExists(String path) throws IOException {
+        File directory = new File(path);
+        if (!directory.exists() && !directory.mkdirs()) {
+            throw new IOException("No se pudo crear el directorio: " + path);
+        }
+    }
+
+    private String generateUniqueFilePath(String savePath) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
+        return savePath + "Factura_" + dateFormat.format(new Date()) + ".pdf";
+    }
+
+    private void generatePdfDocument(String filePath) throws DocumentException, IOException {
+        Document document = new Document();
+        PdfWriter.getInstance(document, new FileOutputStream(filePath));
+        document.open();
+
+        try {
+            // Configuración de estilos
+            FontStyles fonts = new FontStyles();
+
+            // Contenido del PDF
+            addLogo(document);
+            addClinicHeader(document, fonts.titleFont);
+            addClinicInfo(document, fonts.normalFont);
+            addSeparator(document);
+            addInvoiceDetails(document, fonts);
+            addQrCode(document);
+            addTotal(document, fonts.totalFont);
+
+        } finally {
+            document.close();
+        }
+    }
+
+    // Clase interna para manejar estilos de fuente
+    private static class FontStyles {
+        final Font titleFont = new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD, BaseColor.DARK_GRAY);
+        final Font headerFont = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
+        final Font normalFont = new Font(Font.FontFamily.HELVETICA, 10);
+        final Font totalFont = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD, BaseColor.BLUE);
+    }
+
+// Métodos para agregar contenido al PDF
+
+    private void addLogo(Document document) throws DocumentException {
+        try {
+            Image logo = Image.getInstance(getClass().getResource("/media/logo.png"));
+            logo.scaleToFit(100, 100);
+            logo.setAlignment(Image.ALIGN_CENTER);
+            document.add(logo);
+        } catch (Exception e) {
+            addAlternativeText(document, "Logo de la clínica");
+        }
+    }
+
+    private void addClinicHeader(Document document, Font titleFont) throws DocumentException {
+        Paragraph title = new Paragraph("VETERINARY CLINIC\n\n", titleFont);
+        title.setAlignment(Element.ALIGN_CENTER);
+        document.add(title);
+    }
+
+    private void addClinicInfo(Document document, Font font) throws DocumentException {
+        String[] clinicInfo = {
+                "NIT: 1093925253",
+                "Tibú Norte de Santander",
+                "B/ Esperanza",
+                "VeterinaryClinic@gmail.com",
+                "+57312 370 2377\n"
+        };
+
+        Paragraph info = new Paragraph();
+        for (String line : clinicInfo) {
+            info.add(new Paragraph(line, font));
+        }
+        info.setAlignment(Element.ALIGN_CENTER);
+        document.add(info);
+    }
+
+    private void addSeparator(Document document) throws DocumentException {
+        document.add(new Paragraph("------------------------------------------------------------"));
+    }
+
+    private void addInvoiceDetails(Document document, FontStyles fonts) throws DocumentException {
+        // Información del cliente
+        String[] clientInfo = {
+                "ID Factura: KWBRVWER274624",
+                "Nombre Cliente: Brayan Stiven Maldonado",
+                "Identificación: 10939252537",
+                "Teléfono: 324 902 1361\n"
+        };
+
+        for (String line : clientInfo) {
+            document.add(new Paragraph(line, fonts.normalFont));
+        }
+
+        // Tabla de servicios
+        addServicesTable(document, fonts.headerFont);
+
+        // Totales
+        String[] totals = {
+                "Subtotal: $ 95.000.00",
+                "IVA: 10%",
+                "Total: $ 104.500.00\n"
+        };
+
+        for (String line : totals) {
+            document.add(new Paragraph(line, fonts.normalFont));
+        }
+    }
+
+    private void addServicesTable(Document document, Font headerFont) throws DocumentException {
+        PdfPTable table = new PdfPTable(2);
+        table.setWidthPercentage(100);
+        table.setSpacingBefore(10f);
+        table.setSpacingAfter(10f);
+
+        // Encabezados
+        table.addCell(new Phrase("Servicio", headerFont));
+        table.addCell(new Phrase("Valor", headerFont));
+
+        // Datos
+        String[][] services = {
+                {"Peluquería", "$ 45.000.00"},
+                {"Baño", "$ 50.000.00"}
+        };
+
+        for (String[] service : services) {
+            table.addCell(service[0]);
+            table.addCell(service[1]);
+        }
+
+        document.add(table);
+    }
+
+    private void addQrCode(Document document) throws DocumentException {
+        try {
+            Image qr = Image.getInstance(getClass().getResource("/media/qr_1.png"));
+            qr.scaleToFit(80, 80);
+            qr.setAlignment(Image.ALIGN_RIGHT);
+            document.add(qr);
+        } catch (Exception e) {
+            addAlternativeText(document, "Código QR");
+        }
+    }
+
+    private void addTotal(Document document, Font totalFont) throws DocumentException {
+        Paragraph total = new Paragraph("\nTotal a Pagar: $ 104.500.00", totalFont);
+        total.setAlignment(Element.ALIGN_RIGHT);
+        document.add(total);
+    }
+
+    private void addAlternativeText(Document document, String altText) throws DocumentException {
+        document.add(new Paragraph("[" + altText + " no disponible]",
+                new Font(Font.FontFamily.HELVETICA, 10, Font.ITALIC)));
+    }
+
+    private void showSuccessAndOpenPdf(String filePath) {
+        JOptionPane.showMessageDialog(this,
+                "Factura generada exitosamente en:\n" + filePath,
+                "Operación Exitosa",
+                JOptionPane.INFORMATION_MESSAGE);
+
+        try {
+            Desktop.getDesktop().open(new File(filePath));
+        } catch (IOException ex) {
+            System.out.println("PDF generado pero no se pudo abrir: " + ex.getMessage());
+        }
+    }
+
+    private void handleError(String message, Exception ex) {
+        System.err.println(message + ": " + ex.getMessage());
+        ex.printStackTrace();
+
+        JOptionPane.showMessageDialog(this,
+                message + ": " + ex.getMessage(),
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+    }
 
     /**
      * @param args the command line arguments
