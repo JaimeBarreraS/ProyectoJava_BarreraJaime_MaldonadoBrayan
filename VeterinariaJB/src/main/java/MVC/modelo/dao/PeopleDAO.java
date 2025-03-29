@@ -157,4 +157,20 @@ public class PeopleDAO {
         }
         return clients;
     }
+    
+        public int getIdPeople(String ProductName) {
+        String sql = "Select id from people where name = ?";
+        int id = 0;
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, ProductName);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    id = rs.getInt("id");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return id;
+    }
 }

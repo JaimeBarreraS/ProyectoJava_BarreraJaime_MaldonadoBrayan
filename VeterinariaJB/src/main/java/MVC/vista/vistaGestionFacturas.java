@@ -49,6 +49,7 @@ public class vistaGestionFacturas extends javax.swing.JFrame {
     public void setController(InvoicesController controller){
         btnAdd.addActionListener(e -> controller.addProduct());
         btnCreate.addActionListener(e -> controller.crearFactura());
+        btnCreate.addActionListener(e -> controller.CreateInvoice());
     }
 
     public void showMessage(String message) {
@@ -58,6 +59,10 @@ public class vistaGestionFacturas extends javax.swing.JFrame {
     public void limpiarCampos() {
         txtCantidad.setText("");
         txtID.setText("");
+    }
+    
+    public void limpiarCliente(){
+        btnClient.setSelectedIndex(0); 
     }
     
     @SuppressWarnings("unchecked")

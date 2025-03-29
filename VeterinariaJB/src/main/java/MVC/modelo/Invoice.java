@@ -21,6 +21,17 @@ public class Invoice {
         this.qr = qr;
     }
 
+    public Invoice(People costumer, Date date, double total, double tax, String cufe, String qr) {
+        this.costumer = costumer;
+        this.date = date;
+        this.total = total;
+        this.tax = tax;
+        this.cufe = cufe;
+        this.qr = qr;
+    }
+    
+    
+
     public int getId() {
         return id;
     }
