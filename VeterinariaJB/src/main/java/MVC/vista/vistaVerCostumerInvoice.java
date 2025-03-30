@@ -4,9 +4,11 @@
  */
 package MVC.vista;
 
+import MVC.controlador.CostumerInvoiceController;
 import com.itextpdf.text.*;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
+import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
@@ -30,6 +32,31 @@ public class vistaVerCostumerInvoice extends javax.swing.JFrame {
     public vistaVerCostumerInvoice() {
         initComponents();
         this.setLocationRelativeTo(null);
+        getContentPane().setBackground(Color.WHITE);
+    }
+
+    public void setTxtID(String id) {
+        txtID.setText(id);
+    }
+
+    public void setTxtCliente(String cliente) {
+        txtCliente.setText(cliente);
+    }
+
+    public void setTxtFecha(String fecha) {
+        txtFecha.setText(fecha);
+    }
+
+    public void setTxtTotal(String total) {
+        txtTotal.setText(total);
+    }
+
+    public void setTxtIva(String iva) {
+        txtIva.setText(iva);
+    }
+
+    public void setTxtTotal2(String total) {
+        txtTotal2.setText(total);
     }
 
     /**
@@ -67,7 +94,6 @@ public class vistaVerCostumerInvoice extends javax.swing.JFrame {
         txtCliente = new javax.swing.JTextField();
         txtTotal = new javax.swing.JTextField();
         txtIva = new javax.swing.JTextField();
-        txtSubtotal = new javax.swing.JTextField();
         txtFecha = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         txtTotal2 = new javax.swing.JTextField();
@@ -75,6 +101,7 @@ public class vistaVerCostumerInvoice extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("VETERINARY CLINIC");
@@ -88,7 +115,6 @@ public class vistaVerCostumerInvoice extends javax.swing.JFrame {
         jLabel3.setText("Nombre Cliente  ......................................... ");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel9.setText("Subtotal  .....................................................");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel10.setText("IVA  .............................................................");
@@ -130,8 +156,9 @@ public class vistaVerCostumerInvoice extends javax.swing.JFrame {
         jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel24.setText(" Firma ");
 
-        btnVolver.setBackground(new java.awt.Color(255, 153, 102));
+        btnVolver.setBackground(new java.awt.Color(2, 100, 100));
         btnVolver.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(255, 255, 255));
         btnVolver.setText("Volver");
         btnVolver.setBorderPainted(false);
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -140,20 +167,23 @@ public class vistaVerCostumerInvoice extends javax.swing.JFrame {
             }
         });
 
-        btnImprimir.setBackground(new java.awt.Color(255, 153, 102));
+        btnImprimir.setBackground(new java.awt.Color(255, 255, 102));
         btnImprimir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnImprimir.setText("Imprimir");
-        btnImprimir.setBorderPainted(false);
         btnImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnImprimirActionPerformed(evt);
             }
         });
 
-        txtID.setBackground(new java.awt.Color(242, 242, 242));
+        txtID.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtID.setForeground(new java.awt.Color(0, 0, 255));
+        txtID.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtID.setBorder(null);
 
-        txtCliente.setBackground(new java.awt.Color(242, 242, 242));
+        txtCliente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtCliente.setForeground(new java.awt.Color(0, 0, 255));
+        txtCliente.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtCliente.setBorder(null);
         txtCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,23 +191,38 @@ public class vistaVerCostumerInvoice extends javax.swing.JFrame {
             }
         });
 
-        txtTotal.setBackground(new java.awt.Color(242, 242, 242));
+        txtTotal.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtTotal.setForeground(new java.awt.Color(0, 0, 255));
+        txtTotal.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtTotal.setBorder(null);
+        txtTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTotalActionPerformed(evt);
+            }
+        });
 
-        txtIva.setBackground(new java.awt.Color(242, 242, 242));
+        txtIva.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtIva.setForeground(new java.awt.Color(0, 0, 255));
+        txtIva.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtIva.setBorder(null);
 
-        txtSubtotal.setBackground(new java.awt.Color(242, 242, 242));
-        txtSubtotal.setBorder(null);
-
-        txtFecha.setBackground(new java.awt.Color(242, 242, 242));
+        txtFecha.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtFecha.setForeground(new java.awt.Color(0, 0, 255));
+        txtFecha.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtFecha.setBorder(null);
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel25.setText("Fecha  ..........................................................");
 
-        txtTotal2.setBackground(new java.awt.Color(242, 242, 242));
+        txtTotal2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        txtTotal2.setForeground(new java.awt.Color(255, 51, 51));
+        txtTotal2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTotal2.setBorder(null);
+        txtTotal2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTotal2ActionPerformed(evt);
+            }
+        });
 
         jLabel26.setFont(new java.awt.Font("Segoe UI", 3, 10)); // NOI18N
         jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/firma.png"))); // NOI18N
@@ -192,20 +237,24 @@ public class vistaVerCostumerInvoice extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(186, 186, 186)
+                                .addComponent(jLabel20))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnVolver)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnImprimir)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(43, 43, 43))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel9)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtSubtotal))
+                                .addComponent(txtIva))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -224,52 +273,40 @@ public class vistaVerCostumerInvoice extends javax.swing.JFrame {
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                             .addComponent(txtTotal))
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(jLabel10)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(txtIva))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                             .addComponent(jLabel25)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(txtFecha))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(LogoIcono, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(79, 79, 79)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING)))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(jLabel2)
-                                                        .addGap(3, 3, 3)))
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
-                                                    .addComponent(txtCliente)))))))
+                                            .addComponent(txtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(LogoIcono, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(79, 79, 79)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel2))
+                                            .addGap(2, 2, 2)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(txtID)
+                                                .addComponent(txtCliente))))
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(44, 44, 44)
-                                .addComponent(jLabel27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGap(44, 44, 44)
+                                        .addComponent(jLabel27))
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(34, 34, 34))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(186, 186, 186)
-                                .addComponent(jLabel20))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnVolver)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnImprimir)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(43, 43, 43))))
+                        .addGap(34, 34, 34))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,19 +338,17 @@ public class vistaVerCostumerInvoice extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel25))
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtIva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9)
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
+                .addGap(38, 38, 38)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel21)
@@ -321,7 +356,7 @@ public class vistaVerCostumerInvoice extends javax.swing.JFrame {
                 .addComponent(jLabel22)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel27)
@@ -329,7 +364,7 @@ public class vistaVerCostumerInvoice extends javax.swing.JFrame {
                         .addComponent(jLabel20)
                         .addGap(78, 78, 78))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                         .addComponent(jLabel24)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -353,36 +388,49 @@ public class vistaVerCostumerInvoice extends javax.swing.JFrame {
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         vistaCostumerInvoice vli = new vistaCostumerInvoice ();
+        CostumerInvoiceController controller = new CostumerInvoiceController (vli);
+        vli.setController(controller);
         vli.setVisible(true);
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
-
+    
     private void txtClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtClienteActionPerformed
 
+    private void txtTotal2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotal2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTotal2ActionPerformed
+
+    private void txtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTotalActionPerformed
+
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {
         try {
-            // 1. Configuración de rutas
+            // 1. Configuración de rutas 
             String pdfSavePath = buildPdfSavePath();
             ensureDirectoryExists(pdfSavePath);
 
-            // 2. Generar nombre de archivo único
+            // 2. Generar nombre de archivo único 
             String filePath = generateUniqueFilePath(pdfSavePath);
 
-            // 3. Generar documento PDF
-            generatePdfDocument(filePath);
+            // 3. Generar documento 
+            generatePdfDocument(filePath,
+                    txtID.getText(),
+                    txtCliente.getText(),
+                    txtFecha.getText(),
+                    txtIva.getText(),
+                    txtTotal.getText());
 
-            // 4. Mostrar confirmación y abrir PDF
+            // 4. Mostrar confirmación y abrir PDF 
             showSuccessAndOpenPdf(filePath);
 
         } catch (Exception ex) {
             handleError("Error al generar factura", ex);
         }
     }
-
-// Métodos auxiliares mejorados
 
     private String buildPdfSavePath() {
         return System.getProperty("user.dir") + File.separator + "ProyectoJava_BarreraJaime_MaldonadoBrayan" + File.separator + "VeterinariaJB" + File.separator +
@@ -402,30 +450,32 @@ public class vistaVerCostumerInvoice extends javax.swing.JFrame {
         return savePath + "Factura_" + dateFormat.format(new Date()) + ".pdf";
     }
 
-    private void generatePdfDocument(String filePath) throws DocumentException, IOException {
+    private void generatePdfDocument(String filePath, String id, String cliente,
+                                     String fecha, String iva, String total)
+            throws DocumentException, IOException {
+
         Document document = new Document();
         PdfWriter.getInstance(document, new FileOutputStream(filePath));
         document.open();
 
         try {
-            // Configuración de estilos
             FontStyles fonts = new FontStyles();
 
-            // Contenido del PDF
             addLogo(document);
             addClinicHeader(document, fonts.titleFont);
             addClinicInfo(document, fonts.normalFont);
             addSeparator(document);
-            addInvoiceDetails(document, fonts);
+            addInvoiceDetails(document, fonts, id, cliente, fecha, iva, total);
+            addDescription(document, fonts.normalFont);
+            addSignatureAndTotal(document, fonts.totalFont, total);
             addQrCode(document);
-            addTotal(document, fonts.totalFont);
+
 
         } finally {
             document.close();
         }
     }
 
-    // Clase interna para manejar estilos de fuente
     private static class FontStyles {
         final Font titleFont = new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD, BaseColor.DARK_GRAY);
         final Font headerFont = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
@@ -433,7 +483,6 @@ public class vistaVerCostumerInvoice extends javax.swing.JFrame {
         final Font totalFont = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD, BaseColor.BLUE);
     }
 
-// Métodos para agregar contenido al PDF
 
     private void addLogo(Document document) throws DocumentException {
         try {
@@ -449,23 +498,27 @@ public class vistaVerCostumerInvoice extends javax.swing.JFrame {
     private void addClinicHeader(Document document, Font titleFont) throws DocumentException {
         Paragraph title = new Paragraph("VETERINARY CLINIC\n\n", titleFont);
         title.setAlignment(Element.ALIGN_CENTER);
+        title.setSpacingAfter(15f);
         document.add(title);
     }
 
     private void addClinicInfo(Document document, Font font) throws DocumentException {
+        Font boldFont = new Font(Font.FontFamily.HELVETICA, 10, Font.BOLD);
+
         String[] clinicInfo = {
-                "NIT: 1093925253",
+                "NIT 1093925253",
                 "Tibú Norte de Santander",
                 "B/ Esperanza",
                 "VeterinaryClinic@gmail.com",
-                "+57312 370 2377\n"
+                "+57312 370 2377"
         };
 
         Paragraph info = new Paragraph();
         for (String line : clinicInfo) {
-            info.add(new Paragraph(line, font));
+            info.add(new Paragraph(line, boldFont));
         }
         info.setAlignment(Element.ALIGN_CENTER);
+        info.setSpacingAfter(15f);
         document.add(info);
     }
 
@@ -473,73 +526,76 @@ public class vistaVerCostumerInvoice extends javax.swing.JFrame {
         document.add(new Paragraph("------------------------------------------------------------"));
     }
 
-    private void addInvoiceDetails(Document document, FontStyles fonts) throws DocumentException {
-        // Información del cliente
-        String[] clientInfo = {
-                "ID Factura: KWBRVWER274624",
-                "Nombre Cliente: Brayan Stiven Maldonado",
-                "Identificación: 10939252537",
-                "Teléfono: 324 902 1361\n"
-        };
+    private void addInvoiceDetails(Document document, FontStyles fonts,
+                                   String id, String cliente,
+                                   String fecha, String iva, String total)
+            throws DocumentException {
 
-        for (String line : clientInfo) {
-            document.add(new Paragraph(line, fonts.normalFont));
-        }
 
-        // Tabla de servicios
-        addServicesTable(document, fonts.headerFont);
-
-        // Totales
-        String[] totals = {
-                "Subtotal: $ 95.000.00",
-                "IVA: 10%",
-                "Total: $ 104.500.00\n"
-        };
-
-        for (String line : totals) {
-            document.add(new Paragraph(line, fonts.normalFont));
-        }
-    }
-
-    private void addServicesTable(Document document, Font headerFont) throws DocumentException {
+        // Crear tabla con 2 columnas
         PdfPTable table = new PdfPTable(2);
-        table.setWidthPercentage(100);
+        table.setWidthPercentage(100); 
         table.setSpacingBefore(10f);
-        table.setSpacingAfter(10f);
+        table.setSpacingAfter(15f);
 
-        // Encabezados
-        table.addCell(new Phrase("Servicio", headerFont));
-        table.addCell(new Phrase("Valor", headerFont));
+        table.setWidths(new float[]{4, 6});
 
-        // Datos
-        String[][] services = {
-                {"Peluquería", "$ 45.000.00"},
-                {"Baño", "$ 50.000.00"}
-        };
-
-        for (String[] service : services) {
-            table.addCell(service[0]);
-            table.addCell(service[1]);
-        }
+        // Añadir filas con texto justificado
+        addJustifiedTableRow(table, "ID Factura", id, fonts);
+        addJustifiedTableRow(table, "Nombre Cliente", cliente, fonts);
+        addJustifiedTableRow(table, "Fecha", fecha, fonts);
+        addJustifiedTableRow(table, "IVA", iva, fonts);
+        addJustifiedTableRow(table, "total", total, fonts);
 
         document.add(table);
+        addSeparator(document);
     }
 
+    private void addJustifiedTableRow(PdfPTable table, String label, String value, FontStyles fonts) {
+
+        PdfPCell labelCell = new PdfPCell();
+        labelCell.setBorder(PdfPCell.NO_BORDER);
+        labelCell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+
+        Paragraph labelParagraph = new Paragraph();
+        labelParagraph.add(new Chunk(label, fonts.normalFont));
+        labelParagraph.add(new Chunk(" :", new Font(Font.FontFamily.HELVETICA, 10, Font.NORMAL, BaseColor.LIGHT_GRAY)));
+        labelCell.addElement(labelParagraph);
+        table.addCell(labelCell);
+
+        PdfPCell valueCell = new PdfPCell(new Phrase(value, fonts.normalFont));
+        valueCell.setBorder(PdfPCell.NO_BORDER);
+        valueCell.setHorizontalAlignment(Element.ALIGN_LEFT);
+        valueCell.setPaddingLeft(5f); // Pequeño margen izquierdo
+        table.addCell(valueCell);
+    }
+
+    private void addDescription(Document document, Font font) throws DocumentException {
+        Paragraph desc = new Paragraph();
+        desc.add(new Paragraph("Descripción", new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD)));
+        desc.add(new Paragraph("\nDocumento PDF que muestra de manera detallada lo realizado en la clínica veterinaria JS. " +
+                "La atención brindada se realiza con profesionalismo y cuidado especial a las mascotas.", font));
+        desc.setSpacingAfter(15f);
+        document.add(desc);
+        addSeparator(document);
+    }
     private void addQrCode(Document document) throws DocumentException {
         try {
             Image qr = Image.getInstance(getClass().getResource("/media/qr_1.png"));
-            qr.scaleToFit(80, 80);
-            qr.setAlignment(Image.ALIGN_RIGHT);
+            qr.scaleToFit(110, 110);
+
             document.add(qr);
         } catch (Exception e) {
             addAlternativeText(document, "Código QR");
         }
     }
 
-    private void addTotal(Document document, Font totalFont) throws DocumentException {
-        Paragraph total = new Paragraph("\nTotal a Pagar: $ 104.500.00", totalFont);
-        total.setAlignment(Element.ALIGN_RIGHT);
-        document.add(total);
+    private void addSignatureAndTotal(Document document, Font font, String total)
+            throws DocumentException {
+
+        Paragraph signature = new Paragraph();
+        signature.add(new Paragraph("\nTotal a Pagar $" + total, font));
+        document.add(signature);
     }
 
     private void addAlternativeText(Document document, String altText) throws DocumentException {
@@ -635,7 +691,6 @@ public class vistaVerCostumerInvoice extends javax.swing.JFrame {
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtIva;
-    private javax.swing.JTextField txtSubtotal;
     private javax.swing.JTextField txtTotal;
     private javax.swing.JTextField txtTotal2;
     // End of variables declaration//GEN-END:variables

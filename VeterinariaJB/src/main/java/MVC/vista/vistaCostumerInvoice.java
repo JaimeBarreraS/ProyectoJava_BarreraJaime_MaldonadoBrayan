@@ -5,6 +5,11 @@
 
 package MVC.vista;
 
+import MVC.controlador.CostumerInvoiceController;
+import java.awt.Color;
+
+import javax.swing.*;
+
 /**
  *
  * @author Jaime Barrera
@@ -15,6 +20,42 @@ public class vistaCostumerInvoice extends javax.swing.JFrame {
     public vistaCostumerInvoice() {
         initComponents();
         this.setLocationRelativeTo(null);
+        getContentPane().setBackground(Color.WHITE);
+    }
+
+    public JTable getTableFac() {
+        return TableFac;
+    }
+
+    public void setController(CostumerInvoiceController controller){
+        btnSearch.addActionListener(e -> controller.searchInvoice());
+    }
+
+    public String getTxtID() {
+        return txtID.getText();
+    }
+
+    public String getTxtCliente() {
+        return txtCliente.getText();
+    }
+
+    public String getTxtFecha() {
+        return txtFecha.getText();
+    }
+
+    public String getTxtTotal() {
+        return txtTotal.getText();
+    }
+
+    public String getTxtImpuesto() {
+        return txtImpuesto.getText();
+    }
+    public JButton getJButton1() {
+        return jButton1;
+    }
+
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(this, message);
     }
 
     /** This method is called from within the constructor to
@@ -28,16 +69,16 @@ public class vistaCostumerInvoice extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TableType = new javax.swing.JTable();
+        TableFac = new javax.swing.JTable();
         btnVolver = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
-        txtID1 = new javax.swing.JTextField();
-        txtID2 = new javax.swing.JTextField();
-        txtID3 = new javax.swing.JTextField();
-        txtID4 = new javax.swing.JTextField();
+        txtCliente = new javax.swing.JTextField();
+        txtFecha = new javax.swing.JTextField();
+        txtTotal = new javax.swing.JTextField();
+        txtImpuesto = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -49,7 +90,7 @@ public class vistaCostumerInvoice extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(2, 100, 100));
         jLabel1.setText("Facturas");
 
-        TableType.setModel(new javax.swing.table.DefaultTableModel(
+        TableFac.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -60,7 +101,7 @@ public class vistaCostumerInvoice extends javax.swing.JFrame {
                 "ID", "Cliente ", "Fecha", "Total", "Impuesto"
             }
         ));
-        jScrollPane1.setViewportView(TableType);
+        jScrollPane1.setViewportView(TableFac);
 
         btnVolver.setBackground(new java.awt.Color(255, 153, 102));
         btnVolver.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -99,39 +140,39 @@ public class vistaCostumerInvoice extends javax.swing.JFrame {
         btnSearch.setForeground(new java.awt.Color(255, 255, 255));
         btnSearch.setText("Buscar");
 
-        txtID1.setEditable(true);
-        txtID1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtID1.setForeground(new java.awt.Color(2, 100, 100));
-        txtID1.addActionListener(new java.awt.event.ActionListener() {
+        txtCliente.setEditable(true);
+        txtCliente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtCliente.setForeground(new java.awt.Color(2, 100, 100));
+        txtCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtID1ActionPerformed(evt);
+                txtClienteActionPerformed(evt);
             }
         });
 
-        txtID2.setEditable(true);
-        txtID2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtID2.setForeground(new java.awt.Color(2, 100, 100));
-        txtID2.addActionListener(new java.awt.event.ActionListener() {
+        txtFecha.setEditable(true);
+        txtFecha.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtFecha.setForeground(new java.awt.Color(2, 100, 100));
+        txtFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtID2ActionPerformed(evt);
+                txtFechaActionPerformed(evt);
             }
         });
 
-        txtID3.setEditable(true);
-        txtID3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtID3.setForeground(new java.awt.Color(2, 100, 100));
-        txtID3.addActionListener(new java.awt.event.ActionListener() {
+        txtTotal.setEditable(true);
+        txtTotal.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtTotal.setForeground(new java.awt.Color(2, 100, 100));
+        txtTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtID3ActionPerformed(evt);
+                txtTotalActionPerformed(evt);
             }
         });
 
-        txtID4.setEditable(true);
-        txtID4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtID4.setForeground(new java.awt.Color(2, 100, 100));
-        txtID4.addActionListener(new java.awt.event.ActionListener() {
+        txtImpuesto.setEditable(true);
+        txtImpuesto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtImpuesto.setForeground(new java.awt.Color(2, 100, 100));
+        txtImpuesto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtID4ActionPerformed(evt);
+                txtImpuestoActionPerformed(evt);
             }
         });
 
@@ -173,13 +214,11 @@ public class vistaCostumerInvoice extends javax.swing.JFrame {
                             .addComponent(jLabel8))
                         .addGap(69, 69, 69)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtID3)
-                                    .addComponent(txtID2)
-                                    .addComponent(txtID4)
-                                    .addComponent(txtID1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtTotal)
+                                .addComponent(txtFecha)
+                                .addComponent(txtImpuesto)
+                                .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -206,12 +245,12 @@ public class vistaCostumerInvoice extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
-                            .addComponent(txtID2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
@@ -220,9 +259,9 @@ public class vistaCostumerInvoice extends javax.swing.JFrame {
                         .addComponent(jLabel11))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtID3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtID4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtImpuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(31, 31, 31)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(27, Short.MAX_VALUE))
@@ -239,31 +278,28 @@ public class vistaCostumerInvoice extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        vistaVerCostumerInvoice vli = new vistaVerCostumerInvoice ();
-        vli.setVisible(true);
-        this.setVisible(false);
-        this.dispose();
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDActionPerformed
 
-    private void txtID1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtID1ActionPerformed
+    private void txtClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtID1ActionPerformed
+    }//GEN-LAST:event_txtClienteActionPerformed
 
-    private void txtID2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtID2ActionPerformed
+    private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtID2ActionPerformed
+    }//GEN-LAST:event_txtFechaActionPerformed
 
-    private void txtID3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtID3ActionPerformed
+    private void txtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtID3ActionPerformed
+    }//GEN-LAST:event_txtTotalActionPerformed
 
-    private void txtID4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtID4ActionPerformed
+    private void txtImpuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtImpuestoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtID4ActionPerformed
+    }//GEN-LAST:event_txtImpuestoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -295,13 +331,15 @@ public class vistaCostumerInvoice extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new vistaCostumerInvoice().setVisible(true);
+                vistaCostumerInvoice view = new vistaCostumerInvoice();
+                CostumerInvoiceController controller = new CostumerInvoiceController(view);
+                view.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable TableType;
+    private javax.swing.JTable TableFac;
     public javax.swing.JButton btnSearch;
     public javax.swing.JButton btnVolver;
     private javax.swing.JButton jButton1;
@@ -312,11 +350,11 @@ public class vistaCostumerInvoice extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel8;
     public javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JTextField txtCliente;
+    public javax.swing.JTextField txtFecha;
     public javax.swing.JTextField txtID;
-    public javax.swing.JTextField txtID1;
-    public javax.swing.JTextField txtID2;
-    public javax.swing.JTextField txtID3;
-    public javax.swing.JTextField txtID4;
+    public javax.swing.JTextField txtImpuesto;
+    public javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 
 }

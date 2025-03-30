@@ -32,25 +32,30 @@ public class LoginController {
             
             if (rs.next()) {
                 JOptionPane.showMessageDialog(null,"The user is valid");
+                String nombreUsuario = rs.getString("user");
                 vistaAdmin vA = new vistaAdmin();
+                vA.txtUsuario.setText("Usuario: " + nombreUsuario);
                 int rol = rs.getInt("role_id");
+
                 switch(rol){
                     case 1:
-                        vA.setVisible(true);;
+                        vA.setVisible(true);
                         break;
                         
-                    case 2: 
-                        vA.setVisible(true);;
+                    case 2:
+                        vA.setVisible(true);
                         break;
                     
-                    case 3: 
+                    case 3:
                         vistaVeterinaryMascotas vV = new vistaVeterinaryMascotas();
+                        vV.txtUsuario.setText("Usuario: " + nombreUsuario);
                         vV.setVisible(true);
                         break;
                         
-                    case 4:                      
+                    case 4:
                         vistaOwner vO = new vistaOwner();
-                        vO.setVisible(true);   
+                        vO.txtUsuario.setText("Usuario: " + nombreUsuario);
+                        vO.setVisible(true);
                         break;
                 }
             }

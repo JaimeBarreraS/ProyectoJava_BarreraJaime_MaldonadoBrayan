@@ -21,8 +21,10 @@ public class MedicalConsultDAO {
         String sql = "INSERT INTO medicalconsult (pet_id, date, time, reason, diagnostic, recommendations, state, veterinary_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, medicalConsult.getPet().getId());
-            statement.setDate(2, new java.sql.Date(medicalConsult.getDate().getTime()));
-            statement.setTime(3, medicalConsult.getTime());
+            java.sql.Date sqlDate = java.sql.Date.valueOf(medicalConsult.getDate());
+            statement.setDate(2, sqlDate);
+            java.sql.Time sqlTime = java.sql.Time.valueOf(medicalConsult.getTime());
+            statement.setTime(3, sqlTime);
             statement.setString(4, medicalConsult.getReason());
             statement.setString(5, medicalConsult.getDiagnostic());
             statement.setString(6, medicalConsult.getRecommendations());
@@ -56,8 +58,8 @@ public class MedicalConsultDAO {
                 MedicalConsult medicalConsult = new MedicalConsult(
                         resultSet.getInt("id"),
                         pet,
-                        resultSet.getDate("date"),
-                        resultSet.getTime("time"),
+                        resultSet.getString("date"),
+                        resultSet.getString("time"),
                         resultSet.getString("reason"),
                         resultSet.getString("diagnostic"),
                         resultSet.getString("recommendations"),
@@ -94,8 +96,8 @@ public class MedicalConsultDAO {
                 return new MedicalConsult(
                         resultSet.getInt("id"),
                         pet,
-                        resultSet.getDate("date"),
-                        resultSet.getTime("time"),
+                        resultSet.getString("date"),
+                        resultSet.getString("time"),
                         resultSet.getString("reason"),
                         resultSet.getString("diagnostic"),
                         resultSet.getString("recommendations"),
@@ -114,8 +116,10 @@ public class MedicalConsultDAO {
         String sql = "UPDATE medicalconsult SET pet_id = ?, date = ?, time = ?, reason = ?, diagnostic = ?, recommendations = ?, state = ?, veterinary_id = ? WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, medicalConsult.getPet().getId());
-            statement.setDate(2, new java.sql.Date(medicalConsult.getDate().getTime()));
-            statement.setTime(3, medicalConsult.getTime());
+            java.sql.Date sqlDate = java.sql.Date.valueOf(medicalConsult.getDate());
+            statement.setDate(2, sqlDate);
+            java.sql.Time sqlTime = java.sql.Time.valueOf(medicalConsult.getTime());
+            statement.setTime(3, sqlTime);
             statement.setString(4, medicalConsult.getReason());
             statement.setString(5, medicalConsult.getDiagnostic());
             statement.setString(6, medicalConsult.getRecommendations());

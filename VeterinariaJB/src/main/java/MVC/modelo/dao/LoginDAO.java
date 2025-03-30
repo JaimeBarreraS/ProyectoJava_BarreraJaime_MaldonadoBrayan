@@ -101,4 +101,26 @@ public class LoginDAO {
             e.printStackTrace();
         }
     }
+
+    public Login validarYTraerUsuario(String username, String password) {
+        String sql = "SELECT * FROM login WHERE user = ? AND password = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                Role role = new Role(rs.getInt("role_id"), null);
+                return new Login(
+                        rs.getInt("id"),
+                        rs.getString("user"),
+                        rs.getString("password"),
+                        role
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

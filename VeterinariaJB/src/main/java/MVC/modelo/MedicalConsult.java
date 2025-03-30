@@ -6,15 +6,15 @@ import java.sql.Time;
 public class MedicalConsult {
     private int id;
     private Pet pet;
-    private Date date;
-    private Time time;
+    private String date;
+    private String time;
     private String reason;
     private String diagnostic;
     private String recommendations;
     private String state;
     private People veterinary;
 
-    public MedicalConsult(int id, Pet pet, Date date, Time time, String reason, String diagnostic, String recommendations, String state, People veterinary) {
+    public MedicalConsult(int id, Pet pet, String date, String time, String reason, String diagnostic, String recommendations, String state, People veterinary) {
         this.id = id;
         this.pet = pet;
         this.date = date;
@@ -42,19 +42,19 @@ public class MedicalConsult {
         this.pet = pet;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public Time getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

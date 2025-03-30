@@ -160,6 +160,37 @@ public class PetDAO {
         return -1;
     }
 
+    // Metodo para obtener todos los dueños
+    public List<String> getAllVeterinarys() {
+        List<String> owners = new ArrayList<>();
+        String sql = "SELECT name FROM people WHERE role_id = 3";
+        try (PreparedStatement ps = connection.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                owners.add(rs.getString("name"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return owners;
+    }
+
+    // Metodo para obtener el ID de un dueño por su nombre
+    public int getVeterinaryIdByName(String name) {
+        String sql = "SELECT id FROM people WHERE name = ? AND role_id = 3";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, name);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt("id");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
     public Pet getPetByName(String name) throws SQLException {
         String sql = "SELECT id, name FROM pet WHERE name = ?";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {

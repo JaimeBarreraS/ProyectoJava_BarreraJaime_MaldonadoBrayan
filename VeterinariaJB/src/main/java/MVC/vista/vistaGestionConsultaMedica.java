@@ -5,7 +5,9 @@
 package MVC.vista;
 
 import MVC.controlador.AdminConsultaMedicaController;
-import javax.swing.JOptionPane;
+
+import javax.swing.*;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -19,15 +21,74 @@ public class vistaGestionConsultaMedica extends javax.swing.JFrame {
     public vistaGestionConsultaMedica() {
         initComponents();
         this.setLocationRelativeTo(null);
-        new AdminConsultaMedicaController(this);
+    }
+
+    public JTextField txtDiagnostico() {
+        return txtDiagnostico;
+    }
+
+    public JTextField txtFecha() {
+        return txtFecha;
+    }
+
+    public JTextField txtHora() {
+        return txtHora;
+    }
+
+    public JTextField txtID() {
+        return txtID;
+    }
+
+    public JTextField txtRazon() {
+        return txtRazon;
+    }
+
+    public JTextField txtRecomendaciones() {
+        return txtRecomendaciones;
+    }
+
+    public JComboBox<String> btnEstado() {
+        return btnEstado;
+    }
+
+    public javax.swing.JComboBox<String> btnPet() {
+        return btnPet;
+    }
+    public javax.swing.JComboBox<String> btnVeterinario() {
+        return btnVeterinario;
     }
     
-    public javax.swing.JTable getTablaPet() {
+    public javax.swing.JTable TablaConsultVeterinary() {
         return TablaConsultVeterinary;
     }
 
     public void setController(AdminConsultaMedicaController controller) {
-    
+        // Eliminar listeners existentes
+        ActionListener[] listeners = btnAgregar.getActionListeners();
+        for (ActionListener listener : listeners) {
+            btnAgregar.removeActionListener(listener);
+        }
+
+        // Agregar nuevos listeners
+        btnEliminar.addActionListener(e -> controller.deleteMedicalConsult());
+        btnAgregar.addActionListener(e -> controller.addMedicalConsult());
+        btnListar.addActionListener(e -> controller.listConsults());
+        btnLimpiar.addActionListener(e -> clearFields());
+        btnModificar.addActionListener(e -> controller.updateMedicalConsult());
+        btnBuscar.addActionListener(e -> controller.SearchMedicalConsult());
+    }
+
+    public void clearFields() {
+        txtFecha().setText("");
+        txtID().setText("");
+        txtHora().setText("");
+        txtRazon().setText("");
+        txtDiagnostico().setText("");
+        txtRecomendaciones().setText("");
+        // Resetear comboboxes si es necesario
+        btnEstado().setSelectedIndex(0);
+        btnVeterinario().setSelectedIndex(0);
+        btnPet().setSelectedIndex(0);
     }
 
     public void showMessage(String message) {
@@ -47,6 +108,30 @@ public class vistaGestionConsultaMedica extends javax.swing.JFrame {
         TablaConsultVeterinary = new javax.swing.JTable();
         Volver = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        txtID = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        btnEstado = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        txtFecha = new javax.swing.JTextField();
+        txtHora = new javax.swing.JTextField();
+        btnVeterinario = new javax.swing.JComboBox<>();
+        txtDiagnostico = new javax.swing.JTextField();
+        txtRecomendaciones = new javax.swing.JTextField();
+        txtRazon = new javax.swing.JTextField();
+        btnPet = new javax.swing.JComboBox<>();
+        btnLimpiar = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnListar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,6 +168,96 @@ public class vistaGestionConsultaMedica extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(2, 100, 100));
         jLabel1.setText("Consultas Medicas");
 
+        txtID.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtID.setForeground(new java.awt.Color(2, 100, 100));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(2, 100, 100));
+        jLabel2.setText("ID :");
+
+        btnEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-------", "programada", "en proceso", "finalizada", "cancelada" }));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(2, 100, 100));
+        jLabel3.setText("Mascota :");
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(2, 100, 100));
+        jLabel4.setText("Fecha :");
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(2, 100, 100));
+        jLabel5.setText("Hora :");
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(2, 100, 100));
+        jLabel6.setText("Razon : ");
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(2, 100, 100));
+        jLabel7.setText("Diagnostico : ");
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(2, 100, 100));
+        jLabel8.setText("Estado :");
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(2, 100, 100));
+        jLabel9.setText("Recomendaciones : ");
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(2, 100, 100));
+        jLabel10.setText("Veterinario :");
+
+        txtFecha.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtFecha.setForeground(new java.awt.Color(2, 100, 100));
+
+        txtHora.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtHora.setForeground(new java.awt.Color(2, 100, 100));
+
+        btnVeterinario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-------" }));
+
+        txtDiagnostico.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtDiagnostico.setForeground(new java.awt.Color(2, 100, 100));
+
+        txtRecomendaciones.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtRecomendaciones.setForeground(new java.awt.Color(2, 100, 100));
+
+        txtRazon.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtRazon.setForeground(new java.awt.Color(2, 100, 100));
+
+        btnPet.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-------" }));
+
+        btnLimpiar.setBackground(new java.awt.Color(2, 100, 100));
+        btnLimpiar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnLimpiar.setForeground(new java.awt.Color(255, 255, 255));
+        btnLimpiar.setText("Limpiar");
+
+        btnBuscar.setBackground(new java.awt.Color(2, 100, 100));
+        btnBuscar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscar.setText("Buscar");
+
+        btnAgregar.setBackground(new java.awt.Color(2, 100, 100));
+        btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setText("Agregar");
+
+        btnEliminar.setBackground(new java.awt.Color(2, 100, 100));
+        btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("Eliminar");
+
+        btnModificar.setBackground(new java.awt.Color(2, 100, 100));
+        btnModificar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnModificar.setForeground(new java.awt.Color(255, 255, 255));
+        btnModificar.setText("Modificar");
+
+        btnListar.setBackground(new java.awt.Color(2, 100, 100));
+        btnListar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnListar.setForeground(new java.awt.Color(255, 255, 255));
+        btnListar.setText("Listar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,12 +265,68 @@ public class vistaGestionConsultaMedica extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1042, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Volver)
-                        .addGap(250, 250, 250)
-                        .addComponent(jLabel1)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(65, 65, 65)
+                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5))
+                                .addGap(22, 22, 22)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtHora, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                                    .addComponent(txtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                                    .addComponent(btnEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnPet, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(68, 68, 68)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel10))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtRecomendaciones))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(7, 7, 7)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtDiagnostico)
+                                    .addComponent(txtRazon)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1042, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Volver)
+                                .addGap(250, 250, 250)
+                                .addComponent(jLabel1)))
+                        .addGap(0, 1, Short.MAX_VALUE)))
+                .addGap(30, 30, 30))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(210, 210, 210)
+                        .addComponent(btnModificar)
+                        .addGap(47, 47, 47)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(86, 86, 86))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,13 +335,50 @@ public class vistaGestionConsultaMedica extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Volver)
                     .addComponent(jLabel1))
-                .addGap(31, 31, 31)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtDiagnostico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel9)
+                    .addComponent(txtRecomendaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPet, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtRazon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10)
+                    .addComponent(btnVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(btnEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnModificar)
+                    .addComponent(btnEliminar)
+                    .addComponent(btnBuscar)
+                    .addComponent(btnAgregar)
+                    .addComponent(btnLimpiar)
+                    .addComponent(btnListar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGap(25, 25, 25))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
 
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
         vistaAdmin vv = new vistaAdmin ();
@@ -149,7 +417,9 @@ public class vistaGestionConsultaMedica extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new vistaGestionConsultaMedica().setVisible(true);
+                vistaGestionConsultaMedica vista = new vistaGestionConsultaMedica();
+                AdminConsultaMedicaController controller = new AdminConsultaMedicaController(vista);
+                vista.setVisible(true);
             }
         });
     }
@@ -157,7 +427,31 @@ public class vistaGestionConsultaMedica extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTable TablaConsultVeterinary;
     public javax.swing.JButton Volver;
+    public javax.swing.JButton btnAgregar;
+    public javax.swing.JButton btnBuscar;
+    public javax.swing.JButton btnEliminar;
+    private javax.swing.JComboBox<String> btnEstado;
+    public javax.swing.JButton btnLimpiar;
+    public javax.swing.JButton btnListar;
+    public javax.swing.JButton btnModificar;
+    private javax.swing.JComboBox<String> btnPet;
+    private javax.swing.JComboBox<String> btnVeterinario;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField txtDiagnostico;
+    private javax.swing.JTextField txtFecha;
+    private javax.swing.JTextField txtHora;
+    public javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtRazon;
+    private javax.swing.JTextField txtRecomendaciones;
     // End of variables declaration//GEN-END:variables
 }
