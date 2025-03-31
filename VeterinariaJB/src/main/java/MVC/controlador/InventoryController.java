@@ -53,7 +53,36 @@ public class InventoryController {
                 model.addRow(row);
             }
         } catch (Exception e) {
-            view.showMessage("Error al listar mascotas: " + e.getMessage());
+            view.showMessage("Error al listar productos: " + e.getMessage());
+        }
+    }
+    
+    
+    
+    public void listReabastecer(){
+        try {
+            List<Inventory> inventory = inventoryDAO.getAllInventories();
+            List<Inventory> reabastecer = inventoryDAO.getAllReabastecer();            
+            System.out.println(reabastecer.size());
+            DefaultTableModel model2 = (DefaultTableModel) view.getTableReabastecer().getModel();
+            model2.setRowCount(0);
+            for (Inventory r : reabastecer) {
+                System.out.println(r);
+                Object[] row = {
+                        r.getId(),
+                        r.getName(),
+                        r.getType(),
+                        r.getManufacturer(),
+                        r.getSupplier().getName(),
+                        r.getPrice(),
+                        r.getStock(),
+                        r.getExpirationDate()!= null ? r.getExpirationDate() : "N/A",
+
+                };
+                model2.addRow(row);
+            }
+        } catch (Exception e) {
+            view.showMessage("Error al listar productos: " + e.getMessage());
         }
     }
 
@@ -98,6 +127,7 @@ public class InventoryController {
                 inventoryDAO.addInventory(inventory);
                 view.showMessage("agregado exitosamente");
                 listInventory();
+                listReabastecer();
                 view.limpiarCampos();
             }
 

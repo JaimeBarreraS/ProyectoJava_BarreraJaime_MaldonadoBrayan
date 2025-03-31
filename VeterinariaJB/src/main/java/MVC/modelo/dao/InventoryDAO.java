@@ -61,6 +61,35 @@ public class InventoryDAO {
         }
         return inventories;
     }
+    
+    public List<Inventory> getAllReabastecer() {
+        List<Inventory> inventories = new ArrayList<>();
+        String sql = "SELECT i.*, s.name AS supplier_name FROM inventory i JOIN supplier s ON i.supplier_id = s.id where stock <= 5";
+        try (Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(sql)) {
+            while (resultSet.next()) {
+                Supplier supplier = new Supplier(
+                        resultSet.getInt("supplier_id"),
+                        resultSet.getString("supplier_name"),
+                        null, null, null, null
+                );
+                Inventory inventory = new Inventory(
+                        resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("type"),
+                        resultSet.getString("manufacturer"),
+                        resultSet.getInt("price"),
+                        resultSet.getInt("stock"),
+                        resultSet.getDate("expirationdate"),
+                        supplier
+                );
+                inventories.add(inventory);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return inventories;
+    }
 
     // Metodo para buscar un inventario por ID
     public Inventory getInventoryById(int id) {
