@@ -1,5 +1,4 @@
 drop database if exists veterinariajb;
-
 create database veterinariajb;
 use veterinariajb;
 
@@ -9,9 +8,7 @@ create table role (
     name varchar(50)
 );
 
-update role set name = 'admin' where id = 1;
-select * from role;
-
+-- tabla personas
 create table people (
     id int primary key auto_increment,
     name varchar(45),
@@ -84,7 +81,7 @@ VALUES
 (4),
 (5);
 
--- tabla pet
+-- tabla mascotas
 create table pet (
     id int primary key auto_increment,
     name varchar(100),
@@ -106,7 +103,7 @@ VALUES
 ('Rocko', 'Perro', 'Pastor Aleman', 2, '2022-08-20', 'macho', '127654321XYZ', 'rocko_photo.jpg', 2);
 
 
--- tabla medicalhistory
+-- tabla historial medico
 create table medicalhistory (
     id int primary key auto_increment,
     pet_id int,
@@ -125,7 +122,7 @@ INSERT INTO medicalhistory (pet_id, allergies, pre_conditions, weight) VALUES
 
 select * from medicalhistory;
 
--- tabla medicalconsult
+-- tabla consultas medicas
 create table medicalconsult (
     id int primary key auto_increment,
     pet_id int,
@@ -151,9 +148,8 @@ VALUES
 INSERT INTO medicalconsult (pet_id, date, time, reason, diagnostic, recommendations, state, veterinary_id)
 VALUES 
 (1, '2025-03-25', '10:30:00', 'Vacunación anual', 'N/A', 'Aplicar vacuna antirrábica', 'finalizada', 2);
-select * from medicalconsult;
 
--- tabla vaccine
+-- tabla vacunas
 create table vaccine (
     id int primary key auto_increment,
     pet_id int,
@@ -165,7 +161,6 @@ create table vaccine (
     foreign key (pet_id) references pet(id)
 );
 
-select * from login;
 INSERT INTO vaccine (pet_id, name, lot, manufacturer, date_application, next_dose) VALUES
 (1, 'Rabies', 'LOT12345', 'Pfizer', '2025-03-01', '2026-03-01'),
 (2, 'Distemper', 'LOT67890', 'Merck', '2025-02-15', '2025-08-15'),
@@ -173,7 +168,7 @@ INSERT INTO vaccine (pet_id, name, lot, manufacturer, date_application, next_dos
 (3, 'Leptospirosis', 'LOT98765', 'Boehringer Ingelheim', '2025-03-10', '2025-09-10'),
 (3, 'Hepatitis', 'LOT11223', 'Elanco', '2025-02-25', '2025-08-25');
 
--- tabla supplier
+-- tabla proveedores
 create table supplier (
     id int primary key auto_increment,
     name varchar(45),
@@ -187,9 +182,7 @@ INSERT INTO supplier (name, contact, phone, email, address) VALUES
 ('AnimalCare S.A.', 'María Gómez', '987-654-3210', 'ventas@animalcare.com', 'Avenida 456, Medellín'),
 ('PetSolutions Ltda.', 'Carlos Ruiz', '555-123-4567', 'info@petsolutions.com', 'Carrera 789, Cali');
 
-select name from supplier;
-
--- tabla inventory
+-- tabla inventario
 create table inventory (
     id int primary key auto_increment,
     name varchar(100),
@@ -207,31 +200,19 @@ INSERT INTO inventory (name, type, manufacturer, stock, price, expirationdate, s
 ('Desparasitante Canino', 'Medicamento', 'VetPharma', 30, 20000 ,'2025-12-10', 2),
 ('Alimento para Perros 10kg', 'Alimento', 'PetFood Co.', 20, 8000,'2025-11-30', 3),
 ('Antibiótico Felino', 'Medicamento', 'BioVet', 25, 40000,'2025-07-20', 1),
-('Juguete para Gatos', 'Accesorio', 'HappyPets', 15, 4000 , NULL, 2),
-('Collar Antipulgas', 'Accesorio', 'SafePet', 40, 10000, NULL, 3),
+('Juguete para Gatos', 'Accesorio', 'HappyPets', 15, 4000 , 2024-12-11, 2),
+('Collar Antipulgas', 'Accesorio', 'SafePet', 40, 10000, 2025-11-30, 3),
 ('Alimento para Gatos 5kg', 'Alimento', 'CatFood Inc.', 35, 9000, '2025-10-15', 1),
 ('Shampoo para Perros', 'Higiene', 'CleanPets', 18, 22000,'2026-02-05', 2);
 
-select * from inventory;
-
--- tabla inventoryconsult
-create table inventoryconsult (
-    id int primary key auto_increment,
-    medicalconsult_id int,
-    inventory_id int,
-    quantity int,
-    foreign key (medicalconsult_id) references medicalconsult(id),
-    foreign key (inventory_id) references inventory(id)
-);
-
--- tabla typeprocedures
+-- tabla tipos de procedimientos
 create table typeprocedures (
     id int primary key auto_increment,
     name varchar(100),
     price decimal(10,2)
 );
 
--- tabla procedures
+-- tabla procedimientos
 create table procedures (
     id int primary key auto_increment,
     medicalconsult_id int,
@@ -240,6 +221,7 @@ create table procedures (
     foreign key (medicalconsult_id) references medicalconsult(id),
     foreign key (typeprocedures_id) references typeprocedures(id)
 );
+
 
 INSERT INTO typeprocedures (name, price) VALUES
 ('Consulta general', 50000.00),
@@ -264,7 +246,6 @@ INSERT INTO typeprocedures (name, price) VALUES
 ('Corte de uñas', 20000.00),
 ('Limpieza de oídos', 25000.00);
 
-
 INSERT INTO procedures (medicalconsult_id, description, typeprocedures_id) VALUES
 (1, 'Consulta de rutina y chequeo general', 1),
 (2, 'Aplicación de vacuna antirrábica', 2),
@@ -272,9 +253,7 @@ INSERT INTO procedures (medicalconsult_id, description, typeprocedures_id) VALUE
 (4, 'Administración de antiparasitarios orales', 4),
 (5, 'Limpieza profunda de sarro en dientes', 5);
 
-select * from procedures;
-
--- tabla invoice
+-- tabla factura
 create table invoice (
     id int primary key auto_increment,
     costumer_id int,
@@ -284,17 +263,4 @@ create table invoice (
     cufe varchar(100),
     qr text,
     foreign key (costumer_id) references people(id) 
-);
-
--- tabla invoicedetails
-create table invoicedetails (
-    id int primary key auto_increment,
-    invoice_id int,
-    description text,
-    quantity int,
-    unitvalue decimal(10,2),
-    subtotal decimal(10,2),
-    inventory_id int,
-    foreign key (invoice_id) references invoice(id),
-    foreign key (inventory_id) references inventory(id)
 );
