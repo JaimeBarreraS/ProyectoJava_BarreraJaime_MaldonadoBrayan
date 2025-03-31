@@ -196,6 +196,11 @@ public class InvoicesController {
         view.limpiarCampos();
     }
     
+    public void limpiarCarrito(){
+        carrito.clear();
+        listPurchase();
+    }
+    
     public void CreateInvoice() {
         try {
             JFileChooser fileChooser = new JFileChooser(); //Se crea un selector de archivos

@@ -46,10 +46,17 @@ public class vistaGestionFacturas extends javax.swing.JFrame {
         return TablePurchase;
     }
 
+    public JButton getBtnVaciar() {
+        return btnVaciar;
+    }
+    
+    
+
     public void setController(InvoicesController controller){
         btnAdd.addActionListener(e -> controller.addProduct());
         btnCreate.addActionListener(e -> controller.crearFactura());
         btnCreate.addActionListener(e -> controller.CreateInvoice());
+        btnVaciar.addActionListener(e -> controller.limpiarCarrito());
     }
 
     public void showMessage(String message) {
@@ -86,6 +93,7 @@ public class vistaGestionFacturas extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtCantidad = new javax.swing.JTextField();
+        btnVaciar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -193,6 +201,16 @@ public class vistaGestionFacturas extends javax.swing.JFrame {
             }
         });
 
+        btnVaciar.setBackground(new java.awt.Color(2, 100, 100));
+        btnVaciar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnVaciar.setForeground(new java.awt.Color(255, 255, 255));
+        btnVaciar.setText("Vaciar");
+        btnVaciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVaciarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -207,9 +225,7 @@ public class vistaGestionFacturas extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addComponent(jLabel6)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel7)
                         .addGap(281, 281, 281)
                         .addComponent(jLabel9))
                     .addGroup(layout.createSequentialGroup()
@@ -226,7 +242,11 @@ public class vistaGestionFacturas extends javax.swing.JFrame {
                         .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnVaciar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -258,7 +278,9 @@ public class vistaGestionFacturas extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                         .addComponent(jLabel7)
                         .addGap(5, 5, 5)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnVaciar))
                         .addGap(18, 18, 18)
                         .addComponent(btnCreate)
                         .addGap(38, 38, 38))))
@@ -293,6 +315,10 @@ public class vistaGestionFacturas extends javax.swing.JFrame {
     private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCantidadActionPerformed
+
+    private void btnVaciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVaciarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVaciarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -335,6 +361,7 @@ public class vistaGestionFacturas extends javax.swing.JFrame {
     public javax.swing.JButton btnAdd;
     public javax.swing.JComboBox<String> btnClient;
     public javax.swing.JButton btnCreate;
+    public javax.swing.JButton btnVaciar;
     public javax.swing.JButton btnVolver;
     public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel3;
