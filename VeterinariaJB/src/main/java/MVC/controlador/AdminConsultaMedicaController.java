@@ -6,6 +6,9 @@ import MVC.modelo.Pet;
 import MVC.modelo.dao.MedicalConsultDAO;
 import MVC.modelo.dao.PetDAO;
 import MVC.vista.vistaGestionConsultaMedica;
+
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -43,11 +46,17 @@ public class AdminConsultaMedicaController {
             int veterinaryId = petDAO.getVeterinaryIdByName(veterinaryName);
             String petName = view.btnPet().getSelectedItem().toString();
             Pet pet = petDAO.getPetByName(petName);
+            
+            java.util.Date fechaUtil = view.txtFecha.getDate();
+            java.sql.Date fechaSql = null;
+            if(fechaUtil != null) {
+                fechaSql = new java.sql.Date(fechaUtil.getTime());
+            }
 
             MedicalConsult medicalConsult = new MedicalConsult(
                     0,
                     pet,
-                    view.txtFecha().getText(),
+                    fechaSql,
                     view.txtHora().getText(),
                     view.txtRazon().getText(),
                     view.txtDiagnostico().getText(),
@@ -65,17 +74,26 @@ public class AdminConsultaMedicaController {
         }
     }
 
-    public void updateMedicalConsult(){
+    public void updateMedicalConsult() {
         try {
+            
+            int id = Integer.parseInt(view.txtID.getText());
+            
             String veterinaryName = view.btnVeterinario().getSelectedItem().toString();
             int veterinaryId = petDAO.getVeterinaryIdByName(veterinaryName);
             String petName = view.btnPet().getSelectedItem().toString();
             Pet pet = petDAO.getPetByName(petName);
+            
+            java.util.Date fechaUtil = view.txtFecha.getDate();
+            Date fechaSql = null;
+            if(fechaUtil != null) {
+                fechaSql = new java.sql.Date(fechaUtil.getTime());
+            }
 
             MedicalConsult medicalConsult = new MedicalConsult(
-                    Integer.parseInt(view.txtID.getText()),
+                    id,
                     pet,
-                    view.txtFecha().getText(),
+                    fechaSql,
                     view.txtHora().getText(),
                     view.txtRazon().getText(),
                     view.txtDiagnostico().getText(),
@@ -84,12 +102,13 @@ public class AdminConsultaMedicaController {
                     new People(veterinaryId, veterinaryName, null,null,null,null,null,null )
             );
 
+            // Llamar al método de ACTUALIZACIÓN (no al de agregar)
             medicalConsultDAO.updateMedicalConsult(medicalConsult);
-            view.showMessage("Consulta medica actualizada correctamente");
+            view.showMessage("Consulta médica actualizada correctamente");
             view.clearFields();
             listConsults();
         } catch (Exception e) {
-            view.showMessage("Error en actualizar consulta medica: " + e.getMessage());
+            view.showMessage("Error al actualizar consulta médica: " + e.getMessage());
         }
     }
 
@@ -112,7 +131,12 @@ public class AdminConsultaMedicaController {
             MedicalConsult consult = medicalConsultDAO.getMedicalConsultById(id);
             if (consult != null) {
                 view.txtID().setText(String.valueOf(consult.getId()));
-                view.txtFecha().setText(consult.getDate());
+                view.txtFecha().setDate(consult.getDate());
+                if (consult.getDate() != null) {
+                view.txtFecha.setDate(new java.util.Date(consult.getDate().getTime()));
+                } else {
+                    view.txtFecha.setDate(null);
+                }
                 view.txtHora().setText(consult.getTime());
                 view.txtRazon().setText(consult.getReason());
                 view.txtDiagnostico().setText(consult.getDiagnostic());
@@ -133,12 +157,14 @@ public class AdminConsultaMedicaController {
         List<MedicalConsult> consults = medicalConsultDAO.getAllMedicalConsults();
         DefaultTableModel model = (DefaultTableModel) view.TablaConsultVeterinary().getModel();
         model.setRowCount(0);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
 
         for (MedicalConsult consult : consults) {
             model.addRow(new Object[]{
                     consult.getId(),
                     consult.getPet().getName(),
-                    consult.getDate(),
+                    consult.getDate() !=null ? sdf.format(consult.getDate()) : "N/A",
                     consult.getTime(),
                     consult.getReason(),
                     consult.getDiagnostic(),

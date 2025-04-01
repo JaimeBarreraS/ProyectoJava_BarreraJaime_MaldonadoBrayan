@@ -6,6 +6,7 @@
 package MVC.vista;
 
 import MVC.controlador.PetController;
+import com.toedter.calendar.JDateChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -41,7 +42,7 @@ public class vistaGestionMascotas extends javax.swing.JFrame {
         return txtAge;
     }
 
-    public javax.swing.JTextField getTxtFechanacimiento() {
+    public JDateChooser getTxtFechanacimiento() {
         return txtFechanacimiento;
     }
 
@@ -72,7 +73,7 @@ public class vistaGestionMascotas extends javax.swing.JFrame {
     TxtSpecie.setText(""); 
     txtRace.setText(""); 
     txtAge.setText(""); 
-    txtFechanacimiento.setText(""); 
+    txtFechanacimiento.setDate(null);
     txtMicrochip_tattoo.setText(""); 
     btnSexo.setSelectedIndex(0); 
     btnOwner.setSelectedIndex(0); 
@@ -110,7 +111,6 @@ public class vistaGestionMascotas extends javax.swing.JFrame {
         TxtSpecie = new javax.swing.JTextField();
         txtRace = new javax.swing.JTextField();
         txtMicrochip_tattoo = new javax.swing.JTextField();
-        txtFechanacimiento = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         txtAge = new javax.swing.JTextField();
@@ -121,6 +121,7 @@ public class vistaGestionMascotas extends javax.swing.JFrame {
         btnSearch = new javax.swing.JButton();
         photo = new javax.swing.JLabel();
         btnVolver = new javax.swing.JButton();
+        txtFechanacimiento = new com.toedter.calendar.JDateChooser();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -254,15 +255,6 @@ public class vistaGestionMascotas extends javax.swing.JFrame {
             }
         });
 
-        txtFechanacimiento.setEditable(true);
-        txtFechanacimiento.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtFechanacimiento.setForeground(new java.awt.Color(2, 100, 100));
-        txtFechanacimiento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFechanacimientoActionPerformed(evt);
-            }
-        });
-
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(2, 100, 100));
         jLabel11.setText("Sexo :");
@@ -322,6 +314,20 @@ public class vistaGestionMascotas extends javax.swing.JFrame {
             }
         });
 
+        txtFechanacimiento.setForeground(new java.awt.Color(2, 100, 100));
+        txtFechanacimiento.setToolTipText("");
+        txtFechanacimiento.setDateFormatString("yyyy-MM-dd");
+        txtFechanacimiento.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtFechanacimiento.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                txtFechanacimientoAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -342,7 +348,7 @@ public class vistaGestionMascotas extends javax.swing.JFrame {
                         .addComponent(btnDelete)
                         .addGap(18, 18, 18)
                         .addComponent(btnSearch)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -355,10 +361,11 @@ public class vistaGestionMascotas extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel9)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -369,26 +376,25 @@ public class vistaGestionMascotas extends javax.swing.JFrame {
                                             .addComponent(TxtSpecie, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(40, 40, 40)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(jLabel11)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
-                                                    .addComponent(btnSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jLabel12))
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                        .addComponent(btnOwner, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(txtMicrochip_tattoo, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel11)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                                                .addComponent(btnSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jLabel12))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(btnOwner, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(txtMicrochip_tattoo, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtFechanacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                                .addComponent(txtFechanacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                             .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(photo))
@@ -427,16 +433,20 @@ public class vistaGestionMascotas extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(txtMicrochip_tattoo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtRace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtFechanacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtFechanacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                        .addGap(111, 111, 111))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtRace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel6))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdd)
                     .addComponent(btnGet)
@@ -486,10 +496,6 @@ public class vistaGestionMascotas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMicrochip_tattooActionPerformed
 
-    private void txtFechanacimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechanacimientoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFechanacimientoActionPerformed
-
     private void txtAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAgeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAgeActionPerformed
@@ -504,6 +510,10 @@ public class vistaGestionMascotas extends javax.swing.JFrame {
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void txtFechanacimientoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_txtFechanacimientoAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFechanacimientoAncestorAdded
     
     /**
      * @param args the command line arguments
@@ -568,7 +578,7 @@ public class vistaGestionMascotas extends javax.swing.JFrame {
     private javax.swing.JLabel photo;
     public javax.swing.JTable tablaPet;
     public javax.swing.JTextField txtAge;
-    public javax.swing.JTextField txtFechanacimiento;
+    private com.toedter.calendar.JDateChooser txtFechanacimiento;
     public javax.swing.JTextField txtID;
     public javax.swing.JTextField txtMicrochip_tattoo;
     public javax.swing.JTextField txtName;

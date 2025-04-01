@@ -1,18 +1,20 @@
 package MVC.modelo;
 
+import java.util.Date;
+
 public class Pet {
     private int id;
     private String name;
     private String specie;
     private String race;
     private int age;
-    private String dateBirth;
+    private Date dateBirth;
     private String sex;
     private String microchipTattoo;
     private String photo;
     private People costumer_id;
 
-    public Pet(int id, String name, String specie, String race, int age, String dateBirth, String sex, String microchipTattoo, String photo, People costumer) {
+    public Pet(int id, String name, String specie, String race, int age, Date dateBirth, String sex, String microchipTattoo, String photo, People costumer) {
         this.id = id;
         this.name = name;
         this.specie = specie;
@@ -69,11 +71,11 @@ public class Pet {
         this.age = age;
     }
 
-    public String getDateBirth() {
+    public Date getDateBirth() {
         return dateBirth;
     }
 
-    public void setDateBirth(String dateBirth) {
+    public void setDateBirth(Date dateBirth) {
         this.dateBirth = dateBirth;
     }
 

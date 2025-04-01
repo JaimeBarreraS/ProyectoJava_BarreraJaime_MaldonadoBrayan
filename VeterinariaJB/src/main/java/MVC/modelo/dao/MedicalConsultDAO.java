@@ -21,10 +21,8 @@ public class MedicalConsultDAO {
         String sql = "INSERT INTO medicalconsult (pet_id, date, time, reason, diagnostic, recommendations, state, veterinary_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, medicalConsult.getPet().getId());
-            java.sql.Date sqlDate = java.sql.Date.valueOf(medicalConsult.getDate());
-            statement.setDate(2, sqlDate);
-            java.sql.Time sqlTime = java.sql.Time.valueOf(medicalConsult.getTime());
-            statement.setTime(3, sqlTime);
+            statement.setDate(2, new java.sql.Date(medicalConsult.getDate().getTime()));
+            statement.setString(3, medicalConsult.getTime());
             statement.setString(4, medicalConsult.getReason());
             statement.setString(5, medicalConsult.getDiagnostic());
             statement.setString(6, medicalConsult.getRecommendations());
@@ -45,6 +43,8 @@ public class MedicalConsultDAO {
         try (Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(sql)) {
             while (resultSet.next()) {
+
+
                 Pet pet = new Pet(
                         resultSet.getInt("pet_id"),
                         resultSet.getString("pet_name"),
@@ -58,7 +58,7 @@ public class MedicalConsultDAO {
                 MedicalConsult medicalConsult = new MedicalConsult(
                         resultSet.getInt("id"),
                         pet,
-                        resultSet.getString("date"),
+                        resultSet.getDate("date"),
                         resultSet.getString("time"),
                         resultSet.getString("reason"),
                         resultSet.getString("diagnostic"),
@@ -96,7 +96,7 @@ public class MedicalConsultDAO {
                 return new MedicalConsult(
                         resultSet.getInt("id"),
                         pet,
-                        resultSet.getString("date"),
+                        resultSet.getDate("date"),
                         resultSet.getString("time"),
                         resultSet.getString("reason"),
                         resultSet.getString("diagnostic"),
@@ -116,16 +116,15 @@ public class MedicalConsultDAO {
         String sql = "UPDATE medicalconsult SET pet_id = ?, date = ?, time = ?, reason = ?, diagnostic = ?, recommendations = ?, state = ?, veterinary_id = ? WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, medicalConsult.getPet().getId());
-            java.sql.Date sqlDate = java.sql.Date.valueOf(medicalConsult.getDate());
-            statement.setDate(2, sqlDate);
-            java.sql.Time sqlTime = java.sql.Time.valueOf(medicalConsult.getTime());
-            statement.setTime(3, sqlTime);
+            statement.setDate(2, new java.sql.Date(medicalConsult.getDate().getTime()));
+            statement.setString(3, medicalConsult.getTime());
             statement.setString(4, medicalConsult.getReason());
             statement.setString(5, medicalConsult.getDiagnostic());
             statement.setString(6, medicalConsult.getRecommendations());
             statement.setString(7, medicalConsult.getState());
             statement.setInt(8, medicalConsult.getVeterinary().getId());
             statement.setInt(9, medicalConsult.getId());
+            
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

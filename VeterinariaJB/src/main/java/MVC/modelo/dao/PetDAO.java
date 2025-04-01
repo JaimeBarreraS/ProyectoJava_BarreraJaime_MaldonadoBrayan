@@ -24,7 +24,7 @@ public class PetDAO {
             statement.setString(2, pet.getSpecie());
             statement.setString(3, pet.getRace());
             statement.setInt(4, pet.getAge());
-            statement.setString(5, pet.getDateBirth());
+            statement.setDate(5, new java.sql.Date(pet.getDateBirth().getTime()));
             statement.setString(6, pet.getSex());
             statement.setString(7, pet.getMicrochipTattoo());
             statement.setString(8, pet.getPhoto());
@@ -42,6 +42,10 @@ public class PetDAO {
         try (Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(sql)) {
             while (resultSet.next()) {
+
+                java.util.Date utilDate = new java.util.Date(
+                        resultSet.getDate("date_birth").getTime()
+                );
                 People owner = new People(
                         resultSet.getInt("costumer_id"),
                         resultSet.getString("owner_name"),
@@ -53,7 +57,7 @@ public class PetDAO {
                         resultSet.getString("specie"),
                         resultSet.getString("race"),
                         resultSet.getInt("age"),
-                        resultSet.getString("date_birth"),
+                        utilDate,
                         resultSet.getString("sex"),
                         resultSet.getString("microchip_tattoo"),
                         resultSet.getString("photo"),
@@ -79,13 +83,14 @@ public class PetDAO {
                         resultSet.getString("owner_name"),
                         null, null, null, null, null, null
                 );
+                Date utilDate = new Date(resultSet.getDate("date_birth").getTime());
                 return new Pet(
                         resultSet.getInt("id"),
                         resultSet.getString("name"),
                         resultSet.getString("specie"),
                         resultSet.getString("race"),
                         resultSet.getInt("age"),
-                        resultSet.getString("date_birth"),
+                        utilDate,
                         resultSet.getString("sex"),
                         resultSet.getString("microchip_tattoo"),
                         resultSet.getString("photo"),
@@ -106,7 +111,7 @@ public class PetDAO {
             statement.setString(2, pet.getSpecie());
             statement.setString(3, pet.getRace());
             statement.setInt(4, pet.getAge());
-            statement.setString(5, pet.getDateBirth());
+            statement.setDate(5, new java.sql.Date(pet.getDateBirth().getTime()));
             statement.setString(6, pet.getSex());
             statement.setString(7, pet.getMicrochipTattoo());
             statement.setString(8, pet.getPhoto());

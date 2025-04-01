@@ -6,6 +6,7 @@
 package MVC.vista;
 
 import MVC.controlador.InventoryController;
+import com.toedter.calendar.JDateChooser;
 
 import javax.swing.*;
 
@@ -40,7 +41,7 @@ public class vistaGestionInventory extends javax.swing.JFrame {
         return txtID;
     }
 
-    public javax.swing.JTextField getTxtExpiration() {
+    public JDateChooser getTxtExpiration() {
         return txtExpiration;
     }
 
@@ -69,7 +70,7 @@ public class vistaGestionInventory extends javax.swing.JFrame {
         txtName.setText("");
         txtManufacturer.setText("");
         txtID.setText("");
-        txtExpiration.setText("");
+        txtExpiration.setDate(null);
         txtStock.setText("");
         btnSupplier.setSelectedIndex(0);
         txtType.setText("");
@@ -105,7 +106,6 @@ public class vistaGestionInventory extends javax.swing.JFrame {
         txtID = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        txtExpiration = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableInventary = new javax.swing.JTable();
         btnClean = new javax.swing.JButton();
@@ -118,6 +118,7 @@ public class vistaGestionInventory extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         TableReabastecer = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
+        txtExpiration = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -208,15 +209,6 @@ public class vistaGestionInventory extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(2, 100, 100));
         jLabel10.setText("Cantidad :");
 
-        txtExpiration.setEditable(true);
-        txtExpiration.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtExpiration.setForeground(new java.awt.Color(2, 100, 100));
-        txtExpiration.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtExpirationActionPerformed(evt);
-            }
-        });
-
         TableInventary.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -303,6 +295,11 @@ public class vistaGestionInventory extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(2, 100, 100));
         jLabel6.setText("Por reabastecer: ");
 
+        txtExpiration.setForeground(new java.awt.Color(2, 100, 100));
+        txtExpiration.setToolTipText("");
+        txtExpiration.setDateFormatString("yyyy-MM-dd");
+        txtExpiration.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -345,23 +342,26 @@ public class vistaGestionInventory extends javax.swing.JFrame {
                                     .addComponent(txtManufacturer, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(83, 83, 83)))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel9)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txtExpiration))
-                                .addComponent(btnGet, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(jLabel11)
                                     .addGap(71, 71, 71)
                                     .addComponent(txtPrice))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGap(0, 0, Short.MAX_VALUE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel8)
                                         .addComponent(jLabel10))
                                     .addGap(38, 38, 38)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(txtStock, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-                                        .addComponent(btnSupplier, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                        .addComponent(btnSupplier, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(btnGet, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(0, 0, Short.MAX_VALUE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel9)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtExpiration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addComponent(jScrollPane2)))
                 .addGap(0, 80, Short.MAX_VALUE))
         );
@@ -392,13 +392,12 @@ public class vistaGestionInventory extends javax.swing.JFrame {
                             .addComponent(jLabel11)
                             .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel9)
-                                .addComponent(txtExpiration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel9)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(txtManufacturer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2))))
+                                .addComponent(jLabel2))
+                            .addComponent(txtExpiration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(jLabel4)))
@@ -446,10 +445,6 @@ public class vistaGestionInventory extends javax.swing.JFrame {
     private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDActionPerformed
-
-    private void txtExpirationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtExpirationActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtExpirationActionPerformed
 
     private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
         // TODO add your handling code here:
@@ -532,7 +527,7 @@ public class vistaGestionInventory extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    public javax.swing.JTextField txtExpiration;
+    public com.toedter.calendar.JDateChooser txtExpiration;
     public javax.swing.JTextField txtID;
     public javax.swing.JTextField txtManufacturer;
     public javax.swing.JTextField txtName;

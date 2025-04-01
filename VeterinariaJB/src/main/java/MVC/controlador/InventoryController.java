@@ -7,6 +7,7 @@ import MVC.modelo.dao.SupplierDAO;
 import MVC.vista.vistaGestionInventory;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -38,6 +39,9 @@ public class InventoryController {
             List<Inventory> inventory = inventoryDAO.getAllInventories();
             DefaultTableModel model = (DefaultTableModel) view.getTableInventary().getModel();
             model.setRowCount(0);
+            
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            
             for (Inventory inventories : inventory) {
                 Object[] row = {
                         inventories.getId(),
@@ -66,6 +70,9 @@ public class InventoryController {
             System.out.println(reabastecer.size());
             DefaultTableModel model2 = (DefaultTableModel) view.getTableReabastecer().getModel();
             model2.setRowCount(0);
+            
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            
             for (Inventory r : reabastecer) {
                 System.out.println(r);
                 Object[] row = {
@@ -109,10 +116,8 @@ public class InventoryController {
             else{
                 String supplierName = view.getBtnSupplier().getSelectedItem().toString();
                 int supplierID = supplierDAO.getSupplierIdByName(supplierName);
-                String expirationText = view.getTxtExpiration().getText();
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); // Ajusta el formato si es necesario
-                LocalDate localDate = LocalDate.parse(expirationText, formatter);
-                java.sql.Date sqlDate = Date.valueOf(localDate);
+                java.util.Date selectedDate = view.getTxtExpiration().getDate();
+                java.sql.Date sqlDate = selectedDate != null ? new java.sql.Date(selectedDate.getTime()) : null;
 
                 Inventory inventory = new Inventory(
                         0,
@@ -146,7 +151,11 @@ public class InventoryController {
                 view.getTxtType().setText(inventory.getType());
                 view.getTxtManufacturer().setText(inventory.getManufacturer());
                 view.getTxtStock().setText(String.valueOf(inventory.getStock()));
-                view.getTxtExpiration().setText(inventory.getExpirationDate().toString());
+                if (inventory.getExpirationDate() != null) {
+                view.getTxtExpiration().setDate(new java.util.Date(inventory.getExpirationDate().getTime()));
+                } else {
+                    view.getTxtExpiration().setDate(null); // Limpiar el JDateChooser
+                }
                 view.getBtnSupplier().setSelectedItem(inventory.getSupplier().getName());
             }
             else {

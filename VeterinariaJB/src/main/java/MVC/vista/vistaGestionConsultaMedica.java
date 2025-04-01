@@ -5,6 +5,7 @@
 package MVC.vista;
 
 import MVC.controlador.AdminConsultaMedicaController;
+import com.toedter.calendar.JDateChooser;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
@@ -27,7 +28,7 @@ public class vistaGestionConsultaMedica extends javax.swing.JFrame {
         return txtDiagnostico;
     }
 
-    public JTextField txtFecha() {
+    public JDateChooser txtFecha() {
         return txtFecha;
     }
 
@@ -79,7 +80,7 @@ public class vistaGestionConsultaMedica extends javax.swing.JFrame {
     }
 
     public void clearFields() {
-        txtFecha().setText("");
+        txtFecha().setDate(null);
         txtID().setText("");
         txtHora().setText("");
         txtRazon().setText("");
@@ -119,7 +120,6 @@ public class vistaGestionConsultaMedica extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        txtFecha = new javax.swing.JTextField();
         txtHora = new javax.swing.JTextField();
         btnVeterinario = new javax.swing.JComboBox<>();
         txtDiagnostico = new javax.swing.JTextField();
@@ -132,6 +132,7 @@ public class vistaGestionConsultaMedica extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnListar = new javax.swing.JButton();
+        txtFecha = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -166,7 +167,7 @@ public class vistaGestionConsultaMedica extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(2, 100, 100));
-        jLabel1.setText("Consultas Medicas");
+        jLabel1.setText("Gestion Consultas Medicas");
 
         txtID.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtID.setForeground(new java.awt.Color(2, 100, 100));
@@ -208,9 +209,6 @@ public class vistaGestionConsultaMedica extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(2, 100, 100));
         jLabel10.setText("Veterinario :");
-
-        txtFecha.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtFecha.setForeground(new java.awt.Color(2, 100, 100));
 
         txtHora.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtHora.setForeground(new java.awt.Color(2, 100, 100));
@@ -258,6 +256,11 @@ public class vistaGestionConsultaMedica extends javax.swing.JFrame {
         btnListar.setForeground(new java.awt.Color(255, 255, 255));
         btnListar.setText("Listar");
 
+        txtFecha.setForeground(new java.awt.Color(2, 100, 100));
+        txtFecha.setToolTipText("");
+        txtFecha.setDateFormatString("yyyy-MM-dd");
+        txtFecha.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -279,9 +282,9 @@ public class vistaGestionConsultaMedica extends javax.swing.JFrame {
                                 .addGap(22, 22, 22)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtHora, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                                    .addComponent(txtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
                                     .addComponent(btnEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnPet, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(btnPet, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(68, 68, 68)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
@@ -306,7 +309,7 @@ public class vistaGestionConsultaMedica extends javax.swing.JFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1042, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(Volver)
-                                .addGap(250, 250, 250)
+                                .addGap(210, 210, 210)
                                 .addComponent(jLabel1)))
                         .addGap(0, 1, Short.MAX_VALUE)))
                 .addGap(30, 30, 30))
@@ -341,39 +344,43 @@ public class vistaGestionConsultaMedica extends javax.swing.JFrame {
                     .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(txtDiagnostico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel9)
                     .addComponent(txtRecomendaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPet, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtRazon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
-                    .addComponent(btnVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(btnEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnModificar)
-                    .addComponent(btnEliminar)
-                    .addComponent(btnBuscar)
-                    .addComponent(btnAgregar)
-                    .addComponent(btnLimpiar)
-                    .addComponent(btnListar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6)
+                            .addComponent(txtRazon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10)
+                            .addComponent(btnVeterinario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(btnEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnModificar)
+                            .addComponent(btnEliminar)
+                            .addComponent(btnBuscar)
+                            .addComponent(btnAgregar)
+                            .addComponent(btnLimpiar)
+                            .addComponent(btnListar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -448,7 +455,7 @@ public class vistaGestionConsultaMedica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtDiagnostico;
-    private javax.swing.JTextField txtFecha;
+    public com.toedter.calendar.JDateChooser txtFecha;
     private javax.swing.JTextField txtHora;
     public javax.swing.JTextField txtID;
     private javax.swing.JTextField txtRazon;

@@ -6,7 +6,7 @@ import java.sql.Time;
 public class MedicalConsult {
     private int id;
     private Pet pet;
-    private String date;
+    private Date date;
     private String time;
     private String reason;
     private String diagnostic;
@@ -14,7 +14,7 @@ public class MedicalConsult {
     private String state;
     private People veterinary;
 
-    public MedicalConsult(int id, Pet pet, String date, String time, String reason, String diagnostic, String recommendations, String state, People veterinary) {
+    public MedicalConsult(int id, Pet pet, Date date, String time, String reason, String diagnostic, String recommendations, String state, People veterinary) {
         this.id = id;
         this.pet = pet;
         this.date = date;
@@ -25,6 +25,7 @@ public class MedicalConsult {
         this.state = state;
         this.veterinary = veterinary;
     }
+
 
     public int getId() {
         return id;
@@ -42,11 +43,11 @@ public class MedicalConsult {
         this.pet = pet;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
