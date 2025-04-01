@@ -56,14 +56,13 @@ create table login (
     foreign key (role_id) references role(id)
 );
 
-INSERT INTO login (user, password, role_id) VALUES ('Jaime', '123456', 1);
-INSERT INTO login (user, password, role_id) VALUES ('Brayan', '123456', 1);
-INSERT INTO login (user, password, role_id) VALUES ('Freiler', '123456', 2);
-INSERT INTO login (user, password, role_id) VALUES ('Camilo', '123456', 3);
-INSERT INTO login (user, password, role_id) VALUES ('Camilo', '123456', 3);
+INSERT INTO login (user, password, role_id) VALUES ('Jaime', '123', 1);
+INSERT INTO login (user, password, role_id) VALUES ('Brayan', '123', 1);
+INSERT INTO login (user, password, role_id) VALUES ('Freiler', '123', 2);
+INSERT INTO login (user, password, role_id) VALUES ('Camilo', '123', 3);
+INSERT INTO login (user, password, role_id) VALUES ('Camilo', '123', 3);
+INSERT INTO login (user, password, role_id) VALUES ('Stiven','123',4);
 
-select * from login;
-SELECT name FROM people WHERE role_id = 3;
 -- tabla people
 
 INSERT INTO people (name, identification, phone, email, role_id) 
@@ -73,7 +72,9 @@ VALUES
 ('Jaime Barrera', 'CC87654321', '3107654321', 'maria.lopez@example.com', 2),
 ('Pepe Gomez', 'CC872314321', '3107434321', 'pepe.lopez@example.com', 3),
 ('Erika Barrera', 'CC874354321', '31053454321', 'Erika.lopez@example.com', 3),
-('Samuel Maldonado', 'CC873234321', '31034354321', 'samuel.lopez@example.com', 4);
+('Samuel Maldonado', 'CC873234321', '31034354321', 'samuel.lopez@example.com', 4),
+('Stiven Sanchez', 'CC87324342', '31034542521', 'stiven.sanchez@example.com', 4),
+('Jharedt Maldonado', 'CC871214321', '2318139129', 'jhared.maldonado@example.com', 4);
 
 
 insert into veterinary(people_id)
@@ -119,8 +120,6 @@ INSERT INTO medicalhistory (pet_id, allergies, pre_conditions, weight) VALUES
 (2, 'Hierba, Polvo', 'Artritis', '15.0 kg'),
 (1, 'Pollo', 'Diabetes', '8.8 kg'),
 (3, 'Ninguna', 'Fractura previa en la pierna', '12.3 kg');
-
-select * from medicalhistory;
 
 -- tabla consultas medicas
 create table medicalconsult (
@@ -200,8 +199,8 @@ INSERT INTO inventory (name, type, manufacturer, stock, price, expirationdate, s
 ('Desparasitante Canino', 'Medicamento', 'VetPharma', 30, 20000 ,'2025-12-10', 2),
 ('Alimento para Perros 10kg', 'Alimento', 'PetFood Co.', 20, 8000,'2025-11-30', 3),
 ('Antibiótico Felino', 'Medicamento', 'BioVet', 25, 40000,'2025-07-20', 1),
-('Juguete para Gatos', 'Accesorio', 'HappyPets', 15, 4000 , 2024-12-11, 2),
-('Collar Antipulgas', 'Accesorio', 'SafePet', 40, 10000, 2025-11-30, 3),
+('Juguete para Gatos', 'Accesorio', 'HappyPets', 15, 4000 , '2024-12-11', 2),
+('Collar Antipulgas', 'Accesorio', 'SafePet', 40, 10000, '2025-11-30', 3),
 ('Alimento para Gatos 5kg', 'Alimento', 'CatFood Inc.', 35, 9000, '2025-10-15', 1),
 ('Shampoo para Perros', 'Higiene', 'CleanPets', 18, 22000,'2026-02-05', 2);
 
@@ -264,3 +263,20 @@ create table invoice (
     qr text,
     foreign key (costumer_id) references people(id) 
 );
+
+create table adoption (
+	id int primary key auto_increment,
+    name varchar(100),
+    specie varchar(50),
+    race varchar(100),
+    age int,
+    sex enum('macho', 'hembra'), -- nuevo campo
+    state enum('adoptado','adopcion'),
+    costumer_id int,
+    foreign key (costumer_id) references people(id) 
+);
+
+INSERT INTO  adoption (name,specie,race,age, sex,state) values
+('Josefo','Perro','Labrador',2,'macho','adopcion'),
+('Pepita','Perro','Dalmata',5,'hembra','adopcion'),
+('Josefino','Gato','Persa',3,'macho','adopcion');

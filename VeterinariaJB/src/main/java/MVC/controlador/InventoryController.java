@@ -150,6 +150,7 @@ public class InventoryController {
                 view.getTxtName().setText(inventory.getName());
                 view.getTxtType().setText(inventory.getType());
                 view.getTxtManufacturer().setText(inventory.getManufacturer());
+                view.getTxtPrice().setText(String.valueOf(inventory.getPrice()));
                 view.getTxtStock().setText(String.valueOf(inventory.getStock()));
                 if (inventory.getExpirationDate() != null) {
                 view.getTxtExpiration().setDate(new java.util.Date(inventory.getExpirationDate().getTime()));

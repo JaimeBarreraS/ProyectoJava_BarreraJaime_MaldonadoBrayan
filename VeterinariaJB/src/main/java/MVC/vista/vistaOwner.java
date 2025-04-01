@@ -78,7 +78,7 @@ public class vistaOwner extends javax.swing.JFrame {
             }
         });
 
-        btnSalir.setBackground(new java.awt.Color(0, 0, 153));
+        btnSalir.setBackground(new java.awt.Color(255, 153, 102));
         btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(255, 255, 255));
         btnSalir.setText("Salir");

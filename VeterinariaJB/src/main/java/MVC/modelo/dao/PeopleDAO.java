@@ -158,7 +158,7 @@ public class PeopleDAO {
         return clients;
     }
     
-        public int getIdPeople(String ProductName) {
+    public int getIdPeople(String ProductName) {
         String sql = "Select id from people where name = ?";
         int id = 0;
         try (PreparedStatement ps = connection.prepareStatement(sql)) {

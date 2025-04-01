@@ -34,6 +34,22 @@ public class PetDAO {
             e.printStackTrace();
         }
     }
+    
+    //Metodo para registrar adopciones
+    public void addAdoption(Pet pet) {
+        String sql = "INSERT INTO pet (name, specie, race, age, sex,costumer_id) VALUES (?, ?, ?, ?, ?,?)";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, pet.getName());
+            statement.setString(2, pet.getSpecie());
+            statement.setString(3, pet.getRace());
+            statement.setInt(4, pet.getAge());
+            statement.setString(5, pet.getSex());
+            statement.setInt(6, pet.getCostumer().getId());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     // Metodo para obtener todas las mascotas
     public List<Pet> getAllPets() {
@@ -43,9 +59,8 @@ public class PetDAO {
              ResultSet resultSet = statement.executeQuery(sql)) {
             while (resultSet.next()) {
 
-                java.util.Date utilDate = new java.util.Date(
-                        resultSet.getDate("date_birth").getTime()
-                );
+                java.sql.Date sqlDate = resultSet.getDate("date_birth");
+                java.util.Date utilDate = (sqlDate != null) ? new java.util.Date(sqlDate.getTime()) : null;
                 People owner = new People(
                         resultSet.getInt("costumer_id"),
                         resultSet.getString("owner_name"),
@@ -78,12 +93,15 @@ public class PetDAO {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
+                java.sql.Date sqlDate = resultSet.getDate("date_birth");
+                java.util.Date utilDate = (sqlDate != null) ? new java.util.Date(sqlDate.getTime()) : null;
+                
                 People owner = new People(
                         resultSet.getInt("costumer_id"),
                         resultSet.getString("owner_name"),
                         null, null, null, null, null, null
                 );
-                Date utilDate = new Date(resultSet.getDate("date_birth").getTime());
+                
                 return new Pet(
                         resultSet.getInt("id"),
                         resultSet.getString("name"),

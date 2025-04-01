@@ -112,18 +112,21 @@ public class PetController {
             List<Pet> pets = petDAO.getAllPets();
             DefaultTableModel model = (DefaultTableModel) view.getTablaPet().getModel();
             model.setRowCount(0);
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
             for (Pet pet : pets) {
+                
+                String fechaFormateada = (pet.getDateBirth() != null) ? dateFormat.format(pet.getDateBirth()) : "Sin fecha";
                 Object[] row = {
                     pet.getId(),
                     pet.getName(),
                     pet.getSpecie(),
                     pet.getRace(),
-                    pet.getAge(), pet.getDateBirth() != null ? sdf.format(pet.getDateBirth()) : "N/A",
+                    pet.getAge(),
+                    fechaFormateada,
                     pet.getSex(),
-                    pet.getMicrochipTattoo(),
-                    pet.getPhoto(),
+                    (pet.getMicrochipTattoo() !=null) ? pet.getMicrochipTattoo() : "N/A",
+                    (pet.getPhoto() != null) ? pet.getPhoto() : "N/A",
                     pet.getCostumer() != null ? pet.getCostumer().getName() : "N/A" 
                 };
                 model.addRow(row);
@@ -142,7 +145,7 @@ public class PetController {
                 view.getTxtSpecie().setText(pet.getSpecie());
                 view.getTxtRace().setText(pet.getRace());
                 view.getTxtAge().setText(String.valueOf(pet.getAge()));
-                view.getTxtFechanacimiento().setDate(pet.getDateBirth());
+                view.getTxtFechanacimiento().setDate((pet.getDateBirth() != null) ? pet.getDateBirth() : null);          
                 view.getBtnSexo().setSelectedItem(pet.getSex());
                 view.getTxtMicrochip_tattoo().setText(pet.getMicrochipTattoo());
                 view.getBtnOwner().setSelectedItem(pet.getCostumer().getName()); 
