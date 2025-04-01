@@ -35,6 +35,11 @@ En esta interfaz, los clientes tienen acceso a:
 1. Consulta de Tipos de Procedimientos
 2. Visualización y descarga de Facturas en formato PDF
 
+## Módulo de Actividades Especiales
+En esta interfaz, el administrador o recepcionista tendrá acceso a:
+1. Registrar animales que se van a poner en adopción.
+2. Asignarles un dueño de los que están registrados en el sistema.
+
 ## Tecnologías Utilizadas
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=fff&style=for-the-badge) ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
 
@@ -60,8 +65,10 @@ En esta interfaz, los clientes tienen acceso a:
 5. Ejecutar el archivo main
 
 ## Credenciales de inicio de sesión
-- User: Brayan - Password: 123456 - Administrador
-- User: Camilo - Password: 123456 - Veterinario
+- User: Brayan - Password: 123 - Administrador
+- User: Freiler - Password: 123 - Recepcionista
+- User: Camilo - Password: 123 - Veterinario
+- User: Stiven -Password: 123 - Cliente
 
 ## Desarrolladores
 Este proyecto ha sido desarrollado por **Brayan Maldonado** y **Jaime Barrera** como parte del filtro de Java para *Campuslands*.
